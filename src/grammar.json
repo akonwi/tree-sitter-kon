@@ -5,8 +5,17 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "variable_definition"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "variable_definition"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "function_definition"
+          }
+        ]
       }
     },
     "variable_definition": {
@@ -55,7 +64,19 @@
         },
         {
           "type": "SYMBOL",
-          "name": "function_parameters"
+          "name": "parameters"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "return_type"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -63,7 +84,7 @@
         }
       ]
     },
-    "function_parameters": {
+    "parameters": {
       "type": "SEQ",
       "members": [
         {
@@ -71,10 +92,64 @@
           "value": "("
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "param_def"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "param_def"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": ")"
         }
       ]
+    },
+    "param_def": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_colon"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_type"
+        }
+      ]
+    },
+    "return_type": {
+      "type": "SYMBOL",
+      "name": "primitive_type"
     },
     "block": {
       "type": "SEQ",
@@ -94,7 +169,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "colon"
+          "name": "_colon"
         },
         {
           "type": "SYMBOL",
@@ -187,7 +262,7 @@
         }
       ]
     },
-    "colon": {
+    "_colon": {
       "type": "STRING",
       "value": ":"
     },

@@ -12,7 +12,8 @@ module.exports = grammar({
 	name: "kon",
 
 	rules: {
-		source_file: ($) => repeat($.variable_definition),
+		source_file: ($) =>
+			repeat(choice($.variable_definition, $.function_definition)),
 
 		variable_definition: ($) =>
 			seq(
@@ -24,13 +25,18 @@ module.exports = grammar({
 			),
 
 		function_definition: ($) =>
-			seq("fn", $.identifier, $.function_parameters, $.block),
+			seq("fn", $.identifier, $.parameters, optional($.return_type), $.block),
 
-		function_parameters: ($) => seq("(", /* TODO */ ")"),
+		parameters: ($) =>
+			seq("(", optional(seq($.param_def, repeat(seq(",", $.param_def)))), ")"),
+
+		param_def: ($) => seq($.identifier, $._colon, $.primitive_type),
+
+		return_type: ($) => $.primitive_type,
 
 		block: ($) => seq("{", "}"),
 
-		_type_declaration: ($) => seq($.colon, $.primitive_type),
+		_type_declaration: ($) => seq($._colon, $.primitive_type),
 
 		variable_binding: ($) => choice("let", "mut"),
 		primitive_type: ($) => choice("Str", "Num", "Bool"),
@@ -39,7 +45,7 @@ module.exports = grammar({
 		string: ($) => seq('"', /[^"]*/, '"'),
 		number: ($) => /\d+(\.\d+)?/,
 		boolean: ($) => choice("true", "false"),
-		colon: ($) => ":",
+		_colon: ($) => ":",
 		assign: ($) => "=",
 	},
 });

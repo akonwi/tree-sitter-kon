@@ -1,0 +1,49 @@
+==================
+Function definitions
+==================
+
+fn foobar() {}
+
+fn greet(person: Str) Str {
+}
+
+fn add(x: Num, y: Num) Num {
+}
+
+---
+
+(source_file
+  (function_definition
+  	(identifier)
+   	(parameters)
+    (block)
+  )
+  (function_definition
+  	(identifier)
+   	(parameters
+     	(param_def
+      	(identifier)
+        (primitive_type)
+      )
+		)
+    (return_type
+			(primitive_type)
+		)
+    (block)
+  )
+  (function_definition
+  	(identifier)
+   	(parameters
+    	(param_def
+				(identifier)
+				(primitive_type)
+			)
+			(param_def
+				(identifier)
+				(primitive_type)
+			)
+    )
+    (return_type (primitive_type))
+    (block)
+  )
+)
