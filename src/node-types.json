@@ -152,10 +152,6 @@
       "required": true,
       "types": [
         {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
@@ -195,6 +191,10 @@
     "named": false
   },
   {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": "Bool",
     "named": false
   },
@@ -205,10 +205,6 @@
   {
     "type": "Str",
     "named": false
-  },
-  {
-    "type": "assign",
-    "named": true
   },
   {
     "type": "false",

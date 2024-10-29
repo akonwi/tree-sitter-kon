@@ -13,7 +13,6 @@ let is_something = false
   	(variable_binding)
   	(identifier)
   	(primitive_type)
-  	(assign)
   	(primitive_value (string))
   )
 
@@ -21,14 +20,12 @@ let is_something = false
   	(variable_binding)
   	(identifier)
   	(primitive_type)
-  	(assign)
   	(primitive_value (number))
   )
 
   (variable_definition
   	(variable_binding)
   	(identifier)
-   	(assign)
     (primitive_value (boolean))
   )
 )

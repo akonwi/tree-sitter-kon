@@ -20,7 +20,7 @@ module.exports = grammar({
 				$.variable_binding,
 				$.identifier,
 				optional($._type_declaration),
-				$.assign,
+				$._assign,
 				$.primitive_value,
 			),
 
@@ -46,6 +46,6 @@ module.exports = grammar({
 		number: ($) => /\d+(\.\d+)?/,
 		boolean: ($) => choice("true", "false"),
 		_colon: ($) => ":",
-		assign: ($) => "=",
+		_assign: ($) => "=",
 	},
 });
