@@ -1,0 +1,36 @@
+==================
+Variable declaration
+==================
+
+let name: Str = "John"
+mut age: Num = 25
+let is_something = false
+
+---
+
+(source_file
+  (variable_definition
+  	(variable_binding)
+  	(identifier)
+  	(colon)
+  	(primitive_type)
+  	(assign)
+  	(primitive_value (string))
+  )
+
+  (variable_definition
+  	(variable_binding)
+  	(identifier)
+  	(colon)
+  	(primitive_type)
+  	(assign)
+  	(primitive_value (number))
+  )
+
+  (variable_definition
+  	(variable_binding)
+  	(identifier)
+   	(assign)
+    (primitive_value (boolean))
+  )
+)
