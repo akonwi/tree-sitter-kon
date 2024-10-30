@@ -34,6 +34,10 @@
             "named": true
           },
           {
+            "type": "equal",
+            "named": true
+          },
+          {
             "type": "greater_than",
             "named": true
           },
@@ -55,6 +59,10 @@
           },
           {
             "type": "multiply",
+            "named": true
+          },
+          {
+            "type": "not_equal",
             "named": true
           },
           {
@@ -133,6 +141,40 @@
         },
         {
           "type": "primitive_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "do_while_loop",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "primitive_value",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
           "named": true
         }
       ]
@@ -294,6 +336,10 @@
           "named": true
         },
         {
+          "type": "do_while_loop",
+          "named": true
+        },
+        {
           "type": "function_definition",
           "named": true
         },
@@ -432,6 +478,14 @@
     "named": true
   },
   {
+    "type": "do",
+    "named": false
+  },
+  {
+    "type": "equal",
+    "named": true
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -478,6 +532,10 @@
   {
     "type": "mut",
     "named": false
+  },
+  {
+    "type": "not_equal",
+    "named": true
   },
   {
     "type": "number",

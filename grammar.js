@@ -32,6 +32,7 @@ module.exports = grammar({
 		statement: ($) =>
 			choice(
 				$.while_loop,
+				$.do_while_loop,
 				$.variable_definition,
 				$.function_definition,
 				$.reassignment,
@@ -68,6 +69,9 @@ module.exports = grammar({
 		//// Statements
 		while_loop: ($) => seq("while", field("condition", $._expression), $.block),
 
+		do_while_loop: ($) =>
+			seq("do", "while", field("condition", $._expression), $.block),
+
 		reassignment: ($) => seq($.identifier, $._assign, $._expression),
 		compound_assignment: ($) =>
 			seq($.identifier, choice($.increment, $.decrement), $._expression),
@@ -87,6 +91,8 @@ module.exports = grammar({
 					[$.greater_than_or_equal, "comparison"],
 					[$.less_than, "comparison"],
 					[$.less_than_or_equal, "comparison"],
+					[$.equal, "comparison"],
+					[$.not_equal, "comparison"],
 					[$.or, "or"],
 					[$.and, "and"],
 				].map(([operator, precedence]) =>
@@ -111,6 +117,8 @@ module.exports = grammar({
 		greater_than_or_equal: ($) => ">=",
 		less_than: ($) => "<",
 		less_than_or_equal: ($) => "<=",
+		equal: ($) => "==",
+		not_equal: ($) => "!equal",
 		and: ($) => "and",
 		or: ($) => "or",
 

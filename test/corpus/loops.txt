@@ -9,6 +9,10 @@ while count <= 9 {
 while is_true or count > 0 {
 	count =- 1
 }
+
+do while count == 9 {
+	count =- 1
+}
 ---
 
 (source_file
@@ -41,6 +45,25 @@ while is_true or count > 0 {
 					operator: (greater_than)
 					right: (primitive_value (number))
 				)
+			)
+			(block
+				(statement
+					(compound_assignment
+						(identifier)
+						(decrement)
+						(primitive_value (number))
+					)
+				)
+			)
+		)
+	)
+
+  (statement
+		(do_while_loop
+			condition: (binary_expression
+				left: (identifier)
+				operator: (equal)
+				right: (primitive_value (number))
 			)
 			(block
 				(statement
