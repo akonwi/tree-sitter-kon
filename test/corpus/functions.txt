@@ -6,11 +6,17 @@ fn foobar() {
   "Hello, world!"
 }
 
+foobar()
+
 fn greet(person: Str) Str {
 }
 
+greet("Alice")
+
 fn add(x: Num, y: Num) Num {
 }
+
+add 1, 2
 
 ---
 
@@ -24,6 +30,14 @@ fn add(x: Num, y: Num) Num {
      	)
   	)
   )
+
+  (statement
+  	(function_call
+			(identifier)
+			(paren_arguments)
+		)
+  )
+
   (statement
   	(function_definition
   		(identifier)
@@ -39,6 +53,16 @@ fn add(x: Num, y: Num) Num {
     	(block)
   	)
   )
+
+  (statement
+  	(function_call
+			(identifier)
+			(paren_arguments
+				(primitive_value (string))
+			)
+		)
+  )
+
   (statement
   	(function_definition
   		(identifier)
@@ -55,5 +79,15 @@ fn add(x: Num, y: Num) Num {
   	  (return_type (primitive_type))
   	  (block)
   	)
+  )
+
+  (statement
+  	(function_call
+			(identifier)
+			(spaced_arguments
+				(primitive_value (number))
+				(primitive_value (number))
+			)
+		)
   )
 )

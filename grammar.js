@@ -7,8 +7,11 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-// equivalent to ( (rule)? (, rule)* )?
-const sepBy = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
+// match rule at least once, with separator
+const sepBy1 = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
+
+// match 0 or more of rule, with separator
+const sepBy = (rule, separator) => optional(sepBy1(rule, separator));
 
 // underscore prefix is used to hide rules from the syntax tree
 module.exports = grammar({
@@ -29,6 +32,8 @@ module.exports = grammar({
 		["call", "_expression"],
 	],
 
+	conflicts: ($) => [[$._expression, $.function_call]],
+
 	rules: {
 		source_file: ($) => repeat($.statement),
 
@@ -39,6 +44,7 @@ module.exports = grammar({
 				$.if_statement,
 				$.variable_definition,
 				$.function_definition,
+				$.function_call,
 				$.reassignment,
 				$.compound_assignment,
 			),
@@ -61,7 +67,20 @@ module.exports = grammar({
 		function_definition: ($) =>
 			seq("fn", $.identifier, $.parameters, optional($.return_type), $.block),
 
-		parameters: ($) => seq("(", sepBy(optional($.param_def), ","), ")"),
+		function_call: ($) =>
+			prec(
+				"call",
+				choice(
+					seq($.identifier, field("arguments", $.paren_arguments)),
+					seq($.identifier, field("arguments", $.spaced_arguments)),
+				),
+			),
+
+		paren_arguments: ($) => seq("(", sepBy($._expression, ","), ")"),
+
+		spaced_arguments: ($) => prec.right(sepBy1($._expression, ",")),
+
+		parameters: ($) => seq("(", sepBy($.param_def, ","), ")"),
 
 		param_def: ($) => seq($.identifier, $._colon, $.primitive_type),
 
@@ -145,7 +164,7 @@ module.exports = grammar({
 		primitive_type: ($) => choice("Str", "Num", "Bool"),
 
 		///// values
-		list_value: ($) => seq("[", sepBy(repeat($.primitive_value), ","), "]"),
+		list_value: ($) => seq("[", sepBy($.primitive_value, ","), "]"),
 		primitive_value: ($) => choice($.string, $.number, $.boolean),
 		identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
 		string: ($) => seq('"', /[^"]*/, '"'),
