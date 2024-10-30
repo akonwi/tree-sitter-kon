@@ -2,21 +2,22 @@
 Function definitions
 ==================
 
-fn foobar() {
+fn get_hello() {
   "Hello, world!"
 }
 
-foobar()
+get_hello()
 
 fn greet(person: Str) Str {
 }
 
 greet("Alice")
+greet(get_hello())
 
 fn add(x: Num, y: Num) Num {
 }
 
-add 1, 2
+add(1, 2)
 
 ---
 
@@ -26,7 +27,9 @@ add 1, 2
   		(identifier)
   	 	(parameters)
   	  (block
-     	  (primitive_value (string))
+     	  (statement
+     	  	(primitive_value (string))
+        )
      	)
   	)
   )
@@ -64,6 +67,18 @@ add 1, 2
   )
 
   (statement
+  	(function_call
+			(identifier)
+			(paren_arguments
+				(function_call
+					(identifier)
+					(paren_arguments)
+				)
+			)
+		)
+  )
+
+  (statement
   	(function_definition
   		(identifier)
   	 	(parameters
@@ -84,7 +99,7 @@ add 1, 2
   (statement
   	(function_call
 			(identifier)
-			(spaced_arguments
+			(paren_arguments
 				(primitive_value (number))
 				(primitive_value (number))
 			)

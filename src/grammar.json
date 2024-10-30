@@ -34,15 +34,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "function_call"
-        },
-        {
-          "type": "SYMBOL",
           "name": "reassignment"
         },
         {
           "type": "SYMBOL",
           "name": "compound_assignment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression_statement"
         }
       ]
     },
@@ -172,41 +172,32 @@
       "type": "PREC",
       "value": "call",
       "content": {
-        "type": "CHOICE",
+        "type": "SEQ",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "identifier"
-              },
-              {
-                "type": "FIELD",
-                "name": "arguments",
-                "content": {
+            "type": "FIELD",
+            "name": "target",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
                   "type": "SYMBOL",
-                  "name": "paren_arguments"
+                  "name": "identifier"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "member_access"
                 }
-              }
-            ]
+              ]
+            }
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "identifier"
-              },
-              {
-                "type": "FIELD",
-                "name": "arguments",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "spaced_arguments"
-                }
-              }
-            ]
+            "type": "FIELD",
+            "name": "arguments",
+            "content": {
+              "type": "SYMBOL",
+              "name": "paren_arguments"
+            }
           }
         ]
       }
@@ -256,35 +247,6 @@
           "value": ")"
         }
       ]
-    },
-    "spaced_arguments": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_expression"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ","
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_expression"
-                }
-              ]
-            }
-          }
-        ]
-      }
     },
     "parameters": {
       "type": "SEQ",
@@ -366,17 +328,8 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "statement"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_expression"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "statement"
               }
             },
             {
@@ -534,6 +487,10 @@
         }
       ]
     },
+    "_expression_statement": {
+      "type": "SYMBOL",
+      "name": "_expression"
+    },
     "_expression": {
       "type": "CHOICE",
       "members": [
@@ -548,6 +505,31 @@
         {
           "type": "SYMBOL",
           "name": "binary_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "member_access"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_call"
+        }
+      ]
+    },
+    "member_access": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         }
       ]
     },
@@ -1290,10 +1272,6 @@
   ],
   "conflicts": [
     [
-      "_expression",
-      "function_call"
-    ],
-    [
       "map_value",
       "list_value"
     ]
@@ -1303,6 +1281,10 @@
       {
         "type": "STRING",
         "value": "unary"
+      },
+      {
+        "type": "STRING",
+        "value": "member"
       },
       {
         "type": "STRING",
@@ -1338,6 +1320,10 @@
       }
     ],
     [
+      {
+        "type": "STRING",
+        "value": "member"
+      },
       {
         "type": "STRING",
         "value": "call"

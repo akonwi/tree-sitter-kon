@@ -1,0 +1,41 @@
+==================
+Member Access
+==================
+
+let initialized: [Str:Bool] = [:]
+initialized.count
+initialized.put("key", true)
+---
+
+(source_file
+	(statement
+		(variable_definition
+			(variable_binding)
+			(identifier)
+			(map_type
+				key: (primitive_type)
+				value: (primitive_type)
+			)
+			value: (map_value)
+		)
+	)
+
+	(statement
+		(member_access
+			(identifier)
+			(identifier)
+		)
+	)
+
+	(statement
+		(function_call
+			target: (member_access
+				(identifier)
+				(identifier))
+			arguments: (paren_arguments
+				(primitive_value (string))
+				(primitive_value (boolean))
+			)
+		)
+	)
+)

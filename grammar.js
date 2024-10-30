@@ -20,6 +20,7 @@ module.exports = grammar({
 	precedences: ($) => [
 		[
 			"unary",
+			"member",
 			"call",
 			"multiply",
 			"divide",
@@ -29,13 +30,10 @@ module.exports = grammar({
 			"and",
 			"or",
 		],
-		["call", "_expression"],
+		["member", "call", "_expression"],
 	],
 
-	conflicts: ($) => [
-		[$._expression, $.function_call],
-		[$.map_value, $.list_value],
-	],
+	conflicts: ($) => [[$.map_value, $.list_value]],
 
 	rules: {
 		source_file: ($) => repeat($.statement),
@@ -47,9 +45,9 @@ module.exports = grammar({
 				$.if_statement,
 				$.variable_definition,
 				$.function_definition,
-				$.function_call,
 				$.reassignment,
 				$.compound_assignment,
+				$._expression_statement,
 			),
 
 		//// definitions
@@ -73,15 +71,13 @@ module.exports = grammar({
 		function_call: ($) =>
 			prec(
 				"call",
-				choice(
-					seq($.identifier, field("arguments", $.paren_arguments)),
-					seq($.identifier, field("arguments", $.spaced_arguments)),
+				seq(
+					field("target", choice($.identifier, $.member_access)),
+					field("arguments", $.paren_arguments),
 				),
 			),
 
 		paren_arguments: ($) => seq("(", sepBy($._expression, ","), ")"),
-
-		spaced_arguments: ($) => prec.right(sepBy1($._expression, ",")),
 
 		parameters: ($) => seq("(", sepBy($.param_def, ","), ")"),
 
@@ -89,8 +85,7 @@ module.exports = grammar({
 
 		return_type: ($) => $.primitive_type,
 
-		block: ($) =>
-			seq("{", optional(repeat(choice($.statement, $._expression))), "}"),
+		block: ($) => seq("{", optional(repeat($.statement)), "}"),
 
 		//// Statements
 		while_loop: ($) => seq("while", field("condition", $._expression), $.block),
@@ -112,9 +107,19 @@ module.exports = grammar({
 		compound_assignment: ($) =>
 			seq($.identifier, choice($.increment, $.decrement), $._expression),
 
+		_expression_statement: ($) => $._expression,
+
 		//// Expressions
 		_expression: ($) =>
-			choice($.identifier, $.primitive_value, $.binary_expression),
+			choice(
+				$.identifier,
+				$.primitive_value,
+				$.binary_expression,
+				$.member_access,
+				$.function_call,
+			),
+
+		member_access: ($) => seq($._expression, ".", $.identifier),
 
 		binary_expression: ($) =>
 			choice(
