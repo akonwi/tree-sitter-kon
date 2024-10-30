@@ -32,7 +32,10 @@ module.exports = grammar({
 		["call", "_expression"],
 	],
 
-	conflicts: ($) => [[$._expression, $.function_call]],
+	conflicts: ($) => [
+		[$._expression, $.function_call],
+		[$.map_value, $.list_value],
+	],
 
 	rules: {
 		source_file: ($) => repeat($.statement),
@@ -56,11 +59,11 @@ module.exports = grammar({
 				$.identifier,
 				optional($._type_declaration),
 				$._assign,
-				field("value", choice($.primitive_value, $.list_value)),
+				field("value", choice($.primitive_value, $.list_value, $.map_value)),
 			),
 
 		_type_declaration: ($) =>
-			seq($._colon, choice($.list_type, $.primitive_type)),
+			seq($._colon, choice($.list_type, $.map_type, $.primitive_type)),
 
 		variable_binding: ($) => choice("let", "mut"),
 
@@ -161,10 +164,26 @@ module.exports = grammar({
 
 		///// types
 		list_type: ($) => seq("[", field("inner", $.primitive_type), "]"),
+		map_type: ($) =>
+			seq(
+				"[",
+				field("key", $.primitive_type),
+				$._colon,
+				field("value", $.primitive_type),
+				"]",
+			),
 		primitive_type: ($) => choice("Str", "Num", "Bool"),
 
 		///// values
 		list_value: ($) => seq("[", sepBy($.primitive_value, ","), "]"),
+		map_value: ($) =>
+			choice(seq("[", ":", "]"), seq("[", sepBy($.map_pair, ","), "]")),
+		map_pair: ($) =>
+			seq(
+				field("key", $.primitive_value),
+				":",
+				field("value", $.primitive_value),
+			),
 		primitive_value: ($) => choice($.string, $.number, $.boolean),
 		identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
 		string: ($) => seq('"', /[^"]*/, '"'),

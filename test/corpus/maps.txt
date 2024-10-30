@@ -1,0 +1,42 @@
+==================
+maps
+==================
+
+let empty: [Str:Num] = [:]
+let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
+---
+
+(source_file
+	(statement
+		(variable_definition
+			(variable_binding)
+			(identifier)
+			(map_type
+				key: (primitive_type)
+				value: (primitive_type)
+			)
+			value: (map_value)
+		)
+	)
+
+	(statement
+		(variable_definition
+			(variable_binding)
+			(identifier)
+			(map_type
+				key: (primitive_type)
+				value: (primitive_type)
+			)
+			value: (map_value
+				(map_pair
+					key: (primitive_value (string))
+					value: (primitive_value (boolean))
+				)
+				(map_pair
+					key: (primitive_value (string))
+					value: (primitive_value (boolean))
+				)
+			)
+		)
+	)
+)
