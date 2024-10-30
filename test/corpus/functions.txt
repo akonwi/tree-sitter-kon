@@ -2,7 +2,9 @@
 Function definitions
 ==================
 
-fn foobar() {}
+fn foobar() {
+  "Hello, world!"
+}
 
 fn greet(person: Str) Str {
 }
@@ -17,7 +19,9 @@ fn add(x: Num, y: Num) Num {
   	(function_definition
   		(identifier)
   	 	(parameters)
-  	  (block)
+  	  (block
+     	  (primitive_value (string))
+     	)
   	)
   )
   (statement

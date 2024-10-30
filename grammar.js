@@ -67,7 +67,8 @@ module.exports = grammar({
 
 		return_type: ($) => $.primitive_type,
 
-		block: ($) => seq("{", optional(repeat($.statement)), "}"),
+		block: ($) =>
+			seq("{", optional(repeat(choice($.statement, $._expression))), "}"),
 
 		//// Statements
 		while_loop: ($) => seq("while", field("condition", $._expression), $.block),

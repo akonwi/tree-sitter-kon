@@ -104,6 +104,18 @@
       "required": false,
       "types": [
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "primitive_value",
+          "named": true
+        },
+        {
           "type": "statement",
           "named": true
         }
