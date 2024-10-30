@@ -7,6 +7,9 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+// equivalent to ( (rule)? (, rule)* )?
+const sepBy = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
+
 // underscore prefix is used to hide rules from the syntax tree
 module.exports = grammar({
 	name: "kon",
@@ -58,9 +61,7 @@ module.exports = grammar({
 		function_definition: ($) =>
 			seq("fn", $.identifier, $.parameters, optional($.return_type), $.block),
 
-		parameters: ($) =>
-			// equivalent to ( (param_def)? (, param_def)* )?
-			seq("(", optional(seq($.param_def, repeat(seq(",", $.param_def)))), ")"),
+		parameters: ($) => seq("(", sepBy(optional($.param_def), ","), ")"),
 
 		param_def: ($) => seq($.identifier, $._colon, $.primitive_type),
 
@@ -143,7 +144,7 @@ module.exports = grammar({
 		primitive_type: ($) => choice("Str", "Num", "Bool"),
 
 		///// values
-		list_value: ($) => seq("[", repeat($.primitive_value), "]"),
+		list_value: ($) => seq("[", sepBy(repeat($.primitive_value), ","), "]"),
 		primitive_value: ($) => choice($.string, $.number, $.boolean),
 		identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
 		string: ($) => seq('"', /[^"]*/, '"'),

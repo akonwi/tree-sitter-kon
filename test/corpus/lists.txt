@@ -3,6 +3,9 @@ lists
 ==================
 
 let empty: [Num] = []
+let numbers = [1, 2, 3]
+let strings: [Str] = ["a", "b","c"]
+let booleans: [Bool] = [true, false]
 
 ---
 
@@ -15,6 +18,47 @@ let empty: [Num] = []
 				inner: (primitive_type)
 			)
 			value: (list_value)
+		)
+	)
+
+	(statement
+		(variable_definition
+			(variable_binding)
+			(identifier)
+			value: (list_value
+				(primitive_value (number))
+				(primitive_value (number))
+				(primitive_value (number))
+			)
+		)
+	)
+
+	(statement
+		(variable_definition
+			(variable_binding)
+			(identifier)
+			(list_type
+				inner: (primitive_type)
+			)
+			value: (list_value
+				(primitive_value (string))
+				(primitive_value (string))
+				(primitive_value (string))
+			)
+		)
+	)
+
+	(statement
+		(variable_definition
+			(variable_binding)
+			(identifier)
+			(list_type
+				inner: (primitive_type)
+			)
+			value: (list_value
+				(primitive_value (boolean))
+				(primitive_value (boolean))
+			)
 		)
 	)
 )
