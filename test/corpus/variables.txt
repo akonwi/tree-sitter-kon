@@ -9,23 +9,23 @@ let is_something = false
 ---
 
 (source_file
-  (variable_definition
-  	(variable_binding)
-  	(identifier)
-  	(primitive_type)
-  	(primitive_value (string))
-  )
-
-  (variable_definition
-  	(variable_binding)
-  	(identifier)
-  	(primitive_type)
-  	(primitive_value (number))
-  )
-
-  (variable_definition
-  	(variable_binding)
-  	(identifier)
-    (primitive_value (boolean))
-  )
-)
+      (statement
+        (variable_definition
+          (variable_binding)
+          (identifier)
+          (primitive_type)
+          (primitive_value
+            (string))))
+      (statement
+        (variable_definition
+          (variable_binding)
+          (identifier)
+          (primitive_type)
+          (primitive_value
+            (number))))
+      (statement
+        (variable_definition
+          (variable_binding)
+          (identifier)
+          (primitive_value
+            (boolean)))))
