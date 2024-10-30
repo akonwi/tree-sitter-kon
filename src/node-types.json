@@ -26,6 +26,10 @@
         "required": true,
         "types": [
           {
+            "type": "and",
+            "named": true
+          },
+          {
             "type": "divide",
             "named": true
           },
@@ -51,6 +55,10 @@
           },
           {
             "type": "multiply",
+            "named": true
+          },
+          {
+            "type": "or",
             "named": true
           },
           {
@@ -82,12 +90,53 @@
   {
     "type": "block",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "boolean",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "compound_assignment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "decrement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "increment",
+          "named": true
+        },
+        {
+          "type": "primitive_value",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "function_definition",
@@ -179,6 +228,29 @@
     }
   },
   {
+    "type": "reassignment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "primitive_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "return_type",
     "named": true,
     "fields": {},
@@ -218,7 +290,15 @@
       "required": true,
       "types": [
         {
+          "type": "compound_assignment",
+          "named": true
+        },
+        {
           "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "reassignment",
           "named": true
         },
         {
@@ -340,6 +420,14 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": true
+  },
+  {
+    "type": "decrement",
+    "named": true
+  },
+  {
     "type": "divide",
     "named": true
   },
@@ -361,6 +449,10 @@
   },
   {
     "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "increment",
     "named": true
   },
   {
@@ -389,6 +481,10 @@
   },
   {
     "type": "number",
+    "named": true
+  },
+  {
+    "type": "or",
     "named": true
   },
   {

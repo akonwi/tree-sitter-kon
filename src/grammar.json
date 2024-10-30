@@ -23,6 +23,14 @@
         {
           "type": "SYMBOL",
           "name": "function_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "reassignment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "compound_assignment"
         }
       ]
     },
@@ -193,6 +201,21 @@
           "value": "{"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "statement"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "}"
         }
@@ -216,6 +239,49 @@
         {
           "type": "SYMBOL",
           "name": "block"
+        }
+      ]
+    },
+    "reassignment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_assign"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        }
+      ]
+    },
+    "compound_assignment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "increment"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "decrement"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
         }
       ]
     },
@@ -502,8 +568,122 @@
               }
             ]
           }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": "or",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "left",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "or"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "right",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": "and",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "left",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "and"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "right",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              }
+            ]
+          }
         }
       ]
+    },
+    "multiply": {
+      "type": "STRING",
+      "value": "*"
+    },
+    "divide": {
+      "type": "STRING",
+      "value": "/"
+    },
+    "plus": {
+      "type": "STRING",
+      "value": "+"
+    },
+    "minus": {
+      "type": "STRING",
+      "value": "-"
+    },
+    "greater_than": {
+      "type": "STRING",
+      "value": ">"
+    },
+    "greater_than_or_equal": {
+      "type": "STRING",
+      "value": ">="
+    },
+    "less_than": {
+      "type": "STRING",
+      "value": "<"
+    },
+    "less_than_or_equal": {
+      "type": "STRING",
+      "value": "<="
+    },
+    "and": {
+      "type": "STRING",
+      "value": "and"
+    },
+    "or": {
+      "type": "STRING",
+      "value": "or"
+    },
+    "increment": {
+      "type": "STRING",
+      "value": "=+"
+    },
+    "decrement": {
+      "type": "STRING",
+      "value": "=-"
     },
     "primitive_type": {
       "type": "CHOICE",
@@ -584,38 +764,6 @@
     "_assign": {
       "type": "STRING",
       "value": "="
-    },
-    "multiply": {
-      "type": "STRING",
-      "value": "*"
-    },
-    "divide": {
-      "type": "STRING",
-      "value": "/"
-    },
-    "plus": {
-      "type": "STRING",
-      "value": "+"
-    },
-    "minus": {
-      "type": "STRING",
-      "value": "-"
-    },
-    "greater_than": {
-      "type": "STRING",
-      "value": ">"
-    },
-    "greater_than_or_equal": {
-      "type": "STRING",
-      "value": ">="
-    },
-    "less_than": {
-      "type": "STRING",
-      "value": "<"
-    },
-    "less_than_or_equal": {
-      "type": "STRING",
-      "value": "<="
     }
   },
   "extras": [

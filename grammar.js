@@ -30,7 +30,13 @@ module.exports = grammar({
 		source_file: ($) => repeat($.statement),
 
 		statement: ($) =>
-			choice($.while_loop, $.variable_definition, $.function_definition),
+			choice(
+				$.while_loop,
+				$.variable_definition,
+				$.function_definition,
+				$.reassignment,
+				$.compound_assignment,
+			),
 
 		//// definitions
 		variable_definition: ($) =>
@@ -57,10 +63,14 @@ module.exports = grammar({
 
 		return_type: ($) => $.primitive_type,
 
-		block: ($) => seq("{", "}"),
+		block: ($) => seq("{", optional(repeat($.statement)), "}"),
 
 		//// Statements
 		while_loop: ($) => seq("while", field("condition", $._expression), $.block),
+
+		reassignment: ($) => seq($.identifier, $._assign, $._expression),
+		compound_assignment: ($) =>
+			seq($.identifier, choice($.increment, $.decrement), $._expression),
 
 		//// Expressions
 		_expression: ($) =>
@@ -103,6 +113,10 @@ module.exports = grammar({
 		less_than_or_equal: ($) => "<=",
 		and: ($) => "and",
 		or: ($) => "or",
+
+		// assignment operators
+		increment: ($) => "=+",
+		decrement: ($) => "=-",
 
 		primitive_type: ($) => choice("Str", "Num", "Bool"),
 		primitive_value: ($) => choice($.string, $.number, $.boolean),

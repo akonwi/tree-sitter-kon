@@ -3,6 +3,11 @@ loops
 ==================
 
 while count <= 9 {
+	count =+ 1
+}
+
+while is_true or count > 0 {
+	count =- 1
 }
 ---
 
@@ -14,7 +19,38 @@ while count <= 9 {
 				operator: (less_than_or_equal)
 				right: (primitive_value (number))
 			)
-			(block)
+			(block
+				(statement
+					(compound_assignment
+						(identifier)
+						(increment)
+						(primitive_value (number))
+					)
+				)
+			)
+		)
+	)
+
+	(statement
+		(while_loop
+			condition: (binary_expression
+				left: (identifier)
+				operator: (or)
+				right: (binary_expression
+					left: (identifier)
+					operator: (greater_than)
+					right: (primitive_value (number))
+				)
+			)
+			(block
+				(statement
+					(compound_assignment
+						(identifier)
+						(decrement)
+						(primitive_value (number))
+					)
+				)
+			)
 		)
 	)
 )
