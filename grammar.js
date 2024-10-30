@@ -47,10 +47,11 @@ module.exports = grammar({
 				$.identifier,
 				optional($._type_declaration),
 				$._assign,
-				$.primitive_value,
+				field("value", choice($.primitive_value, $.list_value)),
 			),
 
-		_type_declaration: ($) => seq($._colon, $.primitive_type),
+		_type_declaration: ($) =>
+			seq($._colon, choice($.list_type, $.primitive_type)),
 
 		variable_binding: ($) => choice("let", "mut"),
 
@@ -137,7 +138,12 @@ module.exports = grammar({
 		increment: ($) => "=+",
 		decrement: ($) => "=-",
 
+		///// types
+		list_type: ($) => seq("[", field("inner", $.primitive_type), "]"),
 		primitive_type: ($) => choice("Str", "Num", "Bool"),
+
+		///// values
+		list_value: ($) => seq("[", repeat($.primitive_value), "]"),
 		primitive_value: ($) => choice($.string, $.number, $.boolean),
 		identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
 		string: ($) => seq('"', /[^"]*/, '"'),

@@ -1,0 +1,20 @@
+==================
+lists
+==================
+
+let empty: [Num] = []
+
+---
+
+(source_file
+	(statement
+		(variable_definition
+			(variable_binding)
+			(identifier)
+			(list_type
+				inner: (primitive_type)
+			)
+			value: (list_value)
+		)
+	)
+)

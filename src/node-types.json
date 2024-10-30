@@ -265,6 +265,37 @@
     }
   },
   {
+    "type": "list_type",
+    "named": true,
+    "fields": {
+      "inner": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "primitive_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "list_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "primitive_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "param_def",
     "named": true,
     "fields": {},
@@ -432,7 +463,22 @@
   {
     "type": "variable_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "primitive_value",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -442,11 +488,11 @@
           "named": true
         },
         {
-          "type": "primitive_type",
+          "type": "list_type",
           "named": true
         },
         {
-          "type": "primitive_value",
+          "type": "primitive_type",
           "named": true
         },
         {
@@ -524,6 +570,14 @@
   },
   {
     "type": "Str",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
