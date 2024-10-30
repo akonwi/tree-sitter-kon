@@ -1,0 +1,28 @@
+==================
+control flow
+==================
+
+if age >= 18 or has_served {
+} else {
+}
+
+---
+
+(source_file
+	(statement
+		(if_statement
+			condition: (binary_expression
+            left: (binary_expression
+              left: (identifier)
+              operator: (greater_than_or_equal)
+              right: (primitive_value
+                (number)))
+            operator: (or)
+            right: (identifier))
+          (block)
+          (else_statement
+						(block)
+					)
+		)
+	)
+)

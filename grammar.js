@@ -33,6 +33,7 @@ module.exports = grammar({
 			choice(
 				$.while_loop,
 				$.do_while_loop,
+				$.if_statement,
 				$.variable_definition,
 				$.function_definition,
 				$.reassignment,
@@ -71,6 +72,16 @@ module.exports = grammar({
 
 		do_while_loop: ($) =>
 			seq("do", "while", field("condition", $._expression), $.block),
+
+		if_statement: ($) =>
+			seq(
+				"if",
+				field("condition", $._expression),
+				$.block,
+				optional($.else_statement),
+			),
+
+		else_statement: ($) => seq("else", choice($.if_statement, $.block)),
 
 		reassignment: ($) => seq($.identifier, $._assign, $._expression),
 		compound_assignment: ($) =>
