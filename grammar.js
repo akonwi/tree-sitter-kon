@@ -100,10 +100,16 @@ module.exports = grammar({
     block: ($) => seq("{", optional(repeat($.statement)), "}"),
 
     //// Statements
-    while_loop: ($) => seq("while", field("condition", $._expression), $.block),
+    while_loop: ($) =>
+      seq("while", field("condition", $._expression), field("body", $.block)),
 
     do_while_loop: ($) =>
-      seq("do", "while", field("condition", $._expression), $.block),
+      seq(
+        "do",
+        "while",
+        field("condition", $._expression),
+        field("body", $.block),
+      ),
 
     if_statement: ($) =>
       seq(

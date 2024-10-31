@@ -23,7 +23,7 @@ do while count == 9 {
 				operator: (less_than_or_equal)
 				right: (primitive_value (number))
 			)
-			(block
+			body: (block
 				(statement
 					(compound_assignment
 						(identifier)
@@ -46,7 +46,7 @@ do while count == 9 {
 					right: (primitive_value (number))
 				)
 			)
-			(block
+			body: (block
 				(statement
 					(compound_assignment
 						(identifier)
@@ -65,7 +65,7 @@ do while count == 9 {
 				operator: (equal)
 				right: (primitive_value (number))
 			)
-			(block
+			body: (block
 				(statement
 					(compound_assignment
 						(identifier)
