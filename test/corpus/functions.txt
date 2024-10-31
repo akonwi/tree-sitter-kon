@@ -24,9 +24,9 @@ add(1, 2)
 (program
 	(statement
   	(function_definition
-  		(identifier)
-  	 	(parameters)
-  	  (block
+  		name: (identifier)
+  	 	parameters: (parameters)
+  	  body: (block
      	  (statement
      	  	(primitive_value (string))
         )
@@ -36,31 +36,31 @@ add(1, 2)
 
   (statement
   	(function_call
-			(identifier)
-			(paren_arguments)
+			target: (identifier)
+			arguments: (paren_arguments)
 		)
   )
 
   (statement
   	(function_definition
-  		(identifier)
-   		(parameters
+  		name: (identifier)
+   		parameters: (parameters
      		(param_def
       		(identifier)
         	(primitive_type)
       	)
 			)
-    	(return_type
+    	return_type: (return_type
 				(primitive_type)
 			)
-    	(block)
+    	body: (block)
   	)
   )
 
   (statement
   	(function_call
-			(identifier)
-			(paren_arguments
+			target: (identifier)
+			arguments: (paren_arguments
 				(primitive_value (string))
 			)
 		)
@@ -68,11 +68,11 @@ add(1, 2)
 
   (statement
   	(function_call
-			(identifier)
-			(paren_arguments
+			target: (identifier)
+			arguments: (paren_arguments
 				(function_call
-					(identifier)
-					(paren_arguments)
+					target: (identifier)
+					arguments: (paren_arguments)
 				)
 			)
 		)
@@ -80,8 +80,8 @@ add(1, 2)
 
   (statement
   	(function_definition
-  		(identifier)
-  	 	(parameters
+  		name: (identifier)
+  	 	parameters: (parameters
   	  	(param_def
 					(identifier)
 					(primitive_type)
@@ -91,15 +91,15 @@ add(1, 2)
 					(primitive_type)
 				)
   	  )
-  	  (return_type (primitive_type))
-  	  (block)
+  	  return_type: (return_type (primitive_type))
+  	  body: (block)
   	)
   )
 
   (statement
   	(function_call
-			(identifier)
-			(paren_arguments
+			target: (identifier)
+			arguments: (paren_arguments
 				(primitive_value (number))
 				(primitive_value (number))
 			)

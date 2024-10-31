@@ -67,7 +67,13 @@ module.exports = grammar({
     variable_binding: ($) => choice("let", "mut"),
 
     function_definition: ($) =>
-      seq("fn", $.identifier, $.parameters, optional($.return_type), $.block),
+      seq(
+        "fn",
+        field("name", $.identifier),
+        field("parameters", $.parameters),
+        field("return_type", optional($.return_type)),
+        field("body", $.block),
+      ),
 
     function_call: ($) =>
       prec(
