@@ -46,8 +46,8 @@ add(1, 2)
   		name: (identifier)
    		parameters: (parameters
      		(param_def
-      		(identifier)
-        	(primitive_type)
+      		name: (identifier)
+        	type: (primitive_type)
       	)
 			)
     	return_type: (return_type
@@ -83,12 +83,12 @@ add(1, 2)
   		name: (identifier)
   	 	parameters: (parameters
   	  	(param_def
-					(identifier)
-					(primitive_type)
+					name: (identifier)
+					type: (primitive_type)
 				)
 				(param_def
-					(identifier)
-					(primitive_type)
+					name: (identifier)
+					type: (primitive_type)
 				)
   	  )
   	  return_type: (return_type (primitive_type))

@@ -88,7 +88,12 @@ module.exports = grammar({
 
     parameters: ($) => seq("(", sepBy($.param_def, ","), ")"),
 
-    param_def: ($) => seq($.identifier, $._colon, $.primitive_type),
+    param_def: ($) =>
+      seq(
+        field("name", $.identifier),
+        $._colon,
+        field("type", $.primitive_type),
+      ),
 
     return_type: ($) => $.primitive_type,
 
