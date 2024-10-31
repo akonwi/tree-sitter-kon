@@ -59,7 +59,7 @@ do while count == 9 {
 	)
 
   (statement
-		(do_while_loop
+		(while_loop
 			condition: (binary_expression
 				left: (identifier)
 				operator: (equal)

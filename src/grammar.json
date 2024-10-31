@@ -18,10 +18,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "do_while_loop"
-        },
-        {
-          "type": "SYMBOL",
           "name": "if_statement"
         },
         {
@@ -383,33 +379,20 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "while"
-        },
-        {
-          "type": "FIELD",
-          "name": "condition",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "FIELD",
-          "name": "statement_block",
-          "content": {
-            "type": "SYMBOL",
-            "name": "block"
-          }
-        }
-      ]
-    },
-    "do_while_loop": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "do"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "do",
+              "content": {
+                "type": "STRING",
+                "value": "do"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",

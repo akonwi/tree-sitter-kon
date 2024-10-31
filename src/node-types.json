@@ -188,48 +188,6 @@
     }
   },
   {
-    "type": "do_while_loop",
-    "named": true,
-    "fields": {
-      "condition": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "member_access",
-            "named": true
-          },
-          {
-            "type": "primitive_value",
-            "named": true
-          }
-        ]
-      },
-      "statement_block": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "else_statement",
     "named": true,
     "fields": {},
@@ -678,10 +636,6 @@
           "named": true
         },
         {
-          "type": "do_while_loop",
-          "named": true
-        },
-        {
           "type": "function_call",
           "named": true
         },
@@ -823,6 +777,16 @@
           {
             "type": "primitive_value",
             "named": true
+          }
+        ]
+      },
+      "do": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "do",
+            "named": false
           }
         ]
       },

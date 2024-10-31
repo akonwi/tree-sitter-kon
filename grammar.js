@@ -42,7 +42,6 @@ module.exports = grammar({
     statement: ($) =>
       choice(
         $.while_loop,
-        $.do_while_loop,
         $.if_statement,
         $.variable_definition,
         $.function_definition,
@@ -102,14 +101,7 @@ module.exports = grammar({
     //// Statements
     while_loop: ($) =>
       seq(
-        "while",
-        field("condition", $._expression),
-        field("statement_block", $.block),
-      ),
-
-    do_while_loop: ($) =>
-      seq(
-        "do",
+        optional(field("do", "do")),
         "while",
         field("condition", $._expression),
         field("statement_block", $.block),
