@@ -23,12 +23,12 @@ do while count == 9 {
 				operator: (less_than_or_equal)
 				right: (primitive_value (number))
 			)
-			body: (block
+			statement_block: (block
 				(statement
 					(compound_assignment
-						(identifier)
-						(increment)
-						(primitive_value (number))
+						name: (identifier)
+						operator: (increment)
+						value: (primitive_value (number))
 					)
 				)
 			)
@@ -46,12 +46,12 @@ do while count == 9 {
 					right: (primitive_value (number))
 				)
 			)
-			body: (block
+			statement_block: (block
 				(statement
 					(compound_assignment
-						(identifier)
-						(decrement)
-						(primitive_value (number))
+						name: (identifier)
+						operator: (decrement)
+						value: (primitive_value (number))
 					)
 				)
 			)
@@ -65,12 +65,12 @@ do while count == 9 {
 				operator: (equal)
 				right: (primitive_value (number))
 			)
-			body: (block
+			statement_block: (block
 				(statement
 					(compound_assignment
-						(identifier)
-						(decrement)
-						(primitive_value (number))
+						name: (identifier)
+						operator: (decrement)
+						value: (primitive_value (number))
 					)
 				)
 			)

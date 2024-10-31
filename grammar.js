@@ -101,14 +101,18 @@ module.exports = grammar({
 
     //// Statements
     while_loop: ($) =>
-      seq("while", field("condition", $._expression), field("body", $.block)),
+      seq(
+        "while",
+        field("condition", $._expression),
+        field("statement_block", $.block),
+      ),
 
     do_while_loop: ($) =>
       seq(
         "do",
         "while",
         field("condition", $._expression),
-        field("body", $.block),
+        field("statement_block", $.block),
       ),
 
     if_statement: ($) =>
@@ -123,7 +127,11 @@ module.exports = grammar({
 
     reassignment: ($) => seq($.identifier, $._assign, $._expression),
     compound_assignment: ($) =>
-      seq($.identifier, choice($.increment, $.decrement), $._expression),
+      seq(
+        field("name", $.identifier),
+        field("operator", choice($.increment, $.decrement)),
+        field("value", $._expression),
+      ),
 
     _expression_statement: ($) => $._expression,
 

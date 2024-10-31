@@ -396,7 +396,7 @@
         },
         {
           "type": "FIELD",
-          "name": "body",
+          "name": "statement_block",
           "content": {
             "type": "SYMBOL",
             "name": "block"
@@ -425,7 +425,7 @@
         },
         {
           "type": "FIELD",
-          "name": "body",
+          "name": "statement_block",
           "content": {
             "type": "SYMBOL",
             "name": "block"
@@ -509,25 +509,37 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "increment"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "decrement"
-            }
-          ]
+          "type": "FIELD",
+          "name": "operator",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "increment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "decrement"
+              }
+            ]
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         }
       ]
     },
