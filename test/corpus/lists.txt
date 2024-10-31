@@ -9,12 +9,12 @@ let booleans: [Bool] = [true, false]
 
 ---
 
-(source_file
+(program
 	(statement
 		(variable_definition
-			(variable_binding)
-			(identifier)
-			(list_type
+			binding: (variable_binding)
+			name: (identifier)
+			type: (list_type
 				inner: (primitive_type)
 			)
 			value: (list_value)
@@ -23,8 +23,8 @@ let booleans: [Bool] = [true, false]
 
 	(statement
 		(variable_definition
-			(variable_binding)
-			(identifier)
+			binding: (variable_binding)
+			name: (identifier)
 			value: (list_value
 				(primitive_value (number))
 				(primitive_value (number))
@@ -35,9 +35,9 @@ let booleans: [Bool] = [true, false]
 
 	(statement
 		(variable_definition
-			(variable_binding)
-			(identifier)
-			(list_type
+			binding: (variable_binding)
+			name: (identifier)
+			type: (list_type
 				inner: (primitive_type)
 			)
 			value: (list_value
@@ -50,9 +50,9 @@ let booleans: [Bool] = [true, false]
 
 	(statement
 		(variable_definition
-			(variable_binding)
-			(identifier)
-			(list_type
+			binding: (variable_binding)
+			name: (identifier)
+			type: (list_type
 				inner: (primitive_type)
 			)
 			value: (list_value

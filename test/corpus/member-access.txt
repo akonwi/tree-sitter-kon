@@ -7,12 +7,12 @@ initialized.count
 initialized.put("key", true)
 ---
 
-(source_file
+(program
 	(statement
 		(variable_definition
-			(variable_binding)
-			(identifier)
-			(map_type
+			binding: (variable_binding)
+			name: (identifier)
+			type: (map_type
 				key: (primitive_type)
 				value: (primitive_type)
 			)

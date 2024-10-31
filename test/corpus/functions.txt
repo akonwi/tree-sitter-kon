@@ -21,7 +21,7 @@ add(1, 2)
 
 ---
 
-(source_file
+(program
 	(statement
   	(function_definition
   		(identifier)

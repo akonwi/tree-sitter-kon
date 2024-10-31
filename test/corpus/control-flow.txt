@@ -8,7 +8,7 @@ if age >= 18 or has_served {
 
 ---
 
-(source_file
+(program
 	(statement
 		(if_statement
 			condition: (binary_expression

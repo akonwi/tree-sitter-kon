@@ -6,12 +6,12 @@ let empty: [Str:Num] = [:]
 let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 ---
 
-(source_file
+(program
 	(statement
 		(variable_definition
-			(variable_binding)
-			(identifier)
-			(map_type
+			binding: (variable_binding)
+			name: (identifier)
+			type: (map_type
 				key: (primitive_type)
 				value: (primitive_type)
 			)
@@ -21,9 +21,9 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 
 	(statement
 		(variable_definition
-			(variable_binding)
-			(identifier)
-			(map_type
+			binding: (variable_binding)
+			name: (identifier)
+			type: (map_type
 				key: (primitive_type)
 				value: (primitive_type)
 			)

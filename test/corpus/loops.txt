@@ -15,7 +15,7 @@ do while count == 9 {
 }
 ---
 
-(source_file
+(program
   (statement
 		(while_loop
 			condition: (binary_expression
