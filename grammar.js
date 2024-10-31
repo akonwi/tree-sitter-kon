@@ -111,11 +111,12 @@ module.exports = grammar({
       seq(
         "if",
         field("condition", $._expression),
-        $.block,
-        optional($.else_statement),
+        field("body", $.block),
+        field("else", optional($.else_statement)),
       ),
 
-    else_statement: ($) => seq("else", choice($.if_statement, $.block)),
+    else_statement: ($) =>
+      seq("else", choice($.if_statement, field("body", $.block))),
 
     reassignment: ($) => seq($.identifier, $._assign, $._expression),
     compound_assignment: ($) =>
