@@ -18,7 +18,7 @@ initialized.put("key", true)
 					value: (primitive_type)
 				)
 			)
-			value: (map_value)
+			value: (primitive_value (map_value))
 		)
 	)
 

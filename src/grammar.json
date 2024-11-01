@@ -89,15 +89,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "primitive_value"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "list_value"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "map_value"
+                "name": "_expression"
               }
             ]
           }
@@ -1317,8 +1309,21 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "primitive_value"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "number"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "boolean"
+                    }
+                  ]
                 },
                 {
                   "type": "REPEAT",
@@ -1330,8 +1335,21 @@
                         "value": ","
                       },
                       {
-                        "type": "SYMBOL",
-                        "name": "primitive_value"
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "number"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "string"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "boolean"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1377,35 +1395,27 @@
               "value": "["
             },
             {
-              "type": "CHOICE",
+              "type": "SEQ",
               "members": [
                 {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "map_pair"
-                    },
-                    {
-                      "type": "REPEAT",
-                      "content": {
-                        "type": "SEQ",
-                        "members": [
-                          {
-                            "type": "STRING",
-                            "value": ","
-                          },
-                          {
-                            "type": "SYMBOL",
-                            "name": "map_pair"
-                          }
-                        ]
-                      }
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "map_pair"
                 },
                 {
-                  "type": "BLANK"
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "map_pair"
+                      }
+                    ]
+                  }
                 }
               ]
             },
@@ -1424,8 +1434,17 @@
           "type": "FIELD",
           "name": "key",
           "content": {
-            "type": "SYMBOL",
-            "name": "primitive_value"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "string"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "number"
+              }
+            ]
           }
         },
         {
@@ -1436,8 +1455,21 @@
           "type": "FIELD",
           "name": "value",
           "content": {
-            "type": "SYMBOL",
-            "name": "primitive_value"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "string"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "number"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "boolean"
+              }
+            ]
           }
         }
       ]
@@ -1456,6 +1488,14 @@
         {
           "type": "SYMBOL",
           "name": "boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "map_value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list_value"
         }
       ]
     },
@@ -1514,16 +1554,16 @@
   ],
   "conflicts": [
     [
-      "map_value",
-      "list_value"
-    ],
-    [
       "function_call",
       "_expression"
     ],
     [
       "_expression_statement",
       "binary_expression"
+    ],
+    [
+      "binary_expression",
+      "variable_definition"
     ]
   ],
   "precedences": [

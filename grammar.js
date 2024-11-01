@@ -8,7 +8,6 @@
 // @ts-check
 
 // match rule at least once, with separator
-// o
 const sepBy1 = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 
 // match 0 or more of rule, with separator
@@ -37,9 +36,9 @@ module.exports = grammar({
   ],
 
   conflicts: ($) => [
-    [$.map_value, $.list_value],
     [$.function_call, $._expression],
     [$._expression_statement, $.binary_expression],
+    [$.binary_expression, $.variable_definition],
   ],
 
   rules: {
@@ -64,7 +63,7 @@ module.exports = grammar({
         field("name", $.identifier),
         optional($.type_declaration),
         $._assign,
-        field("value", choice($.primitive_value, $.list_value, $.map_value)),
+        field("value", choice($._expression)),
       ),
 
     type_declaration: ($) =>
@@ -241,16 +240,18 @@ module.exports = grammar({
     primitive_type: ($) => choice("Str", "Num", "Bool"),
 
     ///// values
-    list_value: ($) => seq("[", sepBy($.primitive_value, ","), "]"),
+    list_value: ($) =>
+      seq("[", sepBy(choice($.number, $.string, $.boolean), ","), "]"),
     map_value: ($) =>
-      choice(seq("[", ":", "]"), seq("[", sepBy($.map_pair, ","), "]")),
+      choice(seq("[", ":", "]"), seq("[", sepBy1($.map_pair, ","), "]")),
     map_pair: ($) =>
       seq(
-        field("key", $.primitive_value),
+        field("key", choice($.string, $.number)),
         ":",
-        field("value", $.primitive_value),
+        field("value", choice($.string, $.number, $.boolean)),
       ),
-    primitive_value: ($) => choice($.string, $.number, $.boolean),
+    primitive_value: ($) =>
+      choice($.string, $.number, $.boolean, $.map_value, $.list_value),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
     string: ($) => seq('"', /[^"]*/, '"'),
     number: ($) => /\d+(\.\d+)?/,

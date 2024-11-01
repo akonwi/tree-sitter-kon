@@ -5,6 +5,7 @@ Variable declaration
 let name: Str = "John"
 mut age: Num = 25
 let is_something = false
+mut negative = -1
 
 ---
 
@@ -28,4 +29,16 @@ let is_something = false
           binding: (variable_binding)
           name: (identifier)
           value: (primitive_value
-            (boolean)))))
+            (boolean))))
+
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      value: (unary_expression
+      	(minus)
+       	(primitive_value (number))
+      )
+    )
+  )
+)

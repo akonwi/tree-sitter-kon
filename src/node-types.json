@@ -486,7 +486,15 @@
       "required": false,
       "types": [
         {
-          "type": "primitive_value",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -501,7 +509,11 @@
         "required": true,
         "types": [
           {
-            "type": "primitive_value",
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           }
         ]
@@ -511,7 +523,15 @@
         "required": true,
         "types": [
           {
-            "type": "primitive_value",
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           }
         ]
@@ -685,6 +705,14 @@
       "types": [
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "list_value",
+          "named": true
+        },
+        {
+          "type": "map_value",
           "named": true
         },
         {
@@ -948,19 +976,39 @@
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "list_value",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
             "named": true
           },
           {
-            "type": "map_value",
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_access",
             "named": true
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
