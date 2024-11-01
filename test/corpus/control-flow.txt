@@ -6,6 +6,8 @@ if age >= 18 or has_served {
 } else {
 }
 
+if !has_served {}
+
 ---
 
 (program
@@ -23,6 +25,16 @@ if age >= 18 or has_served {
           else: (else_statement
 						body: (block)
 					)
+		)
+	)
+
+	(statement
+		(if_statement
+			condition: (unary_expression
+				(not)
+				(identifier)
+			)
+			body: (block)
 		)
 	)
 )

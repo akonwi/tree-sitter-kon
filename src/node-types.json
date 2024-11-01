@@ -4,9 +4,17 @@
     "named": true,
     "fields": {
       "left": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -38,6 +46,10 @@
             "named": true
           },
           {
+            "type": "bang",
+            "named": true
+          },
+          {
             "type": "divide",
             "named": true
           },
@@ -51,6 +63,10 @@
           },
           {
             "type": "greater_than_or_equal",
+            "named": true
+          },
+          {
+            "type": "inclusive_range",
             "named": true
           },
           {
@@ -84,9 +100,17 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -160,9 +184,17 @@
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -228,11 +260,35 @@
         ]
       },
       "range": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "range_expression",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_access",
+            "named": true
+          },
+          {
+            "type": "primitive_value",
             "named": true
           }
         ]
@@ -340,9 +396,17 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -623,25 +687,6 @@
     }
   },
   {
-    "type": "range_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "inclusive_range",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "reassignment",
     "named": true,
     "fields": {
@@ -656,9 +701,17 @@
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -850,9 +903,17 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -947,6 +1008,10 @@
   },
   {
     "type": "and",
+    "named": true
+  },
+  {
+    "type": "bang",
     "named": true
   },
   {

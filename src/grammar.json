@@ -198,7 +198,7 @@
     },
     "function_call": {
       "type": "PREC",
-      "value": "call",
+      "value": "function_call",
       "content": {
         "type": "SEQ",
         "members": [
@@ -444,7 +444,7 @@
           "name": "range",
           "content": {
             "type": "SYMBOL",
-            "name": "range_expression"
+            "name": "_expression"
           }
         },
         {
@@ -613,6 +613,23 @@
         {
           "type": "SYMBOL",
           "name": "function_call"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
         }
       ]
     },
@@ -968,6 +985,72 @@
         },
         {
           "type": "PREC_LEFT",
+          "value": "comparison",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "left",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "bang"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "right",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": "range",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "left",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "inclusive_range"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "right",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
           "value": "or",
           "content": {
             "type": "SEQ",
@@ -1034,23 +1117,6 @@
         }
       ]
     },
-    "range_expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "number"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "inclusive_range"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "number"
-        }
-      ]
-    },
     "multiply": {
       "type": "STRING",
       "value": "*"
@@ -1089,7 +1155,7 @@
     },
     "not_equal": {
       "type": "STRING",
-      "value": "!equal"
+      "value": "!="
     },
     "and": {
       "type": "STRING",
@@ -1098,6 +1164,10 @@
     "or": {
       "type": "STRING",
       "value": "or"
+    },
+    "bang": {
+      "type": "STRING",
+      "value": "!"
     },
     "inclusive_range": {
       "type": "STRING",
@@ -1395,6 +1465,10 @@
     [
       "map_value",
       "list_value"
+    ],
+    [
+      "function_call",
+      "_expression"
     ]
   ],
   "precedences": [
@@ -1433,6 +1507,10 @@
       },
       {
         "type": "STRING",
+        "value": "range"
+      },
+      {
+        "type": "STRING",
         "value": "and"
       },
       {
@@ -1443,11 +1521,7 @@
     [
       {
         "type": "STRING",
-        "value": "member"
-      },
-      {
-        "type": "STRING",
-        "value": "call"
+        "value": "function_call"
       },
       {
         "type": "STRING",

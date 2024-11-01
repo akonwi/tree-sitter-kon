@@ -28,13 +28,17 @@ module.exports = grammar({
       "plus",
       "minus",
       "comparison",
+      "range",
       "and",
       "or",
     ],
-    ["member", "call", "_expression"],
+    ["function_call", "_expression"],
   ],
 
-  conflicts: ($) => [[$.map_value, $.list_value]],
+  conflicts: ($) => [
+    [$.map_value, $.list_value],
+    [$.function_call, $._expression],
+  ],
 
   rules: {
     program: ($) => repeat($.statement),
@@ -80,7 +84,7 @@ module.exports = grammar({
 
     function_call: ($) =>
       prec(
-        "call",
+        "function_call",
         seq(
           field("target", choice($.identifier, $.member_access)),
           field("arguments", $.paren_arguments),
@@ -116,7 +120,7 @@ module.exports = grammar({
         "for",
         field("cursor", $.identifier),
         "in",
-        field("range", $.range_expression),
+        field("range", $._expression),
         field("statement_block", $.block),
       ),
 
@@ -154,9 +158,16 @@ module.exports = grammar({
         $.binary_expression,
         $.member_access,
         $.function_call,
+        seq("(", $._expression, ")"),
       ),
 
     member_access: ($) => seq($._expression, ".", $.identifier),
+
+    // unary_expression: ($) =>
+    //   prec(
+    //     "unary",
+    //     choice(seq($.minus, $._expression), seq($.bang, $._expression)),
+    //   ),
 
     binary_expression: ($) =>
       choice(
@@ -171,6 +182,8 @@ module.exports = grammar({
           [$.less_than_or_equal, "comparison"],
           [$.equal, "comparison"],
           [$.not_equal, "comparison"],
+          [$.bang, "comparison"],
+          [$.inclusive_range, "range"],
           [$.or, "or"],
           [$.and, "and"],
         ].map(([operator, precedence]) =>
@@ -186,8 +199,6 @@ module.exports = grammar({
         ),
       ),
 
-    range_expression: ($) => seq($.number, $.inclusive_range, $.number),
-
     //// operators
     multiply: ($) => "*",
     divide: ($) => "/",
@@ -198,9 +209,10 @@ module.exports = grammar({
     less_than: ($) => "<",
     less_than_or_equal: ($) => "<=",
     equal: ($) => "==",
-    not_equal: ($) => "!equal",
+    not_equal: ($) => "!=",
     and: ($) => "and",
     or: ($) => "or",
+    bang: ($) => "!",
     inclusive_range: ($) => "...",
 
     // assignment operators

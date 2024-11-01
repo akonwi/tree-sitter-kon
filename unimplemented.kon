@@ -1,0 +1,12 @@
+for item, _ in ["a", "b", "c"] {
+	print(i)
+}
+
+let map = ["a": 1, "b": 2, "c": 3]
+for key, value in map {
+	print(i)
+}
+
+for char, _ in "hello" {
+	print(char)
+}

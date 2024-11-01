@@ -1,0 +1,56 @@
+==================
+iteration
+==================
+
+for i in 1...10 {
+	print(i)
+}
+
+for i in 1...(something - other) {
+	print(i)
+}
+---
+
+(program
+	(statement
+		(for_loop
+			cursor: (identifier)
+			range: (binary_expression
+				left: (primitive_value (number))
+				operator: (inclusive_range)
+				right: (primitive_value (number))
+			)
+			statement_block: (block
+				(statement
+					(function_call
+						target: (identifier)
+						arguments: (paren_arguments (identifier))
+					)
+				)
+			)
+		)
+	)
+
+	(statement
+		(for_loop
+			cursor: (identifier)
+			range: (binary_expression
+				left: (primitive_value (number))
+				operator: (inclusive_range)
+				right: (binary_expression
+					left: (identifier)
+					operator: (minus)
+					right: (identifier)
+				)
+			)
+			statement_block: (block
+				(statement
+					(function_call
+						target: (identifier)
+						arguments: (paren_arguments (identifier))
+					)
+				)
+			)
+    )
+	)
+)
