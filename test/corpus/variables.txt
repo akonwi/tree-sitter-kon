@@ -13,14 +13,14 @@ let is_something = false
         (variable_definition
           binding: (variable_binding)
           name: (identifier)
-          type: (primitive_type)
+          (type_declaration type: (primitive_type))
           value: (primitive_value
             (string))))
       (statement
         (variable_definition
           binding: (variable_binding)
           name: (identifier)
-          type: (primitive_type)
+          (type_declaration type: (primitive_type))
           value: (primitive_value
             (number))))
       (statement

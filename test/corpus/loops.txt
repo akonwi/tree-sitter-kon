@@ -13,6 +13,10 @@ while is_true or count > 0 {
 do while count == 9 {
 	count =- 1
 }
+
+for i in 0...9 {
+	print(i)
+}
 ---
 
 (program
@@ -71,6 +75,25 @@ do while count == 9 {
 						name: (identifier)
 						operator: (decrement)
 						value: (primitive_value (number))
+					)
+				)
+			)
+		)
+	)
+
+	(statement
+		(for_loop
+			cursor: (identifier)
+			range: (range_expression
+				(number)
+				(inclusive_range)
+				(number)
+			)
+			statement_block: (block
+				(statement
+					(function_call
+						target: (identifier)
+						arguments: (paren_arguments (identifier))
 					)
 				)
 			)

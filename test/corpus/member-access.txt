@@ -12,9 +12,11 @@ initialized.put("key", true)
 		(variable_definition
 			binding: (variable_binding)
 			name: (identifier)
-			type: (map_type
-				key: (primitive_type)
-				value: (primitive_type)
+			(type_declaration
+				type: (map_type
+					key: (primitive_type)
+					value: (primitive_type)
+				)
 			)
 			value: (map_value)
 		)

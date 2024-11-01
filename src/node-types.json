@@ -214,6 +214,42 @@
     }
   },
   {
+    "type": "for_loop",
+    "named": true,
+    "fields": {
+      "cursor": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "range": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "range_expression",
+            "named": true
+          }
+        ]
+      },
+      "statement_block": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "function_call",
     "named": true,
     "fields": {
@@ -587,6 +623,25 @@
     }
   },
   {
+    "type": "range_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "inclusive_range",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "reassignment",
     "named": true,
     "fields": {
@@ -660,6 +715,10 @@
           "named": true
         },
         {
+          "type": "for_loop",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
@@ -704,6 +763,30 @@
     "fields": {}
   },
   {
+    "type": "type_declaration",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "list_type",
+            "named": true
+          },
+          {
+            "type": "map_type",
+            "named": true
+          },
+          {
+            "type": "primitive_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "variable_binding",
     "named": true,
     "fields": {}
@@ -732,28 +815,6 @@
           }
         ]
       },
-      "type": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "list_type",
-            "named": true
-          },
-          {
-            "type": "map_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          }
-        ]
-      },
       "value": {
         "multiple": false,
         "required": true,
@@ -772,6 +833,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "type_declaration",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -907,6 +978,10 @@
     "named": false
   },
   {
+    "type": "for",
+    "named": false
+  },
+  {
     "type": "greater_than",
     "named": true
   },
@@ -921,6 +996,14 @@
   {
     "type": "if",
     "named": false
+  },
+  {
+    "type": "in",
+    "named": false
+  },
+  {
+    "type": "inclusive_range",
+    "named": true
   },
   {
     "type": "increment",

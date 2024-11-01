@@ -43,6 +43,7 @@ module.exports = grammar({
       choice(
         $.while_loop,
         $.if_statement,
+        $.for_loop,
         $.variable_definition,
         $.function_definition,
         $.reassignment,
@@ -55,13 +56,16 @@ module.exports = grammar({
       seq(
         field("binding", $.variable_binding),
         field("name", $.identifier),
-        field("type", optional($._type_declaration)),
+        optional($.type_declaration),
         $._assign,
         field("value", choice($.primitive_value, $.list_value, $.map_value)),
       ),
 
-    _type_declaration: ($) =>
-      seq($._colon, choice($.list_type, $.map_type, $.primitive_type)),
+    type_declaration: ($) =>
+      seq(
+        $._colon,
+        field("type", choice($.list_type, $.map_type, $.primitive_type)),
+      ),
 
     variable_binding: ($) => choice("let", "mut"),
 
@@ -104,6 +108,15 @@ module.exports = grammar({
         optional(field("do", "do")),
         "while",
         field("condition", $._expression),
+        field("statement_block", $.block),
+      ),
+
+    for_loop: ($) =>
+      seq(
+        "for",
+        field("cursor", $.identifier),
+        "in",
+        field("range", $.range_expression),
         field("statement_block", $.block),
       ),
 
@@ -173,6 +186,8 @@ module.exports = grammar({
         ),
       ),
 
+    range_expression: ($) => seq($.number, $.inclusive_range, $.number),
+
     //// operators
     multiply: ($) => "*",
     divide: ($) => "/",
@@ -186,6 +201,7 @@ module.exports = grammar({
     not_equal: ($) => "!equal",
     and: ($) => "and",
     or: ($) => "or",
+    inclusive_range: ($) => "...",
 
     // assignment operators
     increment: ($) => "=+",

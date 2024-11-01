@@ -22,6 +22,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "for_loop"
+        },
+        {
+          "type": "SYMBOL",
           "name": "variable_definition"
         },
         {
@@ -62,20 +66,16 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "type",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_type_declaration"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "type_declaration"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -104,7 +104,7 @@
         }
       ]
     },
-    "_type_declaration": {
+    "type_declaration": {
       "type": "SEQ",
       "members": [
         {
@@ -112,21 +112,25 @@
           "name": "_colon"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "list_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "map_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "primitive_type"
-            }
-          ]
+          "type": "FIELD",
+          "name": "type",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "list_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "map_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "primitive_type"
+              }
+            ]
+          }
         }
       ]
     },
@@ -404,6 +408,43 @@
           "content": {
             "type": "SYMBOL",
             "name": "_expression"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "statement_block",
+          "content": {
+            "type": "SYMBOL",
+            "name": "block"
+          }
+        }
+      ]
+    },
+    "for_loop": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "for"
+        },
+        {
+          "type": "FIELD",
+          "name": "cursor",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "in"
+        },
+        {
+          "type": "FIELD",
+          "name": "range",
+          "content": {
+            "type": "SYMBOL",
+            "name": "range_expression"
           }
         },
         {
@@ -993,6 +1034,23 @@
         }
       ]
     },
+    "range_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "inclusive_range"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
     "multiply": {
       "type": "STRING",
       "value": "*"
@@ -1040,6 +1098,10 @@
     "or": {
       "type": "STRING",
       "value": "or"
+    },
+    "inclusive_range": {
+      "type": "STRING",
+      "value": "..."
     },
     "increment": {
       "type": "STRING",
