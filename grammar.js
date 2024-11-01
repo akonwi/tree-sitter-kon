@@ -31,6 +31,7 @@ module.exports = grammar({
       "range",
       "and",
       "or",
+      "assignment",
     ],
     ["function_call", "_expression"],
   ],
@@ -38,6 +39,7 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.map_value, $.list_value],
     [$.function_call, $._expression],
+    [$._expression_statement, $.binary_expression],
   ],
 
   rules: {
@@ -136,16 +138,22 @@ module.exports = grammar({
       seq("else", choice($.if_statement, field("body", $.block))),
 
     reassignment: ($) =>
-      seq(
-        field("name", $.identifier),
-        $._assign,
-        field("value", $._expression),
+      prec(
+        "assignment",
+        seq(
+          field("name", $.identifier),
+          $._assign,
+          field("value", $._expression),
+        ),
       ),
     compound_assignment: ($) =>
-      seq(
-        field("name", $.identifier),
-        field("operator", choice($.increment, $.decrement)),
-        field("value", $._expression),
+      prec(
+        "assignment",
+        seq(
+          field("name", $.identifier),
+          field("operator", choice($.increment, $.decrement)),
+          field("value", $._expression),
+        ),
       ),
 
     _expression_statement: ($) => $._expression,
@@ -155,19 +163,20 @@ module.exports = grammar({
       choice(
         $.identifier,
         $.primitive_value,
+        $.unary_expression,
         $.binary_expression,
         $.member_access,
         $.function_call,
         seq("(", $._expression, ")"),
       ),
 
-    member_access: ($) => seq($._expression, ".", $.identifier),
+    member_access: ($) => prec("member", seq($._expression, ".", $.identifier)),
 
-    // unary_expression: ($) =>
-    //   prec(
-    //     "unary",
-    //     choice(seq($.minus, $._expression), seq($.bang, $._expression)),
-    //   ),
+    unary_expression: ($) =>
+      prec(
+        "unary",
+        choice(seq($.minus, $._expression), seq($.bang, $._expression)),
+      ),
 
     binary_expression: ($) =>
       choice(

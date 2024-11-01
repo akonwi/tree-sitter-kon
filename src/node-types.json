@@ -34,6 +34,10 @@
           {
             "type": "primitive_value",
             "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
           }
         ]
       },
@@ -130,6 +134,10 @@
           {
             "type": "primitive_value",
             "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
           }
         ]
       }
@@ -214,6 +222,10 @@
           {
             "type": "primitive_value",
             "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
           }
         ]
       }
@@ -289,6 +301,10 @@
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
@@ -425,6 +441,10 @@
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
@@ -566,6 +586,10 @@
         {
           "type": "primitive_value",
           "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
         }
       ]
     }
@@ -637,6 +661,10 @@
         },
         {
           "type": "primitive_value",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -731,6 +759,10 @@
           {
             "type": "primitive_value",
             "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
           }
         ]
       }
@@ -800,6 +832,10 @@
           "named": true
         },
         {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
           "type": "variable_definition",
           "named": true
         },
@@ -837,6 +873,49 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "unary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bang",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "minus",
+          "named": true
+        },
+        {
+          "type": "primitive_value",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -932,6 +1011,10 @@
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
