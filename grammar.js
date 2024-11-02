@@ -33,6 +33,7 @@ module.exports = grammar({
       "assignment",
     ],
     ["function_call", "_expression"],
+    [$._expression, $.struct_instance],
   ],
 
   conflicts: ($) => [
@@ -54,9 +55,15 @@ module.exports = grammar({
         $.reassignment,
         $.compound_assignment,
         $._expression_statement,
+        $.struct_definition,
       ),
 
     //// definitions
+    struct_definition: ($) =>
+      seq("struct", $.identifier, "{", sepBy($.struct_property, ","), "}"),
+
+    struct_property: ($) => seq($.identifier, $._colon, $.primitive_type),
+
     variable_definition: ($) =>
       seq(
         field("binding", $.variable_binding),
@@ -166,7 +173,16 @@ module.exports = grammar({
         $.binary_expression,
         $.member_access,
         $.function_call,
+        $.struct_instance,
         seq("(", $._expression, ")"),
+      ),
+
+    struct_instance: ($) =>
+      seq(
+        field("name", $.identifier),
+        "{",
+        sepBy($.struct_prop_pair, ","),
+        "}",
       ),
 
     member_access: ($) => prec("member", seq($._expression, ".", $.identifier)),
@@ -247,6 +263,12 @@ module.exports = grammar({
     map_pair: ($) =>
       seq(
         field("key", choice($.string, $.number)),
+        ":",
+        field("value", choice($.string, $.number, $.boolean)),
+      ),
+    struct_prop_pair: ($) =>
+      seq(
+        field("name", $.identifier),
         ":",
         field("value", choice($.string, $.number, $.boolean)),
       ),

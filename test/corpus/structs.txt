@@ -1,0 +1,54 @@
+==================
+structs
+==================
+
+struct Person {
+	name: Str,
+	age: Num,
+	employed: Bool
+}
+
+let john = Person {	name: "John", age: 30, employed: true }
+---
+
+(program
+	(statement
+		(struct_definition
+			(identifier)
+			(struct_property
+				(identifier)
+				(primitive_type)
+			)
+			(struct_property
+				(identifier)
+				(primitive_type)
+			)
+			(struct_property
+				(identifier)
+				(primitive_type)
+			)
+		)
+	)
+
+	(statement
+		(variable_definition
+			binding: (variable_binding)
+			name: (identifier)
+			value: (struct_instance
+				name: (identifier)
+				(struct_prop_pair
+						name: (identifier)
+						value: (string)
+				)
+				(struct_prop_pair
+						name: (identifier)
+						value: (number)
+				)
+				(struct_prop_pair
+						name: (identifier)
+						value: (boolean)
+				)
+			)
+		)
+	)
+)

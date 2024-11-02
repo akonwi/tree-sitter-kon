@@ -36,6 +36,10 @@
             "named": true
           },
           {
+            "type": "struct_instance",
+            "named": true
+          },
+          {
             "type": "unary_expression",
             "named": true
           }
@@ -136,6 +140,10 @@
             "named": true
           },
           {
+            "type": "struct_instance",
+            "named": true
+          },
+          {
             "type": "unary_expression",
             "named": true
           }
@@ -224,6 +232,10 @@
             "named": true
           },
           {
+            "type": "struct_instance",
+            "named": true
+          },
+          {
             "type": "unary_expression",
             "named": true
           }
@@ -301,6 +313,10 @@
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "struct_instance",
             "named": true
           },
           {
@@ -441,6 +457,10 @@
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "struct_instance",
             "named": true
           },
           {
@@ -608,6 +628,10 @@
           "named": true
         },
         {
+          "type": "struct_instance",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         }
@@ -681,6 +705,10 @@
         },
         {
           "type": "primitive_value",
+          "named": true
+        },
+        {
+          "type": "struct_instance",
           "named": true
         },
         {
@@ -789,6 +817,10 @@
             "named": true
           },
           {
+            "type": "struct_instance",
+            "named": true
+          },
+          {
             "type": "unary_expression",
             "named": true
           }
@@ -860,6 +892,14 @@
           "named": true
         },
         {
+          "type": "struct_definition",
+          "named": true
+        },
+        {
+          "type": "struct_instance",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         },
@@ -878,6 +918,104 @@
     "type": "string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "struct_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "struct_property",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct_instance",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "struct_prop_pair",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct_prop_pair",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "struct_property",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "type_declaration",
@@ -937,6 +1075,10 @@
         },
         {
           "type": "primitive_value",
+          "named": true
+        },
+        {
+          "type": "struct_instance",
           "named": true
         },
         {
@@ -1008,6 +1150,10 @@
             "named": true
           },
           {
+            "type": "struct_instance",
+            "named": true
+          },
+          {
             "type": "unary_expression",
             "named": true
           }
@@ -1059,6 +1205,10 @@
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "struct_instance",
             "named": true
           },
           {
@@ -1244,6 +1394,10 @@
   {
     "type": "plus",
     "named": true
+  },
+  {
+    "type": "struct",
+    "named": false
   },
   {
     "type": "true",
