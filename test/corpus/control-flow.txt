@@ -2,8 +2,10 @@
 control flow
 ==================
 
-if age >= 18 or has_served {
+if age >= 18 or something_else {
+  print("this")
 } else {
+  print("that")
 }
 
 if !has_served {}
@@ -21,9 +23,23 @@ if !has_served {}
                 (number)))
             operator: (or)
             right: (identifier))
-          body: (block)
+          body: (block
+            (statement
+            	(function_call
+                target: (identifier)
+                arguments: (paren_arguments (primitive_value (string)))
+             	)
+            )
+          )
           else: (else_statement
-						body: (block)
+						body: (block
+							(statement
+								(function_call
+									target: (identifier)
+									arguments: (paren_arguments (primitive_value (string)))
+								)
+							)
+						)
 					)
 		)
 	)
