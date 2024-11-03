@@ -9,6 +9,7 @@ struct Person {
 }
 
 let john = Person {	name: "John", age: 30, employed: true }
+let people: [Person] = [john]
 ---
 
 (program
@@ -51,4 +52,17 @@ let john = Person {	name: "John", age: 30, employed: true }
 			)
 		)
 	)
+
+	(statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      (type_declaration
+        type: (list_type inner: (identifier))
+      )
+      value: (primitive_value
+        (list_value (identifier))
+      )
+    )
+  )
 )

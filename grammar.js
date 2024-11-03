@@ -247,7 +247,8 @@ module.exports = grammar({
     decrement: ($) => "=-",
 
     ///// types
-    list_type: ($) => seq("[", field("inner", $.primitive_type), "]"),
+    list_type: ($) =>
+      seq("[", field("inner", choice($.primitive_type, $.identifier)), "]"),
     map_type: ($) =>
       seq(
         "[",
@@ -260,7 +261,11 @@ module.exports = grammar({
 
     ///// values
     list_value: ($) =>
-      seq("[", sepBy(choice($.number, $.string, $.boolean), ","), "]"),
+      seq(
+        "[",
+        sepBy(choice($.number, $.string, $.boolean, $.identifier), ","),
+        "]",
+      ),
     map_value: ($) =>
       choice(seq("[", ":", "]"), seq("[", sepBy1($.map_pair, ","), "]")),
     map_pair: ($) =>
