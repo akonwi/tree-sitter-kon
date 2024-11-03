@@ -963,6 +963,39 @@
         },
         {
           "type": "PREC_LEFT",
+          "value": "modulo",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "left",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "modulo"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "right",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
           "value": "comparison",
           "content": {
             "type": "SEQ",
@@ -1308,6 +1341,10 @@
     "minus": {
       "type": "STRING",
       "value": "-"
+    },
+    "modulo": {
+      "type": "STRING",
+      "value": "%"
     },
     "greater_than": {
       "type": "STRING",
@@ -1766,6 +1803,10 @@
       {
         "type": "STRING",
         "value": "minus"
+      },
+      {
+        "type": "STRING",
+        "value": "modulo"
       },
       {
         "type": "STRING",

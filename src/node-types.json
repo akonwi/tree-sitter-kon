@@ -90,6 +90,10 @@
             "named": true
           },
           {
+            "type": "modulo",
+            "named": true
+          },
+          {
             "type": "multiply",
             "named": true
           },
@@ -1369,6 +1373,10 @@
   },
   {
     "type": "minus",
+    "named": true
+  },
+  {
+    "type": "modulo",
     "named": true
   },
   {
