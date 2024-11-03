@@ -30,13 +30,14 @@ initialized.put("key", true)
 	)
 
 	(statement
-		(function_call
-			target: (member_access
-				(identifier)
-				(identifier))
-			arguments: (paren_arguments
-				(primitive_value (string))
-				(primitive_value (boolean))
+	  (member_access
+			(identifier)
+			(function_call
+			  target: (identifier)
+			  arguments: (paren_arguments
+			  	(primitive_value (string))
+			  	(primitive_value (boolean))
+			  )
 			)
 		)
 	)

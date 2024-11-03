@@ -1,0 +1,28 @@
+==================
+enums
+==================
+
+enum Payload {
+  Plain,
+  Struct { id: Str }
+}
+
+---
+
+(program
+  (statement
+    (enum_definition
+      name: (identifier)
+      (enum_variant (identifier))
+      (enum_variant
+        (enum_struct_variant
+          name: (identifier)
+          (struct_property
+            (identifier)
+            (primitive_type)
+          )
+        )
+      )
+    )
+  )
+)

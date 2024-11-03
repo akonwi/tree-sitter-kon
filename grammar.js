@@ -57,6 +57,7 @@ module.exports = grammar({
         $.compound_assignment,
         $._expression_statement,
         $.struct_definition,
+        $.enum_definition,
       ),
 
     //// definitions
@@ -64,6 +65,20 @@ module.exports = grammar({
       seq("struct", $.identifier, "{", sepBy($.struct_property, ","), "}"),
 
     struct_property: ($) => seq($.identifier, $._colon, $.primitive_type),
+
+    enum_definition: ($) =>
+      seq(
+        "enum",
+        field("name", $.identifier),
+        "{",
+        sepBy1($.enum_variant, ","),
+        "}",
+      ),
+
+    enum_variant: ($) => choice($.identifier, $.enum_struct_variant),
+
+    enum_struct_variant: ($) =>
+      seq(field("name", $.identifier), "{", sepBy($.struct_property, ","), "}"),
 
     variable_definition: ($) =>
       seq(
@@ -95,7 +110,7 @@ module.exports = grammar({
       prec(
         "function_call",
         seq(
-          field("target", choice($.identifier, $.member_access)),
+          field("target", $.identifier),
           field("arguments", $.paren_arguments),
         ),
       ),
@@ -186,7 +201,11 @@ module.exports = grammar({
         "}",
       ),
 
-    member_access: ($) => prec("member", seq($._expression, ".", $.identifier)),
+    member_access: ($) =>
+      prec.right(
+        "member",
+        seq($._expression, ".", choice($.identifier, $.function_call)),
+      ),
 
     unary_expression: ($) =>
       prec(
