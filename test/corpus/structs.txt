@@ -9,7 +9,10 @@ struct Person {
 }
 
 let john = Person {	name: "John", age: 30, employed: true }
-let people: [Person] = [john]
+let people: [Person] = [
+  john,
+  Person {	name: "Alice", age: 30, employed: true }
+]
 ---
 
 (program
@@ -61,7 +64,24 @@ let people: [Person] = [john]
         type: (list_type inner: (identifier))
       )
       value: (primitive_value
-        (list_value (identifier))
+        (list_value
+          (identifier)
+          (struct_instance
+            name: (identifier)
+            (struct_prop_pair
+              name: (identifier)
+              value: (string)
+            )
+            (struct_prop_pair
+              name: (identifier)
+              value: (number)
+            )
+            (struct_prop_pair
+              name: (identifier)
+              value: (boolean)
+            )
+          )
+        )
       )
     )
   )

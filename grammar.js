@@ -263,7 +263,16 @@ module.exports = grammar({
     list_value: ($) =>
       seq(
         "[",
-        sepBy(choice($.number, $.string, $.boolean, $.identifier), ","),
+        sepBy(
+          choice(
+            $.number,
+            $.string,
+            $.boolean,
+            $.identifier,
+            $.struct_instance,
+          ),
+          ",",
+        ),
         "]",
       ),
     map_value: ($) =>

@@ -528,6 +528,10 @@
         {
           "type": "string",
           "named": true
+        },
+        {
+          "type": "struct_instance",
+          "named": true
         }
       ]
     }

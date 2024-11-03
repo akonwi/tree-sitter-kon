@@ -1505,6 +1505,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "identifier"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "struct_instance"
                     }
                   ]
                 },
@@ -1535,6 +1539,10 @@
                           {
                             "type": "SYMBOL",
                             "name": "identifier"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "struct_instance"
                           }
                         ]
                       }
