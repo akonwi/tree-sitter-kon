@@ -86,7 +86,7 @@ module.exports = grammar({
         field("name", $.identifier),
         field("type", optional($.type_declaration)),
         $._assign,
-        field("value", choice($._expression)),
+        field("value", $._expression),
       ),
 
     type_declaration: ($) =>
