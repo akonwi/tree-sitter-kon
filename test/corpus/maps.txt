@@ -11,7 +11,7 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 		(variable_definition
 			binding: (variable_binding)
 			name: (identifier)
-			(type_declaration
+			type: (type_declaration
 				type: (map_type
 					key: (primitive_type)
 					value: (primitive_type)
@@ -25,7 +25,7 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 		(variable_definition
 			binding: (variable_binding)
 			name: (identifier)
-			(type_declaration
+			type: (type_declaration
 				type: (map_type
 					key: (primitive_type)
 					value: (primitive_type)

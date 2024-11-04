@@ -60,7 +60,7 @@ let people: [Person] = [
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
-      (type_declaration
+      type: (type_declaration
         type: (list_type inner: (identifier))
       )
       value: (primitive_value

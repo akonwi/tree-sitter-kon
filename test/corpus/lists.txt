@@ -14,7 +14,7 @@ let booleans: [Bool] = [true, false]
 		(variable_definition
 			binding: (variable_binding)
 			name: (identifier)
-			(type_declaration
+			type: (type_declaration
 				type: (list_type
 					inner: (primitive_type)
 				)
@@ -41,7 +41,7 @@ let booleans: [Bool] = [true, false]
 		(variable_definition
 			binding: (variable_binding)
 			name: (identifier)
-			(type_declaration
+			type: (type_declaration
 				type: (list_type
 					inner: (primitive_type)
 				)
@@ -60,7 +60,7 @@ let booleans: [Bool] = [true, false]
 		(variable_definition
 			binding: (variable_binding)
 			name: (identifier)
-			(type_declaration
+			type: (type_declaration
 				type: (list_type
 					inner: (primitive_type)
 				)

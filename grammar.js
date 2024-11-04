@@ -84,7 +84,7 @@ module.exports = grammar({
       seq(
         field("binding", $.variable_binding),
         field("name", $.identifier),
-        optional($.type_declaration),
+        field("type", optional($.type_declaration)),
         $._assign,
         field("value", choice($._expression)),
       ),
