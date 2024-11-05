@@ -62,8 +62,12 @@
           "value": "struct"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "STRING",
@@ -76,8 +80,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "struct_property"
+                  "type": "FIELD",
+                  "name": "field",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "struct_property"
+                  }
                 },
                 {
                   "type": "REPEAT",
@@ -89,8 +97,12 @@
                         "value": ","
                       },
                       {
-                        "type": "SYMBOL",
-                        "name": "struct_property"
+                        "type": "FIELD",
+                        "name": "field",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "struct_property"
+                        }
                       }
                     ]
                   }
@@ -112,16 +124,24 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "SYMBOL",
           "name": "_colon"
         },
         {
-          "type": "SYMBOL",
-          "name": "primitive_type"
+          "type": "FIELD",
+          "name": "type",
+          "content": {
+            "type": "SYMBOL",
+            "name": "primitive_type"
+          }
         }
       ]
     },
@@ -176,17 +196,17 @@
       ]
     },
     "enum_variant": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "enum_struct_variant"
-        }
-      ]
+      "type": "FIELD",
+      "name": "variant",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        ]
+      }
     },
     "enum_struct_variant": {
       "type": "SEQ",
@@ -849,8 +869,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "struct_prop_pair"
+                  "type": "FIELD",
+                  "name": "field",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "struct_prop_pair"
+                  }
                 },
                 {
                   "type": "REPEAT",
@@ -862,8 +886,12 @@
                         "value": ","
                       },
                       {
-                        "type": "SYMBOL",
-                        "name": "struct_prop_pair"
+                        "type": "FIELD",
+                        "name": "field",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "struct_prop_pair"
+                        }
                       }
                     ]
                   }

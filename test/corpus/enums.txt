@@ -4,7 +4,7 @@ enums
 
 enum Payload {
   Plain,
-  Struct { id: Str }
+  Rich
 }
 
 ---
@@ -13,16 +13,8 @@ enum Payload {
   (statement
     (enum_definition
       name: (identifier)
-      (enum_variant (identifier))
-      (enum_variant
-        (enum_struct_variant
-          name: (identifier)
-          (struct_property
-            (identifier)
-            (primitive_type)
-          )
-        )
-      )
+      (enum_variant variant: (identifier))
+      (enum_variant variant: (identifier))
     )
   )
 )

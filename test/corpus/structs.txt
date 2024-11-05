@@ -18,18 +18,18 @@ let people: [Person] = [
 (program
 	(statement
 		(struct_definition
-			(identifier)
-			(struct_property
-				(identifier)
-				(primitive_type)
+			name: (identifier)
+			field: (struct_property
+				name: (identifier)
+				type: (primitive_type)
 			)
-			(struct_property
-				(identifier)
-				(primitive_type)
+			field: (struct_property
+				name: (identifier)
+				type: (primitive_type)
 			)
-			(struct_property
-				(identifier)
-				(primitive_type)
+			field: (struct_property
+				name: (identifier)
+				type: (primitive_type)
 			)
 		)
 	)
@@ -40,15 +40,15 @@ let people: [Person] = [
 			name: (identifier)
 			value: (struct_instance
 				name: (identifier)
-				(struct_prop_pair
+				field: (struct_prop_pair
 						name: (identifier)
 						value: (string)
 				)
-				(struct_prop_pair
+				field: (struct_prop_pair
 						name: (identifier)
 						value: (number)
 				)
-				(struct_prop_pair
+				field: (struct_prop_pair
 						name: (identifier)
 						value: (boolean)
 				)
@@ -68,15 +68,15 @@ let people: [Person] = [
           (identifier)
           (struct_instance
             name: (identifier)
-            (struct_prop_pair
+            field: (struct_prop_pair
               name: (identifier)
               value: (string)
             )
-            (struct_prop_pair
+            field: (struct_prop_pair
               name: (identifier)
               value: (number)
             )
-            (struct_prop_pair
+            field: (struct_prop_pair
               name: (identifier)
               value: (boolean)
             )

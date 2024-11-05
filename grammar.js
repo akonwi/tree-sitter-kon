@@ -62,9 +62,20 @@ module.exports = grammar({
 
     //// definitions
     struct_definition: ($) =>
-      seq("struct", $.identifier, "{", sepBy($.struct_property, ","), "}"),
+      seq(
+        "struct",
+        field("name", $.identifier),
+        "{",
+        sepBy(field("field", $.struct_property), ","),
+        "}",
+      ),
 
-    struct_property: ($) => seq($.identifier, $._colon, $.primitive_type),
+    struct_property: ($) =>
+      seq(
+        field("name", $.identifier),
+        $._colon,
+        field("type", $.primitive_type),
+      ),
 
     enum_definition: ($) =>
       seq(
@@ -75,7 +86,8 @@ module.exports = grammar({
         "}",
       ),
 
-    enum_variant: ($) => choice($.identifier, $.enum_struct_variant),
+    // todo: struct/tuple variants
+    enum_variant: ($) => field("variant", choice($.identifier)),
 
     enum_struct_variant: ($) =>
       seq(field("name", $.identifier), "{", sepBy($.struct_property, ","), "}"),
@@ -197,7 +209,7 @@ module.exports = grammar({
       seq(
         field("name", $.identifier),
         "{",
-        sepBy($.struct_prop_pair, ","),
+        sepBy(field("field", $.struct_prop_pair), ","),
         "}",
       ),
 

@@ -1,12 +1,21 @@
+// iterate on lists
 for item, _ in ["a", "b", "c"] {
 	print(i)
 }
 
+// iterate on maps
 let map = ["a": 1, "b": 2, "c": 3]
 for key, value in map {
 	print(i)
 }
 
+// iterate on strings
 for char, _ in "hello" {
 	print(char)
+}
+
+// structs as enum variants
+enum Payload {
+  Plain,
+  Object { id: Str }
 }
