@@ -28,7 +28,7 @@ add(1, 2)
   	 	parameters: (parameters)
   	  body: (block
      	  (statement
-     	  	(primitive_value (string))
+     	  	(primitive_value primitive: (string))
         )
      	)
   	)
@@ -61,7 +61,7 @@ add(1, 2)
   	(function_call
 			target: (identifier)
 			arguments: (paren_arguments
-				(primitive_value (string))
+				(primitive_value primitive: (string))
 			)
 		)
   )
@@ -100,8 +100,8 @@ add(1, 2)
   	(function_call
 			target: (identifier)
 			arguments: (paren_arguments
-				(primitive_value (number))
-				(primitive_value (number))
+				(primitive_value primitive: (number))
+				(primitive_value primitive: (number))
 			)
 		)
   )

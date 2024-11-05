@@ -19,7 +19,7 @@ let booleans: [Bool] = [true, false]
 					inner: (primitive_type)
 				)
 			)
-			value: (primitive_value (list_value))
+			value: (primitive_value primitive: (list_value))
 		)
 	)
 
@@ -28,7 +28,7 @@ let booleans: [Bool] = [true, false]
 			binding: (variable_binding)
 			name: (identifier)
 			value: (primitive_value
-				(list_value
+				primitive: (list_value
 					(number)
 					(number)
 					(number)
@@ -47,7 +47,7 @@ let booleans: [Bool] = [true, false]
 				)
 			)
 			value: (primitive_value
-				(list_value
+				primitive: (list_value
 					(string)
 					(string)
 					(string)
@@ -66,7 +66,7 @@ let booleans: [Bool] = [true, false]
 				)
 			)
 			value: (primitive_value
-				(list_value
+				primitive: (list_value
 					(boolean)
 					(boolean)
 				)

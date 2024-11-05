@@ -16,20 +16,20 @@ mut negative = -1
           name: (identifier)
           type: (type_declaration type: (primitive_type))
           value: (primitive_value
-            (string))))
+            primitive: (string))))
       (statement
         (variable_definition
           binding: (variable_binding)
           name: (identifier)
           type: (type_declaration type: (primitive_type))
           value: (primitive_value
-            (number))))
+            primitive: (number))))
       (statement
         (variable_definition
           binding: (variable_binding)
           name: (identifier)
           value: (primitive_value
-            (boolean))))
+            primitive: (boolean))))
 
   (statement
     (variable_definition
@@ -37,7 +37,7 @@ mut negative = -1
       name: (identifier)
       value: (unary_expression
       	(minus)
-       	(primitive_value (number))
+       	(primitive_value primitive: (number))
       )
     )
   )

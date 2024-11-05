@@ -204,7 +204,11 @@ module.exports = grammar({
     member_access: ($) =>
       prec.right(
         "member",
-        seq($._expression, ".", choice($.identifier, $.function_call)),
+        seq(
+          field("target", $._expression),
+          ".",
+          field("member", choice($.identifier, $.function_call)),
+        ),
       ),
 
     unary_expression: ($) =>
@@ -309,7 +313,10 @@ module.exports = grammar({
         field("value", choice($.string, $.number, $.boolean)),
       ),
     primitive_value: ($) =>
-      choice($.string, $.number, $.boolean, $.map_value, $.list_value),
+      field(
+        "primitive",
+        choice($.string, $.number, $.boolean, $.map_value, $.list_value),
+      ),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
     string: ($) => seq('"', /[^"]*/, '"'),
     number: ($) => /\d+(\.\d+)?/,

@@ -16,9 +16,9 @@ for i in 1...(something - other) {
 		(for_loop
 			cursor: (identifier)
 			range: (binary_expression
-				left: (primitive_value (number))
+				left: (primitive_value primitive: (number))
 				operator: (inclusive_range)
-				right: (primitive_value (number))
+				right: (primitive_value primitive: (number))
 			)
 			statement_block: (block
 				(statement
@@ -35,7 +35,7 @@ for i in 1...(something - other) {
 		(for_loop
 			cursor: (identifier)
 			range: (binary_expression
-				left: (primitive_value (number))
+				left: (primitive_value primitive: (number))
 				operator: (inclusive_range)
 				right: (binary_expression
 					left: (identifier)

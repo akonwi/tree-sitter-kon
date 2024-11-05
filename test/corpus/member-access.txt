@@ -18,25 +18,25 @@ initialized.put("key", true)
 					value: (primitive_type)
 				)
 			)
-			value: (primitive_value (map_value))
+			value: (primitive_value primitive: (map_value))
 		)
 	)
 
 	(statement
 		(member_access
-			(identifier)
-			(identifier)
+			target: (identifier)
+			member: (identifier)
 		)
 	)
 
 	(statement
 	  (member_access
-			(identifier)
-			(function_call
+			target: (identifier)
+			member: (function_call
 			  target: (identifier)
 			  arguments: (paren_arguments
-			  	(primitive_value (string))
-			  	(primitive_value (boolean))
+			  	(primitive_value primitive: (string))
+			  	(primitive_value primitive: (boolean))
 			  )
 			)
 		)

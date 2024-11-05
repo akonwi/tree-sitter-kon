@@ -64,7 +64,7 @@ let people: [Person] = [
         type: (list_type inner: (identifier))
       )
       value: (primitive_value
-        (list_value
+        primitive: (list_value
           (identifier)
           (struct_instance
             name: (identifier)

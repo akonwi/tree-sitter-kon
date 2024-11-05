@@ -17,7 +17,7 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 					value: (primitive_type)
 				)
 			)
-			value: (primitive_value (map_value))
+			value: (primitive_value primitive: (map_value))
 		)
 	)
 
@@ -32,7 +32,7 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 				)
 			)
 			value: (primitive_value
-				(map_value
+				primitive: (map_value
 					(map_pair
 						key: (string)
 						value: (boolean)

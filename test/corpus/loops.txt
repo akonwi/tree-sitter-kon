@@ -22,14 +22,14 @@ do while count == 9 {
 			condition: (binary_expression
 				left: (identifier)
 				operator: (less_than_or_equal)
-				right: (primitive_value (number))
+				right: (primitive_value primitive: (number))
 			)
 			statement_block: (block
 				(statement
 					(compound_assignment
 						name: (identifier)
 						operator: (increment)
-						value: (primitive_value (number))
+						value: (primitive_value primitive: (number))
 					)
 				)
 			)
@@ -44,7 +44,7 @@ do while count == 9 {
 				right: (binary_expression
 					left: (identifier)
 					operator: (greater_than)
-					right: (primitive_value (number))
+					right: (primitive_value primitive: (number))
 				)
 			)
 			statement_block: (block
@@ -52,7 +52,7 @@ do while count == 9 {
 					(compound_assignment
 						name: (identifier)
 						operator: (decrement)
-						value: (primitive_value (number))
+						value: (primitive_value primitive: (number))
 					)
 				)
 			)
@@ -64,14 +64,14 @@ do while count == 9 {
 			condition: (binary_expression
 				left: (identifier)
 				operator: (equal)
-				right: (primitive_value (number))
+				right: (primitive_value primitive: (number))
 			)
 			statement_block: (block
 				(statement
 					(compound_assignment
 						name: (identifier)
 						operator: (decrement)
-						value: (primitive_value (number))
+						value: (primitive_value primitive: (number))
 					)
 				)
 			)
