@@ -833,6 +833,22 @@
     }
   },
   {
+    "type": "print_statement",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paren_arguments",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "program",
     "named": true,
     "root": true,
@@ -967,6 +983,10 @@
         },
         {
           "type": "primitive_value",
+          "named": true
+        },
+        {
+          "type": "print_statement",
           "named": true
         },
         {
@@ -1498,6 +1518,10 @@
   {
     "type": "plus",
     "named": true
+  },
+  {
+    "type": "print",
+    "named": false
   },
   {
     "type": "struct",

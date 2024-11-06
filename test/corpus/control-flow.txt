@@ -25,8 +25,7 @@ if !has_served {}
             right: (identifier))
           body: (block
             (statement
-            	(function_call
-                target: (identifier)
+            	(print_statement
                 arguments: (paren_arguments (primitive_value primitive: (string)))
              	)
             )
@@ -34,8 +33,7 @@ if !has_served {}
           else: (else_statement
 						body: (block
 							(statement
-								(function_call
-									target: (identifier)
+								(print_statement
 									arguments: (paren_arguments (primitive_value primitive: (string)))
 								)
 							)
