@@ -1,0 +1,18 @@
+==================
+comments
+==================
+
+// this is a comment
+true
+/*
+this is
+a comment
+too
+*/
+---
+
+(program
+  (comment)
+  (statement (primitive_value (boolean)))
+  (comment)
+)

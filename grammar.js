@@ -43,6 +43,8 @@ module.exports = grammar({
     [$.binary_expression, $.variable_definition],
   ],
 
+  extras: ($) => [/\s/, $.comment],
+
   rules: {
     program: ($) => repeat($.statement),
 
@@ -337,5 +339,9 @@ module.exports = grammar({
     boolean: ($) => choice("true", "false"),
     _colon: ($) => ":",
     _assign: ($) => "=",
+    comment: ($) =>
+      token(
+        choice(seq("//", /[^\n]*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*\//)),
+      ),
   },
 });

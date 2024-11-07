@@ -1412,6 +1412,10 @@
     "named": true
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "decrement",
     "named": true
   },
