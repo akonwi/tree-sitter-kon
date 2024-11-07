@@ -14,14 +14,14 @@ mut negative = -1
         (variable_definition
           binding: (variable_binding)
           name: (identifier)
-          type: (type_declaration type: (primitive_type))
+          type: (type_declaration type: (primitive_type (str)))
           value: (primitive_value
             primitive: (string))))
       (statement
         (variable_definition
           binding: (variable_binding)
           name: (identifier)
-          type: (type_declaration type: (primitive_type))
+          type: (type_declaration type: (primitive_type (num)))
           value: (primitive_value
             primitive: (number))))
       (statement

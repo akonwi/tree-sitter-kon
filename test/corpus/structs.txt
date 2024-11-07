@@ -21,15 +21,15 @@ let people: [Person] = [
 			name: (identifier)
 			field: (struct_property
 				name: (identifier)
-				type: (primitive_type)
+				type: (primitive_type (str))
 			)
 			field: (struct_property
 				name: (identifier)
-				type: (primitive_type)
+				type: (primitive_type (num))
 			)
 			field: (struct_property
 				name: (identifier)
-				type: (primitive_type)
+				type: (primitive_type (bool))
 			)
 		)
 	)
@@ -63,23 +63,21 @@ let people: [Person] = [
       type: (type_declaration
         type: (list_type inner: (identifier))
       )
-      value: (primitive_value
-        primitive: (list_value
-          (identifier)
-          (struct_instance
+      value: (list_value
+        inner: (identifier)
+        inner: (struct_instance
+          name: (identifier)
+          field: (struct_prop_pair
             name: (identifier)
-            field: (struct_prop_pair
-              name: (identifier)
-              value: (string)
-            )
-            field: (struct_prop_pair
-              name: (identifier)
-              value: (number)
-            )
-            field: (struct_prop_pair
-              name: (identifier)
-              value: (boolean)
-            )
+            value: (string)
+          )
+          field: (struct_prop_pair
+            name: (identifier)
+            value: (number)
+          )
+          field: (struct_prop_pair
+            name: (identifier)
+            value: (boolean)
           )
         )
       )

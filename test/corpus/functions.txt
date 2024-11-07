@@ -47,11 +47,11 @@ add(1, 2)
    		parameters: (parameters
      		(param_def
       		name: (identifier)
-        	type: (primitive_type)
+        	type: (primitive_type (str))
       	)
 			)
     	return_type: (return_type
-				(primitive_type)
+				(primitive_type (str))
 			)
     	body: (block)
   	)
@@ -84,14 +84,14 @@ add(1, 2)
   	 	parameters: (parameters
   	  	(param_def
 					name: (identifier)
-					type: (primitive_type)
+					type: (primitive_type (num))
 				)
 				(param_def
 					name: (identifier)
-					type: (primitive_type)
+					type: (primitive_type (num))
 				)
   	  )
-  	  return_type: (return_type (primitive_type))
+  	  return_type: (return_type (primitive_type (num)))
   	  body: (block)
   	)
   )

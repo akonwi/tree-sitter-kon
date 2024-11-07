@@ -35,6 +35,7 @@ module.exports = grammar({
     ],
     ["function_call", "_expression"],
     [$._expression, $.struct_instance],
+    [$.type_declaration, $.primitive_type],
   ],
 
   conflicts: ($) => [
@@ -201,6 +202,8 @@ module.exports = grammar({
       choice(
         $.identifier,
         $.primitive_value,
+        $.list_value,
+        $.map_value,
         $.unary_expression,
         $.binary_expression,
         $.member_access,
@@ -287,28 +290,38 @@ module.exports = grammar({
 
     ///// types
     list_type: ($) =>
-      seq("[", field("inner", choice($.primitive_type, $.identifier)), "]"),
+      seq(
+        "[",
+        field(
+          "inner",
+          choice($.primitive_type, $.map_type, $.list_type, $.identifier),
+        ),
+        "]",
+      ),
     map_type: ($) =>
       seq(
         "[",
-        field("key", $.primitive_type),
+        field("key", $.str),
         $._colon,
         field("value", $.primitive_type),
         "]",
       ),
-    primitive_type: ($) => choice("Str", "Num", "Bool"),
+    primitive_type: ($) => choice($.str, $.num, $.bool),
 
     ///// values
     list_value: ($) =>
       seq(
         "[",
         sepBy(
-          choice(
-            $.number,
-            $.string,
-            $.boolean,
-            $.identifier,
-            $.struct_instance,
+          field(
+            "inner",
+            choice(
+              $.number,
+              $.string,
+              $.boolean,
+              $.identifier,
+              $.struct_instance,
+            ),
           ),
           ",",
         ),
@@ -318,7 +331,7 @@ module.exports = grammar({
       choice(seq("[", ":", "]"), seq("[", sepBy1($.map_pair, ","), "]")),
     map_pair: ($) =>
       seq(
-        field("key", choice($.string, $.number)),
+        field("key", choice($.string)),
         ":",
         field("value", choice($.string, $.number, $.boolean)),
       ),
@@ -329,16 +342,16 @@ module.exports = grammar({
         field("value", choice($.string, $.number, $.boolean)),
       ),
     primitive_value: ($) =>
-      field(
-        "primitive",
-        choice($.string, $.number, $.boolean, $.map_value, $.list_value),
-      ),
+      field("primitive", choice($.string, $.number, $.boolean)),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
     string: ($) => seq('"', /[^"]*/, '"'),
     number: ($) => /\d+(\.\d+)?/,
     boolean: ($) => choice("true", "false"),
     _colon: ($) => ":",
     _assign: ($) => "=",
+    str: ($) => "Str",
+    num: ($) => "Num",
+    bool: ($) => "Bool",
     comment: ($) =>
       token(
         choice(seq("//", /[^\n]*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*\//)),

@@ -14,11 +14,11 @@ initialized.put("key", true)
 			name: (identifier)
 			type: (type_declaration
 				type: (map_type
-					key: (primitive_type)
-					value: (primitive_type)
+					key: (str)
+					value: (primitive_type (bool))
 				)
 			)
-			value: (primitive_value primitive: (map_value))
+			value: (map_value)
 		)
 	)
 

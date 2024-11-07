@@ -28,6 +28,14 @@
             "named": true
           },
           {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
+            "named": true
+          },
+          {
             "type": "member_access",
             "named": true
           },
@@ -136,6 +144,14 @@
             "named": true
           },
           {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
+            "named": true
+          },
+          {
             "type": "member_access",
             "named": true
           },
@@ -225,6 +241,14 @@
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
             "named": true
           },
           {
@@ -351,6 +375,14 @@
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
             "named": true
           },
           {
@@ -494,6 +526,14 @@
             "named": true
           },
           {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
+            "named": true
+          },
+          {
             "type": "member_access",
             "named": true
           },
@@ -536,6 +576,14 @@
             "named": true
           },
           {
+            "type": "list_type",
+            "named": true
+          },
+          {
+            "type": "map_type",
+            "named": true
+          },
+          {
             "type": "primitive_type",
             "named": true
           }
@@ -546,32 +594,33 @@
   {
     "type": "list_value",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "struct_instance",
-          "named": true
-        }
-      ]
+    "fields": {
+      "inner": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct_instance",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -582,10 +631,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "number",
-            "named": true
-          },
           {
             "type": "string",
             "named": true
@@ -621,7 +666,7 @@
         "required": true,
         "types": [
           {
-            "type": "primitive_type",
+            "type": "str",
             "named": true
           }
         ]
@@ -693,6 +738,14 @@
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
             "named": true
           },
           {
@@ -777,6 +830,14 @@
           "named": true
         },
         {
+          "type": "list_value",
+          "named": true
+        },
+        {
+          "type": "map_value",
+          "named": true
+        },
+        {
           "type": "member_access",
           "named": true
         },
@@ -798,7 +859,25 @@
   {
     "type": "primitive_type",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "num",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "primitive_value",
@@ -810,14 +889,6 @@
         "types": [
           {
             "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "list_value",
-            "named": true
-          },
-          {
-            "type": "map_value",
             "named": true
           },
           {
@@ -903,6 +974,14 @@
             "named": true
           },
           {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
+            "named": true
+          },
+          {
             "type": "member_access",
             "named": true
           },
@@ -975,6 +1054,14 @@
         },
         {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "list_value",
+          "named": true
+        },
+        {
+          "type": "map_value",
           "named": true
         },
         {
@@ -1182,6 +1269,14 @@
           "named": true
         },
         {
+          "type": "list_value",
+          "named": true
+        },
+        {
+          "type": "map_value",
+          "named": true
+        },
+        {
           "type": "member_access",
           "named": true
         },
@@ -1268,6 +1363,14 @@
             "named": true
           },
           {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
+            "named": true
+          },
+          {
             "type": "member_access",
             "named": true
           },
@@ -1313,6 +1416,14 @@
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "list_value",
+            "named": true
+          },
+          {
+            "type": "map_value",
             "named": true
           },
           {
@@ -1384,18 +1495,6 @@
     "named": false
   },
   {
-    "type": "Bool",
-    "named": false
-  },
-  {
-    "type": "Num",
-    "named": false
-  },
-  {
-    "type": "Str",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -1409,6 +1508,10 @@
   },
   {
     "type": "bang",
+    "named": true
+  },
+  {
+    "type": "bool",
     "named": true
   },
   {
@@ -1512,6 +1615,10 @@
     "named": true
   },
   {
+    "type": "num",
+    "named": true
+  },
+  {
     "type": "number",
     "named": true
   },
@@ -1526,6 +1633,10 @@
   {
     "type": "print",
     "named": false
+  },
+  {
+    "type": "str",
+    "named": true
   },
   {
     "type": "struct",

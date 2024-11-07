@@ -13,11 +13,11 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 			name: (identifier)
 			type: (type_declaration
 				type: (map_type
-					key: (primitive_type)
-					value: (primitive_type)
+					key: (str)
+					value: (primitive_type (num))
 				)
 			)
-			value: (primitive_value primitive: (map_value))
+			value: (map_value)
 		)
 	)
 
@@ -27,20 +27,18 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 			name: (identifier)
 			type: (type_declaration
 				type: (map_type
-					key: (primitive_type)
-					value: (primitive_type)
+					key: (str)
+					value: (primitive_type (bool))
 				)
 			)
-			value: (primitive_value
-				primitive: (map_value
-					(map_pair
-						key: (string)
-						value: (boolean)
-					)
-					(map_pair
-						key: (string)
-						value: (boolean)
-					)
+			value: (map_value
+				(map_pair
+					key: (string)
+					value: (boolean)
+				)
+				(map_pair
+					key: (string)
+					value: (boolean)
 				)
 			)
 		)
