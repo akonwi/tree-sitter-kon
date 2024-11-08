@@ -153,7 +153,7 @@ module.exports = grammar({
         optional(field("do", "do")),
         "while",
         field("condition", $.expression),
-        field("statement_block", $.block),
+        field("body", $.block),
       ),
 
     for_loop: ($) =>
@@ -163,7 +163,7 @@ module.exports = grammar({
         "in",
         // limit what can be used as a range
         field("range", $.expression),
-        field("statement_block", $.block),
+        field("body", $.block),
       ),
 
     if_statement: ($) =>
@@ -175,11 +175,7 @@ module.exports = grammar({
       ),
 
     else_statement: ($) =>
-      seq(
-        "else",
-        optional(field("if", $.if_statement)),
-        field("body", $.block),
-      ),
+      seq("else", choice(field("if", $.if_statement), field("body", $.block))),
 
     reassignment: ($) =>
       prec(

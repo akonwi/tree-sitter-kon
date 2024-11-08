@@ -157,7 +157,7 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -275,6 +275,16 @@
     "type": "for_loop",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
       "cursor": {
         "multiple": false,
         "required": true,
@@ -291,16 +301,6 @@
         "types": [
           {
             "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "statement_block": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
             "named": true
           }
         ]
@@ -1041,6 +1041,16 @@
     "type": "while_loop",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -1058,16 +1068,6 @@
           {
             "type": "do",
             "named": false
-          }
-        ]
-      },
-      "statement_block": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
-            "named": true
           }
         ]
       }

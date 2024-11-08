@@ -12,42 +12,44 @@ for i in 1...(something - other) {
 ---
 
 (program
-	(statement
-		(for_loop
-			cursor: (identifier)
-			range: (expression expr: (binary_expression
-				left: (expression expr: (primitive_value primitive: (number)))
-				operator: (inclusive_range)
-				right: (expression expr: (primitive_value primitive: (number)))
-			))
-			statement_block: (block
-				(statement
-					(print_statement
-						arguments: (paren_arguments (expression expr: (identifier)))
-					)
-				)
-			)
-		)
-	)
-
-	(statement
-		(for_loop
-			cursor: (identifier)
-			range: (expression expr: (binary_expression
-				left: (expression expr: (primitive_value primitive: (number)))
-				operator: (inclusive_range)
-				right: (expression
-				  expr: (expression expr: (binary_expression
-						left: (expression expr: (identifier))
-						operator: (minus)
-						right: (expression expr: (identifier)))))))
-			statement_block: (block
-				(statement
-					(print_statement
-						arguments: (paren_arguments (expression expr: (identifier)))
-					)
-				)
-			)
-    )
-	)
-)
+  (statement
+    (for_loop
+      cursor: (identifier)
+      range: (expression
+        expr: (binary_expression
+          left: (expression
+            expr: (primitive_value
+              primitive: (number)))
+          operator: (inclusive_range)
+          right: (expression
+            expr: (primitive_value
+              primitive: (number)))))
+      body: (block
+        (statement
+          (print_statement
+            arguments: (paren_arguments
+              (expression
+                expr: (identifier))))))))
+  (statement
+    (for_loop
+      cursor: (identifier)
+      range: (expression
+        expr: (binary_expression
+          left: (expression
+            expr: (primitive_value
+              primitive: (number)))
+          operator: (inclusive_range)
+          right: (expression
+            expr: (expression
+              expr: (binary_expression
+                left: (expression
+                  expr: (identifier))
+                operator: (minus)
+                right: (expression
+                  expr: (identifier)))))))
+      body: (block
+        (statement
+          (print_statement
+            arguments: (paren_arguments
+              (expression
+                expr: (identifier)))))))))

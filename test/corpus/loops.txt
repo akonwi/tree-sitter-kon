@@ -18,63 +18,61 @@ do while count == 9 {
 
 (program
   (statement
-        (while_loop
-          condition: (expression
+    (while_loop
+      condition: (expression
+        expr: (binary_expression
+          left: (expression
+            expr: (identifier))
+          operator: (less_than_or_equal)
+          right: (expression
+            expr: (primitive_value
+              primitive: (number)))))
+      body: (block
+        (statement
+          (compound_assignment
+            name: (identifier)
+            operator: (increment)
+            value: (expression
+              expr: (primitive_value
+                primitive: (number))))))))
+  (statement
+    (while_loop
+      condition: (expression
+        expr: (binary_expression
+          left: (expression
+            expr: (identifier))
+          operator: (or)
+          right: (expression
             expr: (binary_expression
               left: (expression
                 expr: (identifier))
-              operator: (less_than_or_equal)
+              operator: (greater_than)
               right: (expression
                 expr: (primitive_value
-                  primitive: (number)))))
-          statement_block: (block
-            (statement
-              (compound_assignment
-                name: (identifier)
-                operator: (increment)
-                value: (expression
-                  expr: (primitive_value
-                    primitive: (number))))))))
-
-	(statement
-		(while_loop
-			condition: (expression expr: (binary_expression
-				left: (expression expr: (identifier))
-				operator: (or)
-				right: (expression expr: (binary_expression
-					left: (expression expr: (identifier))
-					operator: (greater_than)
-					right: (expression expr: (primitive_value primitive: (number)))
-				))
-			))
-			statement_block: (block
-				(statement
-					(compound_assignment
-						name: (identifier)
-						operator: (decrement)
-						value: (expression expr: (primitive_value primitive: (number)))
-					)
-				)
-			)
-		)
-	)
-
+                  primitive: (number)))))))
+      body: (block
+        (statement
+          (compound_assignment
+            name: (identifier)
+            operator: (decrement)
+            value: (expression
+              expr: (primitive_value
+                primitive: (number))))))))
   (statement
-		(while_loop
-			condition: (expression expr: (binary_expression
-				left: (expression expr: (identifier))
-				operator: (equal)
-				right: (expression expr: (primitive_value primitive: (number)))
-			))
-			statement_block: (block
-				(statement
-					(compound_assignment
-						name: (identifier)
-						operator: (decrement)
-						value: (expression expr: (primitive_value primitive: (number)))
-					)
-				)
-			)
-		)
-	)
-)
+    (while_loop
+      condition: (expression
+        expr: (binary_expression
+          left: (expression
+            expr: (identifier))
+          operator: (equal)
+          right: (expression
+            expr: (primitive_value
+              primitive: (number)))))
+      body: (block
+        (statement
+          (compound_assignment
+            name: (identifier)
+            operator: (decrement)
+            value: (expression
+              expr: (primitive_value
+                primitive: (number)))))))))

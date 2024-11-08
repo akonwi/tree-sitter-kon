@@ -631,7 +631,7 @@
         },
         {
           "type": "FIELD",
-          "name": "statement_block",
+          "name": "body",
           "content": {
             "type": "SYMBOL",
             "name": "block"
@@ -668,7 +668,7 @@
         },
         {
           "type": "FIELD",
-          "name": "statement_block",
+          "name": "body",
           "content": {
             "type": "SYMBOL",
             "name": "block"
@@ -736,17 +736,14 @@
               }
             },
             {
-              "type": "BLANK"
+              "type": "FIELD",
+              "name": "body",
+              "content": {
+                "type": "SYMBOL",
+                "name": "block"
+              }
             }
           ]
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "SYMBOL",
-            "name": "block"
-          }
         }
       ]
     },
