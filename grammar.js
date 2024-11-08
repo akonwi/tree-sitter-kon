@@ -175,7 +175,11 @@ module.exports = grammar({
       ),
 
     else_statement: ($) =>
-      seq("else", choice($.if_statement, field("body", $.block))),
+      seq(
+        "else",
+        optional(field("if", $.if_statement)),
+        field("body", $.block),
+      ),
 
     reassignment: ($) =>
       prec(
@@ -232,7 +236,10 @@ module.exports = grammar({
         seq(
           field("target", $.identifier),
           ".",
-          field("member", choice($.identifier, $.function_call)),
+          field(
+            "member",
+            choice($.member_access, $.identifier, $.function_call),
+          ),
         ),
       ),
 

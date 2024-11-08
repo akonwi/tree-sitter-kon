@@ -728,18 +728,25 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "if_statement"
-            },
-            {
               "type": "FIELD",
-              "name": "body",
+              "name": "if",
               "content": {
                 "type": "SYMBOL",
-                "name": "block"
+                "name": "if_statement"
               }
+            },
+            {
+              "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "block"
+          }
         }
       ]
     },
@@ -975,6 +982,10 @@
             "content": {
               "type": "CHOICE",
               "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "member_access"
+                },
                 {
                   "type": "SYMBOL",
                   "name": "identifier"

@@ -157,24 +157,24 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "block",
             "named": true
           }
         ]
+      },
+      "if": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "if_statement",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "if_statement",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -564,6 +564,10 @@
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_access",
             "named": true
           }
         ]

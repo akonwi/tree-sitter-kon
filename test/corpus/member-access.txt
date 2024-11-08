@@ -5,42 +5,43 @@ Member Access
 let initialized: [Str:Bool] = [:]
 initialized.count
 initialized.put("key", true)
+location.point.x
 ---
 
 (program
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			type: (type_declaration
-				type: (map_type
-					key: (str)
-					value: (primitive_type (bool))
-				)
-			)
-			value: (expression expr: (map_value))
-		)
-	)
-
-	(statement
-		(expression expr: (member_access
-			target: (identifier)
-			member: (identifier)
-		))
-	)
-
-	(statement
-	  (expression
-	   expr: (member_access
-			target: (identifier)
-			member: (function_call
-		  	  target: (identifier)
-		  	  arguments: (paren_arguments
-		  	  	(expression expr: (primitive_value primitive: (string)))
-		  	  	(expression expr: (primitive_value primitive: (boolean)))
-		  	  )
-				)
-			)
-		)
-	)
-)
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (map_type
+          key: (str)
+          value: (primitive_type
+            (bool))))
+      value: (expression
+        expr: (map_value))))
+  (statement
+    (expression
+      expr: (member_access
+        target: (identifier)
+        member: (identifier))))
+  (statement
+    (expression
+      expr: (member_access
+        target: (identifier)
+        member: (function_call
+          target: (identifier)
+          arguments: (paren_arguments
+            (expression
+              expr: (primitive_value
+                primitive: (string)))
+            (expression
+              expr: (primitive_value
+                primitive: (boolean))))))))
+  (statement
+    (expression
+      expr: (member_access
+        target: (identifier)
+        member: (member_access
+          target: (identifier)
+          member: (identifier))))))
