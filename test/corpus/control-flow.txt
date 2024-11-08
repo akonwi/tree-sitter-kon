@@ -47,7 +47,7 @@ if !has_served {}
     (if_statement
       condition: (expression
         expr: (unary_expression
-          (bang)
-          (expression
+          operator: (bang)
+          operand: (expression
             expr: (identifier))))
       body: (block))))

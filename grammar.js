@@ -161,6 +161,7 @@ module.exports = grammar({
         "for",
         field("cursor", $.identifier),
         "in",
+        // limit what can be used as a range
         field("range", $.expression),
         field("statement_block", $.block),
       ),
@@ -238,7 +239,10 @@ module.exports = grammar({
     unary_expression: ($) =>
       prec(
         "unary",
-        choice(seq($.minus, $.expression), seq($.bang, $.expression)),
+        choice(
+          seq(field("operator", $.minus), field("operand", $.expression)),
+          seq(field("operator", $.bang), field("operand", $.expression)),
+        ),
       ),
 
     binary_expression: ($) =>

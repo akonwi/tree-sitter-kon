@@ -10,37 +10,40 @@ mut negative = -1
 ---
 
 (program
-      (statement
-        (variable_definition
-          binding: (variable_binding)
-          name: (identifier)
-          type: (type_declaration type: (primitive_type (str)))
-          value: (expression expr: (primitive_value
-            primitive: (string)))))
-      (statement
-        (variable_definition
-          binding: (variable_binding)
-          name: (identifier)
-          type: (type_declaration type: (primitive_type (num)))
-          value: (expression expr: (primitive_value
-            primitive: (number)))))
-      (statement
-        (variable_definition
-          binding: (variable_binding)
-          name: (identifier)
-          value: (expression expr: (primitive_value
-            primitive: (boolean)))))
-
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (primitive_type
+          (str)))
+      value: (expression
+        expr: (primitive_value
+          primitive: (string)))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (primitive_type
+          (num)))
+      value: (expression
+        expr: (primitive_value
+          primitive: (number)))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      value: (expression
+        expr: (primitive_value
+          primitive: (boolean)))))
   (statement
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
       value: (expression
         expr: (unary_expression
-       	  (minus)
-       	  (expression expr: (primitive_value primitive: (number)))
-        )
-      )
-    )
-  )
-)
+          operator: (minus)
+          operand: (expression
+            expr: (primitive_value
+              primitive: (number))))))))
