@@ -38,7 +38,7 @@ let people: [Person] = [
 		(variable_definition
 			binding: (variable_binding)
 			name: (identifier)
-			value: (struct_instance
+			value: (expression expr: (struct_instance
 				name: (identifier)
 				field: (struct_prop_pair
 						name: (identifier)
@@ -51,7 +51,7 @@ let people: [Person] = [
 				field: (struct_prop_pair
 						name: (identifier)
 						value: (boolean)
-				)
+				))
 			)
 		)
 	)
@@ -63,7 +63,7 @@ let people: [Person] = [
       type: (type_declaration
         type: (list_type inner: (identifier))
       )
-      value: (list_value
+      value: (expression expr: (list_value
         inner: (identifier)
         inner: (struct_instance
           name: (identifier)
@@ -79,7 +79,7 @@ let people: [Person] = [
             name: (identifier)
             value: (boolean)
           )
-        )
+        ))
       )
     )
   )

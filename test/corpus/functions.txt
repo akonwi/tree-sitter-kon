@@ -1,5 +1,5 @@
 ==================
-Function definitions
+empty params
 ==================
 
 fn get_hello() {
@@ -7,102 +7,103 @@ fn get_hello() {
 }
 
 get_hello()
+---
 
+(program
+  (statement
+    (function_definition
+      name: (identifier)
+      parameters: (parameters)
+      body: (block
+        (statement
+          (expression
+            expr: (primitive_value
+              primitive: (string)))))))
+  (statement
+    (expression
+      expr: (function_call
+        target: (identifier)
+        arguments: (paren_arguments)))))
+
+==================
+one param with return
+==================
 fn greet(person: Str) Str {
 }
 
 greet("Alice")
 greet(get_hello())
 
+---
+
+(program
+  (statement
+    (function_definition
+      (identifier)
+      (parameters
+        (param_def
+          (identifier)
+          (primitive_type
+            (str))))
+      (return_type
+        (primitive_type
+          (str)))
+      (block)))
+  (statement
+    (expression
+      (function_call
+        (identifier)
+        (paren_arguments
+          (expression
+            (primitive_value
+              (string)))))))
+  (statement
+    (expression
+      (function_call
+        (identifier)
+        (paren_arguments
+          (expression
+            (function_call
+              (identifier)
+              (paren_arguments))))))))
+
+==================
+two params
+==================
+
 fn add(x: Num, y: Num) Num {
 }
+
 
 add(1, 2)
 
 ---
 
 (program
-	(statement
-  	(function_definition
-  		name: (identifier)
-  	 	parameters: (parameters)
-  	  body: (block
-     	  (statement
-     	  	(primitive_value primitive: (string))
-        )
-     	)
-  	)
-  )
-
   (statement
-  	(function_call
-			target: (identifier)
-			arguments: (paren_arguments)
-		)
-  )
-
+    (function_definition
+      (identifier)
+      (parameters
+        (param_def
+          (identifier)
+          (primitive_type
+            (num)))
+        (param_def
+          (identifier)
+          (primitive_type
+            (num))))
+      (return_type
+        (primitive_type
+          (num)))
+      (block)))
   (statement
-  	(function_definition
-  		name: (identifier)
-   		parameters: (parameters
-     		(param_def
-      		name: (identifier)
-        	type: (primitive_type (str))
-      	)
-			)
-    	return_type: (return_type
-				(primitive_type (str))
-			)
-    	body: (block)
-  	)
-  )
-
-  (statement
-  	(function_call
-			target: (identifier)
-			arguments: (paren_arguments
-				(primitive_value primitive: (string))
-			)
-		)
-  )
-
-  (statement
-  	(function_call
-			target: (identifier)
-			arguments: (paren_arguments
-				(function_call
-					target: (identifier)
-					arguments: (paren_arguments)
-				)
-			)
-		)
-  )
-
-  (statement
-  	(function_definition
-  		name: (identifier)
-  	 	parameters: (parameters
-  	  	(param_def
-					name: (identifier)
-					type: (primitive_type (num))
-				)
-				(param_def
-					name: (identifier)
-					type: (primitive_type (num))
-				)
-  	  )
-  	  return_type: (return_type (primitive_type (num)))
-  	  body: (block)
-  	)
-  )
-
-  (statement
-  	(function_call
-			target: (identifier)
-			arguments: (paren_arguments
-				(primitive_value primitive: (number))
-				(primitive_value primitive: (number))
-			)
-		)
-  )
-)
+    (expression
+      (function_call
+        (identifier)
+        (paren_arguments
+          (expression
+            (primitive_value
+              (number)))
+          (expression
+            (primitive_value
+              (number))))))))

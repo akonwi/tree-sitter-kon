@@ -13,42 +13,41 @@ if !has_served {}
 ---
 
 (program
-	(statement
-		(if_statement
-			condition: (binary_expression
-            left: (binary_expression
-              left: (identifier)
+  (statement
+    (if_statement
+      condition: (expression
+        expr: (binary_expression
+          left: (expression
+            expr: (binary_expression
+              left: (expression
+                expr: (identifier))
               operator: (greater_than_or_equal)
-              right: (primitive_value
-                primitive: (number)))
-            operator: (or)
-            right: (identifier))
-          body: (block
-            (statement
-            	(print_statement
-                arguments: (paren_arguments (primitive_value primitive: (string)))
-             	)
-            )
-          )
-          else: (else_statement
-						body: (block
-							(statement
-								(print_statement
-									arguments: (paren_arguments (primitive_value primitive: (string)))
-								)
-							)
-						)
-					)
-		)
-	)
-
-	(statement
-		(if_statement
-			condition: (unary_expression
-				(bang)
-				(identifier)
-			)
-			body: (block)
-		)
-	)
-)
+              right: (expression
+                expr: (primitive_value
+                  primitive: (number)))))
+          operator: (or)
+          right: (expression
+            expr: (identifier))))
+      body: (block
+        (statement
+          (print_statement
+            arguments: (paren_arguments
+              (expression
+                expr: (primitive_value
+                  primitive: (string)))))))
+      else: (else_statement
+        body: (block
+          (statement
+            (print_statement
+              arguments: (paren_arguments
+                (expression
+                  expr: (primitive_value
+                    primitive: (string))))))))))
+  (statement
+    (if_statement
+      condition: (expression
+        expr: (unary_expression
+          (bang)
+          (expression
+            expr: (identifier))))
+      body: (block))))

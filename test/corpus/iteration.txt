@@ -15,15 +15,15 @@ for i in 1...(something - other) {
 	(statement
 		(for_loop
 			cursor: (identifier)
-			range: (binary_expression
-				left: (primitive_value primitive: (number))
+			range: (expression expr: (binary_expression
+				left: (expression expr: (primitive_value primitive: (number)))
 				operator: (inclusive_range)
-				right: (primitive_value primitive: (number))
-			)
+				right: (expression expr: (primitive_value primitive: (number)))
+			))
 			statement_block: (block
 				(statement
 					(print_statement
-						arguments: (paren_arguments (identifier))
+						arguments: (paren_arguments (expression expr: (identifier)))
 					)
 				)
 			)
@@ -33,19 +33,18 @@ for i in 1...(something - other) {
 	(statement
 		(for_loop
 			cursor: (identifier)
-			range: (binary_expression
-				left: (primitive_value primitive: (number))
+			range: (expression expr: (binary_expression
+				left: (expression expr: (primitive_value primitive: (number)))
 				operator: (inclusive_range)
-				right: (binary_expression
-					left: (identifier)
-					operator: (minus)
-					right: (identifier)
-				)
-			)
+				right: (expression
+				  expr: (expression expr: (binary_expression
+						left: (expression expr: (identifier))
+						operator: (minus)
+						right: (expression expr: (identifier)))))))
 			statement_block: (block
 				(statement
 					(print_statement
-						arguments: (paren_arguments (identifier))
+						arguments: (paren_arguments (expression expr: (identifier)))
 					)
 				)
 			)

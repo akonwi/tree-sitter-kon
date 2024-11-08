@@ -18,41 +18,41 @@ do while count == 9 {
 
 (program
   (statement
-		(while_loop
-			condition: (binary_expression
-				left: (identifier)
-				operator: (less_than_or_equal)
-				right: (primitive_value primitive: (number))
-			)
-			statement_block: (block
-				(statement
-					(compound_assignment
-						name: (identifier)
-						operator: (increment)
-						value: (primitive_value primitive: (number))
-					)
-				)
-			)
-		)
-	)
+        (while_loop
+          condition: (expression
+            expr: (binary_expression
+              left: (expression
+                expr: (identifier))
+              operator: (less_than_or_equal)
+              right: (expression
+                expr: (primitive_value
+                  primitive: (number)))))
+          statement_block: (block
+            (statement
+              (compound_assignment
+                name: (identifier)
+                operator: (increment)
+                value: (expression
+                  expr: (primitive_value
+                    primitive: (number))))))))
 
 	(statement
 		(while_loop
-			condition: (binary_expression
-				left: (identifier)
+			condition: (expression expr: (binary_expression
+				left: (expression expr: (identifier))
 				operator: (or)
-				right: (binary_expression
-					left: (identifier)
+				right: (expression expr: (binary_expression
+					left: (expression expr: (identifier))
 					operator: (greater_than)
-					right: (primitive_value primitive: (number))
-				)
-			)
+					right: (expression expr: (primitive_value primitive: (number)))
+				))
+			))
 			statement_block: (block
 				(statement
 					(compound_assignment
 						name: (identifier)
 						operator: (decrement)
-						value: (primitive_value primitive: (number))
+						value: (expression expr: (primitive_value primitive: (number)))
 					)
 				)
 			)
@@ -61,17 +61,17 @@ do while count == 9 {
 
   (statement
 		(while_loop
-			condition: (binary_expression
-				left: (identifier)
+			condition: (expression expr: (binary_expression
+				left: (expression expr: (identifier))
 				operator: (equal)
-				right: (primitive_value primitive: (number))
-			)
+				right: (expression expr: (primitive_value primitive: (number)))
+			))
 			statement_block: (block
 				(statement
 					(compound_assignment
 						name: (identifier)
 						operator: (decrement)
-						value: (primitive_value primitive: (number))
+						value: (expression expr: (primitive_value primitive: (number)))
 					)
 				)
 			)

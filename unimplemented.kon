@@ -19,3 +19,79 @@ enum Payload {
   Plain,
   Object { id: Str }
 }
+
+// programs to use as examples and testing
+2. **Todo List Manager** - Tests structs, lists, and mutations:
+```
+struct Todo {
+    title: Str,
+    completed: Bool
+}
+
+let todos: [Todo] = []
+
+// Add some todos
+todos = [
+    Todo { title: "Buy groceries", completed: false },
+    Todo { title: "Walk dog", completed: true },
+    Todo { title: "Learn Kon", completed: false }
+]
+
+// Print incomplete todos
+for todo in todos {
+    if !todo.completed {
+        print(todo.title)
+    }
+}
+```
+
+3. **Simple Calculator** - Tests function definitions and arithmetic:
+```
+fn add(x: Num, y: Num) {
+    x + y
+}
+
+fn multiply(x: Num, y: Num) {
+    x * y
+}
+
+let result = add(multiply(3, 4), 5) // Should be 17
+print(result)
+```
+
+4. **Temperature Converter** - Tests functions and loop calculations:
+```
+fn fahrenheit_to_celsius(f: Num) {
+    (f - 32) * 5 / 9
+}
+
+// Convert temperatures from 0F to 220F, step by 20
+for temp in 0...220 {
+    if temp % 20 == 0 {
+        let celsius = fahrenheit_to_celsius(temp)
+        print(temp)
+        print(celsius)
+    }
+}
+```
+
+5. **Student Grade Tracker** - Tests structs, lists, and calculations:
+```
+struct Student {
+    name: Str,
+    grade: Num
+}
+
+let students: [Student] = [
+    Student { name: "Alice", grade: 95 },
+    Student { name: "Bob", grade: 82 },
+    Student { name: "Charlie", grade: 88 }
+]
+
+let mut sum = 0
+for student in students {
+    sum =+ student.grade
+}
+
+let average = sum / 3
+print(average)

@@ -33,13 +33,13 @@ module.exports = grammar({
       "or",
       "assignment",
     ],
-    ["function_call", "_expression"],
-    [$._expression, $.struct_instance],
+    ["function_call", "expression"],
+    [$.expression, $.struct_instance],
     [$.type_declaration, $.primitive_type],
   ],
 
   conflicts: ($) => [
-    [$.function_call, $._expression],
+    [$.function_call, $.expression],
     [$._expression_statement, $.binary_expression],
     [$.binary_expression, $.variable_definition],
   ],
@@ -102,7 +102,7 @@ module.exports = grammar({
         field("name", $.identifier),
         field("type", optional($.type_declaration)),
         $._assign,
-        field("value", $._expression),
+        field("value", $.expression),
       ),
 
     type_declaration: ($) =>
@@ -131,7 +131,7 @@ module.exports = grammar({
         ),
       ),
 
-    paren_arguments: ($) => seq("(", sepBy($._expression, ","), ")"),
+    paren_arguments: ($) => seq("(", sepBy($.expression, ","), ")"),
 
     parameters: ($) => seq("(", sepBy($.param_def, ","), ")"),
 
@@ -152,7 +152,7 @@ module.exports = grammar({
       seq(
         optional(field("do", "do")),
         "while",
-        field("condition", $._expression),
+        field("condition", $.expression),
         field("statement_block", $.block),
       ),
 
@@ -161,14 +161,14 @@ module.exports = grammar({
         "for",
         field("cursor", $.identifier),
         "in",
-        field("range", $._expression),
+        field("range", $.expression),
         field("statement_block", $.block),
       ),
 
     if_statement: ($) =>
       seq(
         "if",
-        field("condition", $._expression),
+        field("condition", $.expression),
         field("body", $.block),
         field("else", optional($.else_statement)),
       ),
@@ -182,7 +182,7 @@ module.exports = grammar({
         seq(
           field("name", $.identifier),
           $._assign,
-          field("value", $._expression),
+          field("value", $.expression),
         ),
       ),
     compound_assignment: ($) =>
@@ -191,25 +191,30 @@ module.exports = grammar({
         seq(
           field("name", $.identifier),
           field("operator", choice($.increment, $.decrement)),
-          field("value", $._expression),
+          field("value", $.expression),
         ),
       ),
 
-    _expression_statement: ($) => $._expression,
+    _expression_statement: ($) => $.expression,
 
     //// Expressions
-    _expression: ($) =>
+    expression: ($) =>
       choice(
-        $.identifier,
-        $.primitive_value,
-        $.list_value,
-        $.map_value,
-        $.unary_expression,
-        $.binary_expression,
-        $.member_access,
-        $.function_call,
-        $.struct_instance,
-        seq("(", $._expression, ")"),
+        field(
+          "expr",
+          choice(
+            $.identifier,
+            $.primitive_value,
+            $.list_value,
+            $.map_value,
+            $.unary_expression,
+            $.binary_expression,
+            $.member_access,
+            $.function_call,
+            $.struct_instance,
+          ),
+        ),
+        seq($._left_paren, field("expr", $.expression), $._right_paren),
       ),
 
     struct_instance: ($) =>
@@ -224,7 +229,7 @@ module.exports = grammar({
       prec.right(
         "member",
         seq(
-          field("target", $._expression),
+          field("target", $.identifier),
           ".",
           field("member", choice($.identifier, $.function_call)),
         ),
@@ -233,7 +238,7 @@ module.exports = grammar({
     unary_expression: ($) =>
       prec(
         "unary",
-        choice(seq($.minus, $._expression), seq($.bang, $._expression)),
+        choice(seq($.minus, $.expression), seq($.bang, $.expression)),
       ),
 
     binary_expression: ($) =>
@@ -259,9 +264,9 @@ module.exports = grammar({
             // @ts-expect-error precedence is definitely a string
             precedence,
             seq(
-              field("left", $._expression),
+              field("left", $.expression),
               field("operator", operator),
-              field("right", $._expression),
+              field("right", $.expression),
             ),
           ),
         ),
@@ -349,6 +354,8 @@ module.exports = grammar({
     boolean: ($) => choice("true", "false"),
     _colon: ($) => ":",
     _assign: ($) => "=",
+    _left_paren: ($) => "(",
+    _right_paren: ($) => ")",
     str: ($) => "Str",
     num: ($) => "Num",
     bool: ($) => "Bool",

@@ -13,6 +13,8 @@ too
 
 (program
   (comment)
-  (statement (primitive_value (boolean)))
-  (comment)
-)
+  (statement
+    (expression
+      (primitive_value
+        (boolean))))
+  (comment))
