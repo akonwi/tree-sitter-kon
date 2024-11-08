@@ -356,7 +356,19 @@ module.exports = grammar({
     primitive_value: ($) =>
       field("primitive", choice($.string, $.number, $.boolean)),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    string: ($) => seq('"', /[^"]*/, '"'),
+    string: ($) =>
+      seq(
+        '"',
+        repeat(
+          field(
+            "chunk",
+            choice(alias(/[^"${}]+/, $.string_content), $.string_interpolation),
+          ),
+        ),
+        '"',
+      ),
+    string_interpolation: ($) =>
+      seq("${", field("expression", $.expression), "}"),
     number: ($) => /\d+(\.\d+)?/,
     boolean: ($) => choice("true", "false"),
     _colon: ($) => ":",

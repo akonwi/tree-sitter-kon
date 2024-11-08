@@ -34,7 +34,8 @@ if !has_served {}
             arguments: (paren_arguments
               (expression
                 expr: (primitive_value
-                  primitive: (string)))))))
+                  primitive: (string
+                    chunk: (string_content))))))))
       else: (else_statement
         body: (block
           (statement
@@ -42,7 +43,8 @@ if !has_served {}
               arguments: (paren_arguments
                 (expression
                   expr: (primitive_value
-                    primitive: (string))))))))))
+                    primitive: (string
+                      chunk: (string_content)))))))))))
   (statement
     (if_statement
       condition: (expression

@@ -818,7 +818,38 @@
   {
     "type": "string",
     "named": true,
-    "fields": {}
+    "fields": {
+      "chunk": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "string_content",
+            "named": true
+          },
+          {
+            "type": "string_interpolation",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "string_interpolation",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "struct_definition",
@@ -1078,6 +1109,10 @@
     "named": false
   },
   {
+    "type": "${",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -1243,6 +1278,10 @@
   },
   {
     "type": "str",
+    "named": true
+  },
+  {
+    "type": "string_content",
     "named": true
   },
   {

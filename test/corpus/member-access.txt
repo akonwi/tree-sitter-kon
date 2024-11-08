@@ -34,7 +34,8 @@ location.point.x
           arguments: (paren_arguments
             (expression
               expr: (primitive_value
-                primitive: (string)))
+                primitive: (string
+                  chunk: (string_content))))
             (expression
               expr: (primitive_value
                 primitive: (boolean))))))))

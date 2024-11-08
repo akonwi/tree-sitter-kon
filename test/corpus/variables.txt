@@ -19,7 +19,8 @@ mut negative = -1
           (str)))
       value: (expression
         expr: (primitive_value
-          primitive: (string)))))
+          primitive: (string
+            chunk: (string_content))))))
   (statement
     (variable_definition
       binding: (variable_binding)

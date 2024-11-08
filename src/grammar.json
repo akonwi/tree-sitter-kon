@@ -1974,12 +1974,54 @@
           "value": "\""
         },
         {
-          "type": "PATTERN",
-          "value": "[^\"]*"
+          "type": "REPEAT",
+          "content": {
+            "type": "FIELD",
+            "name": "chunk",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^\"${}]+"
+                  },
+                  "named": true,
+                  "value": "string_content"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "string_interpolation"
+                }
+              ]
+            }
+          }
         },
         {
           "type": "STRING",
           "value": "\""
+        }
+      ]
+    },
+    "string_interpolation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "${"
+        },
+        {
+          "type": "FIELD",
+          "name": "expression",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },

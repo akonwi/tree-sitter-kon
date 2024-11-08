@@ -10,61 +10,50 @@ let booleans: [Bool] = [true, false]
 ---
 
 (program
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			type: (type_declaration
-				type: (list_type
-					inner: (primitive_type (num))
-				)
-			)
-			value: (expression expr: (list_value))
-		)
-	)
-
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			value: (expression expr: (list_value
-			  inner: (number)
-			  inner: (number)
-			  inner: (number)
-			))
-		)
-	)
-
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			type: (type_declaration
-				type: (list_type
-					inner: (primitive_type (str))
-				)
-			)
-			value: (expression expr: (list_value
-				inner: (string)
-				inner: (string)
-				inner: (string)
-			))
-		)
-	)
-
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			type: (type_declaration
-				type: (list_type
-					inner: (primitive_type (bool))
-				)
-			)
-			value: (expression expr: (list_value
-				inner: (boolean)
-				inner: (boolean)
-			))
-		)
-	)
-)
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (list_type
+          inner: (primitive_type
+            (num))))
+      value: (expression
+        expr: (list_value))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      value: (expression
+        expr: (list_value
+          inner: (number)
+          inner: (number)
+          inner: (number)))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (list_type
+          inner: (primitive_type
+            (str))))
+      value: (expression
+        expr: (list_value
+          inner: (string
+            chunk: (string_content))
+          inner: (string
+            chunk: (string_content))
+          inner: (string
+            chunk: (string_content))))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (list_type
+          inner: (primitive_type
+            (bool))))
+      value: (expression
+        expr: (list_value
+          inner: (boolean)
+          inner: (boolean))))))

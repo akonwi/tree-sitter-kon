@@ -7,40 +7,33 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
 ---
 
 (program
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			type: (type_declaration
-				type: (map_type
-					key: (str)
-					value: (primitive_type (num))
-				)
-			)
-			value: (expression expr: (map_value))
-		)
-	)
-
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			type: (type_declaration
-				type: (map_type
-					key: (str)
-					value: (primitive_type (bool))
-				)
-			)
-			value: (expression expr: (map_value
-				(map_pair
-					key: (string)
-					value: (boolean)
-				)
-				(map_pair
-					key: (string)
-					value: (boolean)
-				)
-			))
-		)
-	)
-)
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (map_type
+          key: (str)
+          value: (primitive_type
+            (num))))
+      value: (expression
+        expr: (map_value))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      type: (type_declaration
+        type: (map_type
+          key: (str)
+          value: (primitive_type
+            (bool))))
+      value: (expression
+        expr: (map_value
+          (map_pair
+            key: (string
+              chunk: (string_content))
+            value: (boolean))
+          (map_pair
+            key: (string
+              chunk: (string_content))
+            value: (boolean)))))))

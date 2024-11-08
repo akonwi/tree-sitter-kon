@@ -16,71 +16,57 @@ let people: [Person] = [
 ---
 
 (program
-	(statement
-		(struct_definition
-			name: (identifier)
-			field: (struct_property
-				name: (identifier)
-				type: (primitive_type (str))
-			)
-			field: (struct_property
-				name: (identifier)
-				type: (primitive_type (num))
-			)
-			field: (struct_property
-				name: (identifier)
-				type: (primitive_type (bool))
-			)
-		)
-	)
-
-	(statement
-		(variable_definition
-			binding: (variable_binding)
-			name: (identifier)
-			value: (expression expr: (struct_instance
-				name: (identifier)
-				field: (struct_prop_pair
-						name: (identifier)
-						value: (string)
-				)
-				field: (struct_prop_pair
-						name: (identifier)
-						value: (number)
-				)
-				field: (struct_prop_pair
-						name: (identifier)
-						value: (boolean)
-				))
-			)
-		)
-	)
-
-	(statement
+  (statement
+    (struct_definition
+      name: (identifier)
+      field: (struct_property
+        name: (identifier)
+        type: (primitive_type
+          (str)))
+      field: (struct_property
+        name: (identifier)
+        type: (primitive_type
+          (num)))
+      field: (struct_property
+        name: (identifier)
+        type: (primitive_type
+          (bool)))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      value: (expression
+        expr: (struct_instance
+          name: (identifier)
+          field: (struct_prop_pair
+            name: (identifier)
+            value: (string
+              chunk: (string_content)))
+          field: (struct_prop_pair
+            name: (identifier)
+            value: (number))
+          field: (struct_prop_pair
+            name: (identifier)
+            value: (boolean))))))
+  (statement
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
       type: (type_declaration
-        type: (list_type inner: (identifier))
-      )
-      value: (expression expr: (list_value
-        inner: (identifier)
-        inner: (struct_instance
-          name: (identifier)
-          field: (struct_prop_pair
+        type: (list_type
+          inner: (identifier)))
+      value: (expression
+        expr: (list_value
+          inner: (identifier)
+          inner: (struct_instance
             name: (identifier)
-            value: (string)
-          )
-          field: (struct_prop_pair
-            name: (identifier)
-            value: (number)
-          )
-          field: (struct_prop_pair
-            name: (identifier)
-            value: (boolean)
-          )
-        ))
-      )
-    )
-  )
-)
+            field: (struct_prop_pair
+              name: (identifier)
+              value: (string
+                chunk: (string_content)))
+            field: (struct_prop_pair
+              name: (identifier)
+              value: (number))
+            field: (struct_prop_pair
+              name: (identifier)
+              value: (boolean))))))))

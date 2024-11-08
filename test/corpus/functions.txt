@@ -18,7 +18,8 @@ get_hello()
         (statement
           (expression
             expr: (primitive_value
-              primitive: (string)))))))
+              primitive: (string
+                chunk: (string_content))))))))
   (statement
     (expression
       expr: (function_call
@@ -29,6 +30,7 @@ get_hello()
 one param with return
 ==================
 fn greet(person: Str) Str {
+  "Hello, ${person}!"
 }
 
 greet("Alice")
@@ -48,7 +50,16 @@ greet(get_hello())
       (return_type
         (primitive_type
           (str)))
-      (block)))
+      (block
+        (statement
+          (expression
+            (primitive_value
+              (string
+                (string_content)
+                (string_interpolation
+                  (expression
+                    (identifier)))
+                (string_content))))))))
   (statement
     (expression
       (function_call
@@ -56,7 +67,8 @@ greet(get_hello())
         (paren_arguments
           (expression
             (primitive_value
-              (string)))))))
+              (string
+                (string_content))))))))
   (statement
     (expression
       (function_call
