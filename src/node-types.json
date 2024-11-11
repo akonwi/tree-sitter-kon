@@ -613,16 +613,17 @@
   {
     "type": "parameters",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "param_def",
-          "named": true
-        }
-      ]
+    "fields": {
+      "parameter": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "param_def",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

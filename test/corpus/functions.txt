@@ -2,7 +2,7 @@
 empty params
 ==================
 
-fn get_hello() {
+fn get_hello() Str {
   "Hello, world!"
 }
 
@@ -14,6 +14,9 @@ get_hello()
     (function_definition
       name: (identifier)
       parameters: (parameters)
+      return_type: (return_type
+        (primitive_type
+          (str)))
       body: (block
         (statement
           (expression

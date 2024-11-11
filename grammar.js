@@ -133,7 +133,8 @@ module.exports = grammar({
 
     paren_arguments: ($) => seq("(", sepBy($.expression, ","), ")"),
 
-    parameters: ($) => seq("(", sepBy($.param_def, ","), ")"),
+    parameters: ($) =>
+      seq("(", sepBy(field("parameter", $.param_def), ","), ")"),
 
     param_def: ($) =>
       seq(
