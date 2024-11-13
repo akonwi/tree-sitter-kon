@@ -16,30 +16,6 @@ enum Payload {
 }
 
 // programs to use as examples and testing
-2. **Todo List Manager** - Tests structs, lists, and mutations:
-```
-struct Todo {
-    title: Str,
-    completed: Bool
-}
-
-let todos: [Todo] = []
-
-// Add some todos
-todos = [
-    Todo { title: "Buy groceries", completed: false },
-    Todo { title: "Walk dog", completed: true },
-    Todo { title: "Learn Kon", completed: false }
-]
-
-// Print incomplete todos
-for todo in todos {
-    if !todo.completed {
-        print(todo.title)
-    }
-}
-```
-
 3. **Simple Calculator** - Tests function definitions and arithmetic:
 ```
 fn add(x: Num, y: Num) {
@@ -90,3 +66,6 @@ for student in students {
 
 let average = sum / 3
 print(average)
+```
+
+guard/unless operator

@@ -14,8 +14,8 @@ get_hello()
     (function_definition
       name: (identifier)
       parameters: (parameters)
-      return_type: (return_type
-        (primitive_type
+      return_type: (type_declaration
+        type: (primitive_type
           (str)))
       body: (block
         (statement
@@ -48,9 +48,10 @@ greet(get_hello())
       (parameters
         (param_def
           (identifier)
-          (primitive_type
-            (str))))
-      (return_type
+          (type_declaration
+            (primitive_type
+              (str)))))
+      (type_declaration
         (primitive_type
           (str)))
       (block
@@ -101,13 +102,15 @@ add(1, 2)
       (parameters
         (param_def
           (identifier)
-          (primitive_type
-            (num)))
+          (type_declaration
+            (primitive_type
+              (num))))
         (param_def
           (identifier)
-          (primitive_type
-            (num))))
-      (return_type
+          (type_declaration
+            (primitive_type
+              (num)))))
+      (type_declaration
         (primitive_type
           (num)))
       (block)))

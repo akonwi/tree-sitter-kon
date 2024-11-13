@@ -367,12 +367,12 @@
           }
         ]
       },
-      "return_type": {
+      "return": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
-            "type": "return_type",
+            "type": "type_declaration",
             "named": true
           }
         ]
@@ -603,7 +603,7 @@
         "required": true,
         "types": [
           {
-            "type": "primitive_type",
+            "type": "type_declaration",
             "named": true
           }
         ]
@@ -629,16 +629,17 @@
   {
     "type": "paren_arguments",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
+    "fields": {
+      "argument": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -744,21 +745,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "return_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "primitive_type",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -982,6 +968,10 @@
           },
           {
             "type": "primitive_type",
+            "named": true
+          },
+          {
+            "type": "void",
             "named": true
           }
         ]
@@ -1292,6 +1282,10 @@
   {
     "type": "true",
     "named": false
+  },
+  {
+    "type": "void",
+    "named": true
   },
   {
     "type": "while",

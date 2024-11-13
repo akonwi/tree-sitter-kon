@@ -35,7 +35,6 @@ module.exports = grammar({
     ],
     ["function_call", "expression"],
     [$.expression, $.struct_instance],
-    [$.type_declaration, $.primitive_type],
   ],
 
   conflicts: ($) => [
@@ -96,19 +95,16 @@ module.exports = grammar({
     enum_struct_variant: ($) =>
       seq(field("name", $.identifier), "{", sepBy($.struct_property, ","), "}"),
 
+    type_declaration: ($) =>
+      field("type", choice($.list_type, $.map_type, $.primitive_type, $.void)),
+
     variable_definition: ($) =>
       seq(
         field("binding", $.variable_binding),
         field("name", $.identifier),
-        field("type", optional($.type_declaration)),
+        optional(seq($._colon, field("type", $.type_declaration))),
         $._assign,
         field("value", $.expression),
-      ),
-
-    type_declaration: ($) =>
-      seq(
-        $._colon,
-        field("type", choice($.list_type, $.map_type, $.primitive_type)),
       ),
 
     variable_binding: ($) => choice("let", "mut"),
@@ -118,7 +114,7 @@ module.exports = grammar({
         "fn",
         field("name", $.identifier),
         field("parameters", $.parameters),
-        field("return_type", optional($.return_type)),
+        field("return", $.type_declaration),
         field("body", $.block),
       ),
 
@@ -131,7 +127,8 @@ module.exports = grammar({
         ),
       ),
 
-    paren_arguments: ($) => seq("(", sepBy($.expression, ","), ")"),
+    paren_arguments: ($) =>
+      seq("(", sepBy(field("argument", $.expression), ","), ")"),
 
     parameters: ($) =>
       seq("(", sepBy(field("parameter", $.param_def), ","), ")"),
@@ -140,10 +137,8 @@ module.exports = grammar({
       seq(
         field("name", $.identifier),
         $._colon,
-        field("type", $.primitive_type),
+        field("type", $.type_declaration),
       ),
-
-    return_type: ($) => $.primitive_type,
 
     block: ($) => seq("{", optional(repeat($.statement)), "}"),
 
@@ -379,6 +374,7 @@ module.exports = grammar({
     str: ($) => "Str",
     num: ($) => "Num",
     bool: ($) => "Bool",
+    void: ($) => "Void",
     comment: ($) =>
       token(
         choice(seq("//", /[^\n]*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*\//)),
