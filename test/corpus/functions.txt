@@ -14,7 +14,7 @@ get_hello()
     (function_definition
       name: (identifier)
       parameters: (parameters)
-      return_type: (type_declaration
+      return: (type_declaration
         type: (primitive_type
           (str)))
       body: (block

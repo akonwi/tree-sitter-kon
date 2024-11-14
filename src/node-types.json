@@ -232,10 +232,6 @@
             "named": true
           },
           {
-            "type": "expression",
-            "named": true
-          },
-          {
             "type": "function_call",
             "named": true
           },
@@ -253,6 +249,10 @@
           },
           {
             "type": "member_access",
+            "named": true
+          },
+          {
+            "type": "paren_expression",
             "named": true
           },
           {
@@ -633,6 +633,22 @@
       "argument": {
         "multiple": true,
         "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "paren_expression",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "expression",

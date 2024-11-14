@@ -47,7 +47,7 @@
     "prestart": "tree-sitter build --wasm",
     "start": "npm run build && tree-sitter playground",
     "test": "node --test bindings/node/*_test.js",
-    "test:parser:update": "tree-sitter test --u",
+    "test:parser:update": "tree-sitter test --update",
     "test:parser": "tree-sitter test"
   },
   "tree-sitter": [

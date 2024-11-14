@@ -874,30 +874,34 @@
               {
                 "type": "SYMBOL",
                 "name": "struct_instance"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "paren_expression"
               }
             ]
           }
+        }
+      ]
+    },
+    "paren_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_left_paren"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_left_paren"
-            },
-            {
-              "type": "FIELD",
-              "name": "expr",
-              "content": {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_right_paren"
-            }
-          ]
+          "type": "FIELD",
+          "name": "expr",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_right_paren"
         }
       ]
     },

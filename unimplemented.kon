@@ -15,21 +15,6 @@ enum Payload {
   Object { id: Str }
 }
 
-// programs to use as examples and testing
-3. **Simple Calculator** - Tests function definitions and arithmetic:
-```
-fn add(x: Num, y: Num) {
-    x + y
-}
-
-fn multiply(x: Num, y: Num) {
-    x * y
-}
-
-let result = add(multiply(3, 4), 5) // Should be 17
-print(result)
-```
-
 4. **Temperature Converter** - Tests functions and loop calculations:
 ```
 fn fahrenheit_to_celsius(f: Num) {

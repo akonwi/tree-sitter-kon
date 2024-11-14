@@ -32,7 +32,7 @@ if !has_served {}
         (statement
           (print_statement
             arguments: (paren_arguments
-              (expression
+              argument: (expression
                 expr: (primitive_value
                   primitive: (string
                     chunk: (string_content))))))))
@@ -41,7 +41,7 @@ if !has_served {}
           (statement
             (print_statement
               arguments: (paren_arguments
-                (expression
+                argument: (expression
                   expr: (primitive_value
                     primitive: (string
                       chunk: (string_content)))))))))))

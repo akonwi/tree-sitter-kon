@@ -32,11 +32,11 @@ location.point.x
         member: (function_call
           target: (identifier)
           arguments: (paren_arguments
-            (expression
+            argument: (expression
               expr: (primitive_value
                 primitive: (string
                   chunk: (string_content))))
-            (expression
+            argument: (expression
               expr: (primitive_value
                 primitive: (boolean))))))))
   (statement

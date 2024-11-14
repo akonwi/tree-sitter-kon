@@ -28,7 +28,7 @@ for i in 1...(something - other) {
         (statement
           (print_statement
             arguments: (paren_arguments
-              (expression
+              argument: (expression
                 expr: (identifier))))))))
   (statement
     (for_loop
@@ -40,16 +40,17 @@ for i in 1...(something - other) {
               primitive: (number)))
           operator: (inclusive_range)
           right: (expression
-            expr: (expression
-              expr: (binary_expression
-                left: (expression
-                  expr: (identifier))
-                operator: (minus)
-                right: (expression
-                  expr: (identifier)))))))
+            expr: (paren_expression
+              expr: (expression
+                expr: (binary_expression
+                  left: (expression
+                    expr: (identifier))
+                  operator: (minus)
+                  right: (expression
+                    expr: (identifier))))))))
       body: (block
         (statement
           (print_statement
             arguments: (paren_arguments
-              (expression
+              argument: (expression
                 expr: (identifier)))))))))

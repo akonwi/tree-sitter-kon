@@ -209,10 +209,12 @@ module.exports = grammar({
             $.member_access,
             $.function_call,
             $.struct_instance,
+            $.paren_expression,
           ),
         ),
-        seq($._left_paren, field("expr", $.expression), $._right_paren),
       ),
+    paren_expression: ($) =>
+      seq($._left_paren, field("expr", $.expression), $._right_paren),
 
     struct_instance: ($) =>
       seq(
