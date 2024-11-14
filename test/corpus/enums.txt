@@ -7,14 +7,24 @@ enum Payload {
   Rich
 }
 
+let data = Payload::Plain
+
 ---
 
 (program
   (statement
     (enum_definition
       name: (identifier)
-      (enum_variant variant: (identifier))
-      (enum_variant variant: (identifier))
-    )
-  )
-)
+      variant: (enum_variant
+        variant: (identifier))
+      variant: (enum_variant
+        variant: (identifier))))
+  (statement
+    (variable_definition
+      binding: (variable_binding)
+      name: (identifier)
+      value: (expression
+        expr: (static_member_access
+          target: (identifier)
+          (double_colon)
+          member: (identifier))))))

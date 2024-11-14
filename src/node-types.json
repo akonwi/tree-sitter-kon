@@ -190,17 +190,17 @@
             "named": true
           }
         ]
+      },
+      "variant": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "enum_variant",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "enum_variant",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -257,6 +257,10 @@
           },
           {
             "type": "primitive_value",
+            "named": true
+          },
+          {
+            "type": "static_member_access",
             "named": true
           },
           {
@@ -819,6 +823,50 @@
     }
   },
   {
+    "type": "static_member_access",
+    "named": true,
+    "fields": {
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "static_member_access",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "double_colon",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "string",
     "named": true,
     "fields": {
@@ -974,6 +1022,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
           {
             "type": "list_type",
             "named": true
@@ -1178,6 +1230,10 @@
   {
     "type": "do",
     "named": false
+  },
+  {
+    "type": "double_colon",
+    "named": true
   },
   {
     "type": "else",

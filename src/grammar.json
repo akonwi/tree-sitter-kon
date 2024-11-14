@@ -172,8 +172,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "enum_variant"
+              "type": "FIELD",
+              "name": "variant",
+              "content": {
+                "type": "SYMBOL",
+                "name": "enum_variant"
+              }
             },
             {
               "type": "REPEAT",
@@ -185,8 +189,12 @@
                     "value": ","
                   },
                   {
-                    "type": "SYMBOL",
-                    "name": "enum_variant"
+                    "type": "FIELD",
+                    "name": "variant",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "enum_variant"
+                    }
                   }
                 ]
               }
@@ -287,6 +295,10 @@
           {
             "type": "SYMBOL",
             "name": "void"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
           }
         ]
       }
@@ -869,6 +881,10 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "static_member_access"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "function_call"
               },
               {
@@ -994,6 +1010,48 @@
                 {
                   "type": "SYMBOL",
                   "name": "member_access"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "function_call"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "static_member_access": {
+      "type": "PREC_RIGHT",
+      "value": "member",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "target",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "double_colon"
+          },
+          {
+            "type": "FIELD",
+            "name": "member",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "static_member_access"
                 },
                 {
                   "type": "SYMBOL",
@@ -2057,6 +2115,10 @@
     "_colon": {
       "type": "STRING",
       "value": ":"
+    },
+    "double_colon": {
+      "type": "STRING",
+      "value": "::"
     },
     "_assign": {
       "type": "STRING",

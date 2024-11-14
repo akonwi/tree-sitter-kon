@@ -15,42 +15,4 @@ enum Payload {
   Object { id: Str }
 }
 
-4. **Temperature Converter** - Tests functions and loop calculations:
-```
-fn fahrenheit_to_celsius(f: Num) {
-    (f - 32) * 5 / 9
-}
-
-// Convert temperatures from 0F to 220F, step by 20
-for temp in 0...220 {
-    if temp % 20 == 0 {
-        let celsius = fahrenheit_to_celsius(temp)
-        print(temp)
-        print(celsius)
-    }
-}
-```
-
-5. **Student Grade Tracker** - Tests structs, lists, and calculations:
-```
-struct Student {
-    name: Str,
-    grade: Num
-}
-
-let students: [Student] = [
-    Student { name: "Alice", grade: 95 },
-    Student { name: "Bob", grade: 82 },
-    Student { name: "Charlie", grade: 88 }
-]
-
-let mut sum = 0
-for student in students {
-    sum =+ student.grade
-}
-
-let average = sum / 3
-print(average)
-```
-
 guard/unless operator

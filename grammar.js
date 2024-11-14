@@ -85,7 +85,7 @@ module.exports = grammar({
         "enum",
         field("name", $.identifier),
         "{",
-        sepBy1($.enum_variant, ","),
+        sepBy1(field("variant", $.enum_variant), ","),
         "}",
       ),
 
@@ -96,7 +96,10 @@ module.exports = grammar({
       seq(field("name", $.identifier), "{", sepBy($.struct_property, ","), "}"),
 
     type_declaration: ($) =>
-      field("type", choice($.list_type, $.map_type, $.primitive_type, $.void)),
+      field(
+        "type",
+        choice($.list_type, $.map_type, $.primitive_type, $.void, $.identifier),
+      ),
 
     variable_definition: ($) =>
       seq(
@@ -207,6 +210,7 @@ module.exports = grammar({
             $.unary_expression,
             $.binary_expression,
             $.member_access,
+            $.static_member_access,
             $.function_call,
             $.struct_instance,
             $.paren_expression,
@@ -233,6 +237,19 @@ module.exports = grammar({
           field(
             "member",
             choice($.member_access, $.identifier, $.function_call),
+          ),
+        ),
+      ),
+
+    static_member_access: ($) =>
+      prec.right(
+        "member",
+        seq(
+          field("target", $.identifier),
+          $.double_colon,
+          field(
+            "member",
+            choice($.static_member_access, $.identifier, $.function_call),
           ),
         ),
       ),
@@ -370,6 +387,7 @@ module.exports = grammar({
     number: ($) => /\d+(\.\d+)?/,
     boolean: ($) => choice("true", "false"),
     _colon: ($) => ":",
+    double_colon: ($) => "::",
     _assign: ($) => "=",
     _left_paren: ($) => "(",
     _right_paren: ($) => ")",
