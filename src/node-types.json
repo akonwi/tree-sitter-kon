@@ -981,6 +981,10 @@
             "named": true
           },
           {
+            "type": "static_member_access",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           }
@@ -1006,6 +1010,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
           {
             "type": "primitive_type",
             "named": true

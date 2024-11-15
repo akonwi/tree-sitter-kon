@@ -77,7 +77,7 @@ module.exports = grammar({
       seq(
         field("name", $.identifier),
         $._colon,
-        field("type", $.primitive_type),
+        field("type", choice($.primitive_type, $.identifier)),
       ),
 
     enum_definition: ($) =>
@@ -366,7 +366,11 @@ module.exports = grammar({
       seq(
         field("name", $.identifier),
         ":",
-        field("value", choice($.string, $.number, $.boolean)),
+        // todo?: just allow expressions
+        field(
+          "value",
+          choice($.string, $.number, $.boolean, $.static_member_access),
+        ),
       ),
     primitive_value: ($) =>
       field("primitive", choice($.string, $.number, $.boolean)),

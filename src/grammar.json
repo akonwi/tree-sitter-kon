@@ -143,8 +143,17 @@
           "type": "FIELD",
           "name": "type",
           "content": {
-            "type": "SYMBOL",
-            "name": "primitive_type"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "primitive_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
           }
         }
       ]
@@ -2005,6 +2014,10 @@
               {
                 "type": "SYMBOL",
                 "name": "boolean"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "static_member_access"
               }
             ]
           }
