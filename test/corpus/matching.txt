@@ -1,0 +1,41 @@
+==================
+Match expressions
+==================
+
+match payload {
+  Plain => print("Plain text"),
+  Rich => {
+    // block
+    print("Rich text")
+  }
+}
+
+---
+
+(program
+  (statement
+    (expression
+      (match_expression
+        (expression
+          (identifier))
+        (match_case
+          (identifier)
+          (expression
+            (function_call
+              (identifier)
+              (paren_arguments
+                (expression
+                  (primitive_value
+                    (string
+                      (string_content))))))))
+        (match_case
+          (identifier)
+          (block
+            (comment)
+            (statement
+              (print_statement
+                (paren_arguments
+                  (expression
+                    (primitive_value
+                      (string
+                        (string_content)))))))))))))

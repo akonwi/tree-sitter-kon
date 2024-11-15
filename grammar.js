@@ -214,11 +214,28 @@ module.exports = grammar({
             $.function_call,
             $.struct_instance,
             $.paren_expression,
+            $.match_expression,
           ),
         ),
       ),
     paren_expression: ($) =>
       seq($._left_paren, field("expr", $.expression), $._right_paren),
+
+    match_expression: ($) =>
+      seq(
+        "match",
+        field("expr", $.expression),
+        $._left_brace,
+        sepBy1(field("case", $.match_case), $._comma),
+        $._right_brace,
+      ),
+
+    match_case: ($) =>
+      seq(
+        field("pattern", $.identifier),
+        "=>",
+        field("body", choice($.block, $.expression)),
+      ),
 
     struct_instance: ($) =>
       seq(
@@ -395,6 +412,9 @@ module.exports = grammar({
     _assign: ($) => "=",
     _left_paren: ($) => "(",
     _right_paren: ($) => ")",
+    _left_brace: ($) => "{",
+    _right_brace: ($) => "}",
+    _comma: ($) => ",",
     str: ($) => "Str",
     num: ($) => "Num",
     bool: ($) => "Bool",
