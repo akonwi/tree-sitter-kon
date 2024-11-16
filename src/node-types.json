@@ -581,7 +581,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "static_member_access",
             "named": true
           }
         ]

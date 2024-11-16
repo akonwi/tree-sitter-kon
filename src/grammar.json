@@ -1000,7 +1000,7 @@
           "name": "pattern",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "static_member_access"
           }
         },
         {

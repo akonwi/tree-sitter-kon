@@ -3,8 +3,8 @@ Match expressions
 ==================
 
 match payload {
-  Plain => print("Plain text"),
-  Rich => {
+  Payload::Plain => print("Plain text"),
+  Payload::Rich => {
     // block
     print("Rich text")
   }
@@ -19,7 +19,10 @@ match payload {
         (expression
           (identifier))
         (match_case
-          (identifier)
+          (static_member_access
+            (identifier)
+            (double_colon)
+            (identifier))
           (expression
             (function_call
               (identifier)
@@ -29,7 +32,10 @@ match payload {
                     (string
                       (string_content))))))))
         (match_case
-          (identifier)
+          (static_member_access
+            (identifier)
+            (double_colon)
+            (identifier))
           (block
             (comment)
             (statement

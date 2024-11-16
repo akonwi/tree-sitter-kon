@@ -232,7 +232,7 @@ module.exports = grammar({
 
     match_case: ($) =>
       seq(
-        field("pattern", $.identifier),
+        field("pattern", $.static_member_access),
         "=>",
         field("body", choice($.block, $.expression)),
       ),
