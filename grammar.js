@@ -41,6 +41,7 @@ module.exports = grammar({
     [$.function_call, $.expression],
     [$._expression_statement, $.binary_expression],
     [$.binary_expression, $.variable_definition],
+    [$.anonymous_parameter, $.expression],
   ],
 
   extras: ($) => [/\s/, $.comment],
@@ -119,6 +120,27 @@ module.exports = grammar({
         field("parameters", $.parameters),
         field("return", $.type_declaration),
         field("body", $.block),
+      ),
+
+    anonymous_function: ($) =>
+      seq(
+        seq(
+          $._left_paren,
+          sepBy(field("parameter", $.anonymous_parameter), ","),
+          $._right_paren,
+        ),
+        field("return", optional($.type_declaration)),
+        field("body", $.block),
+      ),
+
+    anonymous_parameter: ($) =>
+      choice(
+        seq(
+          field("name", $.identifier),
+          $._colon,
+          field("type", $.type_declaration),
+        ),
+        field("name", $.identifier),
       ),
 
     function_call: ($) =>
@@ -215,6 +237,7 @@ module.exports = grammar({
             $.struct_instance,
             $.paren_expression,
             $.match_expression,
+            $.anonymous_function,
           ),
         ),
       ),

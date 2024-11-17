@@ -125,3 +125,76 @@ add(1, 2)
           (expression
             (primitive_value
               (number))))))))
+
+==================
+anonymous functions
+==================
+() {
+  print("Hello, anon!")
+}
+
+(n: Num) Num {
+  do_stuff()
+  n + 1
+}
+
+list.map((n) { n + 1 })
+---
+
+(program
+  (statement
+    (expression
+      (anonymous_function
+        (block
+          (statement
+            (print_statement
+              (paren_arguments
+                (expression
+                  (primitive_value
+                    (string
+                      (string_content)))))))))))
+  (statement
+    (expression
+      (anonymous_function
+        (identifier)
+        (type_declaration
+          (primitive_type
+            (num)))
+        (type_declaration
+          (primitive_type
+            (num)))
+        (block
+          (statement
+            (expression
+              (function_call
+                (identifier)
+                (paren_arguments))))
+          (statement
+            (expression
+              (binary_expression
+                (expression
+                  (identifier))
+                (plus)
+                (expression
+                  (primitive_value
+                    (number))))))))))
+  (statement
+    (expression
+      (member_access
+        (identifier)
+        (function_call
+          (identifier)
+          (paren_arguments
+            (expression
+              (anonymous_function
+                (identifier)
+                (block
+                  (statement
+                    (expression
+                      (binary_expression
+                        (expression
+                          (identifier))
+                        (plus)
+                        (expression
+                          (primitive_value
+                            (number)))))))))))))))
