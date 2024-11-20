@@ -2,7 +2,7 @@
 empty params
 ==================
 
-fn get_hello() Str {
+fn get_hello() {
   "Hello, world!"
 }
 
@@ -14,9 +14,6 @@ get_hello()
     (function_definition
       name: (identifier)
       parameters: (parameters)
-      return: (type_declaration
-        type: (primitive_type
-          (str)))
       body: (block
         (statement
           (expression
@@ -156,10 +153,11 @@ list.map((n) { n + 1 })
   (statement
     (expression
       (anonymous_function
-        (identifier)
-        (type_declaration
-          (primitive_type
-            (num)))
+        (anonymous_parameter
+          (identifier)
+          (type_declaration
+            (primitive_type
+              (num))))
         (type_declaration
           (primitive_type
             (num)))
@@ -187,7 +185,8 @@ list.map((n) { n + 1 })
           (paren_arguments
             (expression
               (anonymous_function
-                (identifier)
+                (anonymous_parameter
+                  (identifier))
                 (block
                   (statement
                     (expression

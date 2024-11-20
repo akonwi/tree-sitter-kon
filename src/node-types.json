@@ -443,7 +443,7 @@
       },
       "return": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "type_declaration",

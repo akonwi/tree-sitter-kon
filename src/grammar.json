@@ -407,12 +407,20 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "return",
-          "content": {
-            "type": "SYMBOL",
-            "name": "type_declaration"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "return",
+              "content": {
+                "type": "SYMBOL",
+                "name": "type_declaration"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "FIELD",

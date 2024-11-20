@@ -118,7 +118,7 @@ module.exports = grammar({
         "fn",
         field("name", $.identifier),
         field("parameters", $.parameters),
-        field("return", $.type_declaration),
+        optional(field("return", $.type_declaration)),
         field("body", $.block),
       ),
 
