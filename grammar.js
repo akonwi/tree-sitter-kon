@@ -51,7 +51,7 @@ module.exports = grammar({
 
     statement: ($) =>
       choice(
-        $.print_statement,
+        $.print_statement, // remove
         $.while_loop,
         $.if_statement,
         $.for_loop,
@@ -317,7 +317,6 @@ module.exports = grammar({
           [$.less_than_or_equal, "comparison"],
           [$.equal, "comparison"],
           [$.not_equal, "comparison"],
-          [$.bang, "comparison"],
           [$.inclusive_range, "range"],
           [$.or, "or"],
           [$.and, "and"],
@@ -349,7 +348,7 @@ module.exports = grammar({
     and: ($) => "and",
     or: ($) => "or",
     bang: ($) => "!",
-    inclusive_range: ($) => "...",
+    inclusive_range: ($) => "..",
 
     // assignment operators
     increment: ($) => "=+",

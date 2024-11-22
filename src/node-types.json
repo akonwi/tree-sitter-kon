@@ -84,10 +84,6 @@
             "named": true
           },
           {
-            "type": "bang",
-            "named": true
-          },
-          {
             "type": "divide",
             "named": true
           },

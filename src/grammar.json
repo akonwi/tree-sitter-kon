@@ -1724,39 +1724,6 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": "comparison",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "left",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "expression"
-                }
-              },
-              {
-                "type": "FIELD",
-                "name": "operator",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "bang"
-                }
-              },
-              {
-                "type": "FIELD",
-                "name": "right",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "expression"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "PREC_LEFT",
           "value": "range",
           "content": {
             "type": "SEQ",
@@ -1914,7 +1881,7 @@
     },
     "inclusive_range": {
       "type": "STRING",
-      "value": "..."
+      "value": ".."
     },
     "increment": {
       "type": "STRING",
