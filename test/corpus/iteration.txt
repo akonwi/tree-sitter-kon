@@ -26,10 +26,12 @@ for i in 1..(something - other) {
               primitive: (number)))))
       body: (block
         (statement
-          (print_statement
-            arguments: (paren_arguments
-              argument: (expression
-                expr: (identifier))))))))
+          (expression
+            expr: (function_call
+              target: (identifier)
+              arguments: (paren_arguments
+                argument: (expression
+                  expr: (identifier)))))))))
   (statement
     (for_loop
       cursor: (identifier)
@@ -50,7 +52,9 @@ for i in 1..(something - other) {
                     expr: (identifier))))))))
       body: (block
         (statement
-          (print_statement
-            arguments: (paren_arguments
-              argument: (expression
-                expr: (identifier)))))))))
+          (expression
+            expr: (function_call
+              target: (identifier)
+              arguments: (paren_arguments
+                argument: (expression
+                  expr: (identifier))))))))))

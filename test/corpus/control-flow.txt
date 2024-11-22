@@ -30,21 +30,25 @@ if !has_served {}
             expr: (identifier))))
       body: (block
         (statement
-          (print_statement
-            arguments: (paren_arguments
-              argument: (expression
-                expr: (primitive_value
-                  primitive: (string
-                    chunk: (string_content))))))))
-      else: (else_statement
-        body: (block
-          (statement
-            (print_statement
+          (expression
+            expr: (function_call
+              target: (identifier)
               arguments: (paren_arguments
                 argument: (expression
                   expr: (primitive_value
                     primitive: (string
-                      chunk: (string_content)))))))))))
+                      chunk: (string_content)))))))))
+      else: (else_statement
+        body: (block
+          (statement
+            (expression
+              expr: (function_call
+                target: (identifier)
+                arguments: (paren_arguments
+                  argument: (expression
+                    expr: (primitive_value
+                      primitive: (string
+                        chunk: (string_content))))))))))))
   (statement
     (if_statement
       condition: (expression

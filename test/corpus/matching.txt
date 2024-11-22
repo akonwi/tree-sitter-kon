@@ -39,9 +39,11 @@ match payload {
           (block
             (comment)
             (statement
-              (print_statement
-                (paren_arguments
-                  (expression
-                    (primitive_value
-                      (string
-                        (string_content)))))))))))))
+              (expression
+                (function_call
+                  (identifier)
+                  (paren_arguments
+                    (expression
+                      (primitive_value
+                        (string
+                          (string_content))))))))))))))

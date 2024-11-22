@@ -51,7 +51,6 @@ module.exports = grammar({
 
     statement: ($) =>
       choice(
-        $.print_statement, // remove
         $.while_loop,
         $.if_statement,
         $.for_loop,
@@ -168,7 +167,6 @@ module.exports = grammar({
     block: ($) => seq("{", optional(repeat($.statement)), "}"),
 
     //// Statements
-    print_statement: ($) => seq("print", field("arguments", $.paren_arguments)),
     while_loop: ($) =>
       seq(
         optional(field("do", "do")),
