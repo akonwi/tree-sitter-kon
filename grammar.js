@@ -57,7 +57,6 @@ module.exports = grammar({
         $.variable_definition,
         $.function_definition,
         $.reassignment,
-        $.compound_assignment,
         $._expression_statement,
         $.struct_definition,
         $.enum_definition,
@@ -201,16 +200,7 @@ module.exports = grammar({
         "assignment",
         seq(
           field("name", $.identifier),
-          $._assign,
-          field("value", $.expression),
-        ),
-      ),
-    compound_assignment: ($) =>
-      prec(
-        "assignment",
-        seq(
-          field("name", $.identifier),
-          field("operator", choice($.increment, $.decrement)),
+          field("operator", choice($._assign, $.increment, $.decrement)),
           field("value", $.expression),
         ),
       ),

@@ -38,10 +38,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "compound_assignment"
-        },
-        {
-          "type": "SYMBOL",
           "name": "_expression_statement"
         },
         {
@@ -899,40 +895,15 @@
             }
           },
           {
-            "type": "SYMBOL",
-            "name": "_assign"
-          },
-          {
-            "type": "FIELD",
-            "name": "value",
-            "content": {
-              "type": "SYMBOL",
-              "name": "expression"
-            }
-          }
-        ]
-      }
-    },
-    "compound_assignment": {
-      "type": "PREC",
-      "value": "assignment",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "name",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
-          },
-          {
             "type": "FIELD",
             "name": "operator",
             "content": {
               "type": "CHOICE",
               "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_assign"
+                },
                 {
                   "type": "SYMBOL",
                   "name": "increment"

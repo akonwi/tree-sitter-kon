@@ -170,46 +170,6 @@
     "fields": {}
   },
   {
-    "type": "compound_assignment",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "decrement",
-            "named": true
-          },
-          {
-            "type": "increment",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "else_statement",
     "named": true,
     "fields": {
@@ -861,6 +821,24 @@
           }
         ]
       },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "decrement",
+            "named": true
+          },
+          {
+            "type": "increment",
+            "named": true
+          }
+        ]
+      },
       "value": {
         "multiple": false,
         "required": true,
@@ -881,10 +859,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "compound_assignment",
-          "named": true
-        },
         {
           "type": "enum_definition",
           "named": true

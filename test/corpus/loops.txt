@@ -29,7 +29,7 @@ do while count == 9 {
               primitive: (number)))))
       body: (block
         (statement
-          (compound_assignment
+          (reassignment
             name: (identifier)
             operator: (increment)
             value: (expression
@@ -52,7 +52,7 @@ do while count == 9 {
                   primitive: (number)))))))
       body: (block
         (statement
-          (compound_assignment
+          (reassignment
             name: (identifier)
             operator: (decrement)
             value: (expression
@@ -70,7 +70,7 @@ do while count == 9 {
               primitive: (number)))))
       body: (block
         (statement
-          (compound_assignment
+          (reassignment
             name: (identifier)
             operator: (decrement)
             value: (expression
