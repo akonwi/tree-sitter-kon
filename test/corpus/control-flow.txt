@@ -2,17 +2,24 @@
 control flow
 ==================
 
-if age >= 18 or something_else {
-  print("this")
-} else {
-  print("that")
-}
-
 if !has_served {}
+
+if age > 18 or something_else {
+} else if age == 18 {
+} else {
+}
 
 ---
 
 (program
+  (statement
+    (if_statement
+      condition: (expression
+        expr: (unary_expression
+          operator: (bang)
+          operand: (expression
+            expr: (identifier))))
+      body: (block)))
   (statement
     (if_statement
       condition: (expression
@@ -21,39 +28,24 @@ if !has_served {}
             expr: (binary_expression
               left: (expression
                 expr: (identifier))
-              operator: (greater_than_or_equal)
+              operator: (greater_than)
               right: (expression
                 expr: (primitive_value
                   primitive: (number)))))
           operator: (or)
           right: (expression
             expr: (identifier))))
-      body: (block
-        (statement
-          (expression
-            expr: (function_call
-              target: (identifier)
-              arguments: (paren_arguments
-                argument: (expression
-                  expr: (primitive_value
-                    primitive: (string
-                      chunk: (string_content)))))))))
-      else: (else_statement
-        body: (block
-          (statement
-            (expression
-              expr: (function_call
-                target: (identifier)
-                arguments: (paren_arguments
-                  argument: (expression
-                    expr: (primitive_value
-                      primitive: (string
-                        chunk: (string_content))))))))))))
-  (statement
-    (if_statement
-      condition: (expression
-        expr: (unary_expression
-          operator: (bang)
-          operand: (expression
-            expr: (identifier))))
-      body: (block))))
+      body: (block)
+      else: (else_clause
+        if: (if_statement
+          condition: (expression
+            expr: (binary_expression
+              left: (expression
+                expr: (identifier))
+              operator: (equal)
+              right: (expression
+                expr: (primitive_value
+                  primitive: (number)))))
+          body: (block)
+          else: (else_clause
+            body: (block)))))))

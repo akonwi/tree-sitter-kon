@@ -833,24 +833,24 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "else",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "else",
+              "content": {
                 "type": "SYMBOL",
-                "name": "else_statement"
-              },
-              {
-                "type": "BLANK"
+                "name": "else_clause"
               }
-            ]
-          }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
-    "else_statement": {
+    "else_clause": {
       "type": "SEQ",
       "members": [
         {

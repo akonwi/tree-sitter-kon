@@ -170,7 +170,7 @@
     "fields": {}
   },
   {
-    "type": "else_statement",
+    "type": "else_clause",
     "named": true,
     "fields": {
       "body": {
@@ -438,7 +438,7 @@
         "required": false,
         "types": [
           {
-            "type": "else_statement",
+            "type": "else_clause",
             "named": true
           }
         ]
