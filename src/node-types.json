@@ -826,8 +826,8 @@
         "required": true,
         "types": [
           {
-            "type": "=",
-            "named": false
+            "type": "assign",
+            "named": true
           },
           {
             "type": "decrement",
@@ -1209,6 +1209,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assign",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1276,10 +1286,6 @@
     "named": false
   },
   {
-    "type": "=",
-    "named": false
-  },
-  {
     "type": "=>",
     "named": false
   },
@@ -1293,6 +1299,10 @@
   },
   {
     "type": "and",
+    "named": true
+  },
+  {
+    "type": "assign",
     "named": true
   },
   {

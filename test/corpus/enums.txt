@@ -23,6 +23,7 @@ let data = Payload::Plain
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
+      (assign)
       value: (expression
         expr: (static_member_access
           target: (identifier)

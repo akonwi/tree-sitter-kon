@@ -18,12 +18,14 @@ let booleans: [Bool] = [true, false]
         type: (list_type
           inner: (primitive_type
             (num))))
+      (assign)
       value: (expression
         expr: (list_value))))
   (statement
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
+      (assign)
       value: (expression
         expr: (list_value
           inner: (number)
@@ -37,6 +39,7 @@ let booleans: [Bool] = [true, false]
         type: (list_type
           inner: (primitive_type
             (str))))
+      (assign)
       value: (expression
         expr: (list_value
           inner: (string
@@ -53,6 +56,7 @@ let booleans: [Bool] = [true, false]
         type: (list_type
           inner: (primitive_type
             (bool))))
+      (assign)
       value: (expression
         expr: (list_value
           inner: (boolean)

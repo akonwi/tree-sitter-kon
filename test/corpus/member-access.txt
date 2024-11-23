@@ -18,6 +18,7 @@ location.point.x
           key: (str)
           value: (primitive_type
             (bool))))
+      (assign)
       value: (expression
         expr: (map_value))))
   (statement

@@ -105,7 +105,7 @@ module.exports = grammar({
         field("binding", $.variable_binding),
         field("name", $.identifier),
         optional(seq($._colon, field("type", $.type_declaration))),
-        $._assign,
+        $.assign,
         field("value", $.expression),
       ),
 
@@ -200,7 +200,7 @@ module.exports = grammar({
         "assignment",
         seq(
           field("name", $.identifier),
-          field("operator", choice($._assign, $.increment, $.decrement)),
+          field("operator", choice($.assign, $.increment, $.decrement)),
           field("value", $.expression),
         ),
       ),
@@ -419,7 +419,7 @@ module.exports = grammar({
     boolean: ($) => choice("true", "false"),
     _colon: ($) => ":",
     double_colon: ($) => "::",
-    _assign: ($) => "=",
+    assign: ($) => "=",
     _left_paren: ($) => "(",
     _right_paren: ($) => ")",
     _left_brace: ($) => "{",

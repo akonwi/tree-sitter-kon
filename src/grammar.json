@@ -350,7 +350,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_assign"
+          "name": "assign"
         },
         {
           "type": "FIELD",
@@ -902,7 +902,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_assign"
+                  "name": "assign"
                 },
                 {
                   "type": "SYMBOL",
@@ -2279,7 +2279,7 @@
       "type": "STRING",
       "value": "::"
     },
-    "_assign": {
+    "assign": {
       "type": "STRING",
       "value": "="
     },

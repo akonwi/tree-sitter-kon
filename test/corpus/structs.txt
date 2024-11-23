@@ -35,6 +35,7 @@ let people: [Person] = [
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
+      (assign)
       value: (expression
         expr: (struct_instance
           name: (identifier)
@@ -55,6 +56,7 @@ let people: [Person] = [
       type: (type_declaration
         type: (list_type
           inner: (identifier)))
+      (assign)
       value: (expression
         expr: (list_value
           inner: (identifier)

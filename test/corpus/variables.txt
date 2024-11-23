@@ -17,6 +17,7 @@ mut negative = -1
       type: (type_declaration
         type: (primitive_type
           (str)))
+      (assign)
       value: (expression
         expr: (primitive_value
           primitive: (string
@@ -28,6 +29,7 @@ mut negative = -1
       type: (type_declaration
         type: (primitive_type
           (num)))
+      (assign)
       value: (expression
         expr: (primitive_value
           primitive: (number)))))
@@ -35,6 +37,7 @@ mut negative = -1
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
+      (assign)
       value: (expression
         expr: (primitive_value
           primitive: (boolean)))))
@@ -42,6 +45,7 @@ mut negative = -1
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
+      (assign)
       value: (expression
         expr: (unary_expression
           operator: (minus)

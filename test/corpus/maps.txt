@@ -16,6 +16,7 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
           key: (str)
           value: (primitive_type
             (num))))
+      (assign)
       value: (expression
         expr: (map_value))))
   (statement
@@ -27,6 +28,7 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
           key: (str)
           value: (primitive_type
             (bool))))
+      (assign)
       value: (expression
         expr: (map_value
           (map_pair
