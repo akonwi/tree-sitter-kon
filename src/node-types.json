@@ -1087,11 +1087,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
+            "type": "type_declaration",
             "named": true
           }
         ]

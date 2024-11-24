@@ -76,7 +76,7 @@ module.exports = grammar({
       seq(
         field("name", $.identifier),
         $._colon,
-        field("type", choice($.primitive_type, $.identifier)),
+        field("type", $.type_declaration),
       ),
 
     enum_definition: ($) =>
