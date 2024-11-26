@@ -73,11 +73,7 @@ module.exports = grammar({
       ),
 
     struct_property: ($) =>
-      seq(
-        field("name", $.identifier),
-        $._colon,
-        field("type", $.type_declaration),
-      ),
+      seq(field("name", $.identifier), $._colon, field("type", $.type)),
 
     enum_definition: ($) =>
       seq(
@@ -94,17 +90,11 @@ module.exports = grammar({
     enum_struct_variant: ($) =>
       seq(field("name", $.identifier), "{", sepBy($.struct_property, ","), "}"),
 
-    type_declaration: ($) =>
-      field(
-        "type",
-        choice($.list_type, $.map_type, $.primitive_type, $.void, $.identifier),
-      ),
-
     variable_definition: ($) =>
       seq(
         field("binding", $.variable_binding),
         field("name", $.identifier),
-        optional(seq($._colon, field("type", $.type_declaration))),
+        optional(seq($._colon, field("type", $.type))),
         $.assign,
         field("value", $.expression),
       ),
@@ -116,7 +106,7 @@ module.exports = grammar({
         "fn",
         field("name", $.identifier),
         field("parameters", $.parameters),
-        optional(field("return", $.type_declaration)),
+        optional(field("return", $.type)),
         field("body", $.block),
       ),
 
@@ -127,17 +117,13 @@ module.exports = grammar({
           sepBy(field("parameter", $.anonymous_parameter), ","),
           $._right_paren,
         ),
-        field("return", optional($.type_declaration)),
+        field("return", optional($.type)),
         field("body", $.block),
       ),
 
     anonymous_parameter: ($) =>
       choice(
-        seq(
-          field("name", $.identifier),
-          $._colon,
-          field("type", $.type_declaration),
-        ),
+        seq(field("name", $.identifier), $._colon, field("type", $.type)),
         field("name", $.identifier),
       ),
 
@@ -157,11 +143,7 @@ module.exports = grammar({
       seq("(", sepBy(field("parameter", $.param_def), ","), ")"),
 
     param_def: ($) =>
-      seq(
-        field("name", $.identifier),
-        $._colon,
-        field("type", $.type_declaration),
-      ),
+      seq(field("name", $.identifier), $._colon, field("type", $.type)),
 
     block: ($) => seq("{", optional(repeat($.statement)), "}"),
 
@@ -343,24 +325,13 @@ module.exports = grammar({
     decrement: ($) => "=-",
 
     ///// types
-    list_type: ($) =>
-      seq(
-        "[",
-        field(
-          "inner",
-          choice($.primitive_type, $.map_type, $.list_type, $.identifier),
-        ),
-        "]",
-      ),
+    type: ($) =>
+      choice($.map_type, $.list_type, $.primitive_type, $.identifier),
+
+    list_type: ($) => seq("[", field("inner", $.type), "]"),
     map_type: ($) =>
-      seq(
-        "[",
-        field("key", $.str),
-        $._colon,
-        field("value", $.primitive_type),
-        "]",
-      ),
-    primitive_type: ($) => choice($.str, $.num, $.bool),
+      seq("[", field("key", $.str), $._colon, field("value", $.type), "]"),
+    primitive_type: ($) => choice($.str, $.num, $.bool, $.void),
 
     ///// values
     list_value: ($) =>

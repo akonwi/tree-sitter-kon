@@ -28,7 +28,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_declaration",
+            "type": "type",
             "named": true
           }
         ]
@@ -54,7 +54,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_declaration",
+            "type": "type",
             "named": true
           }
         ]
@@ -402,7 +402,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_declaration",
+            "type": "type",
             "named": true
           }
         ]
@@ -454,19 +454,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "list_type",
-            "named": true
-          },
-          {
-            "type": "map_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
+            "type": "type",
             "named": true
           }
         ]
@@ -558,7 +546,7 @@
         "required": true,
         "types": [
           {
-            "type": "primitive_type",
+            "type": "type",
             "named": true
           }
         ]
@@ -689,7 +677,7 @@
         "required": true,
         "types": [
           {
-            "type": "type_declaration",
+            "type": "type",
             "named": true
           }
         ]
@@ -762,6 +750,10 @@
         },
         {
           "type": "str",
+          "named": true
+        },
+        {
+          "type": "void",
           "named": true
         }
       ]
@@ -1087,7 +1079,7 @@
         "required": true,
         "types": [
           {
-            "type": "type_declaration",
+            "type": "type",
             "named": true
           }
         ]
@@ -1095,35 +1087,30 @@
     }
   },
   {
-    "type": "type_declaration",
+    "type": "type",
     "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "list_type",
-            "named": true
-          },
-          {
-            "type": "map_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "void",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "list_type",
+          "named": true
+        },
+        {
+          "type": "map_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1190,7 +1177,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_declaration",
+            "type": "type",
             "named": true
           }
         ]

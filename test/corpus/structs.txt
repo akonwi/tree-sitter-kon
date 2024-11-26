@@ -21,18 +21,18 @@ let people: [Person] = [
       name: (identifier)
       field: (struct_property
         name: (identifier)
-        type: (type_declaration
-          type: (primitive_type
+        type: (type
+          (primitive_type
             (str))))
       field: (struct_property
         name: (identifier)
-        type: (type_declaration
-          type: (primitive_type
+        type: (type
+          (primitive_type
             (num))))
       field: (struct_property
         name: (identifier)
-        type: (type_declaration
-          type: (primitive_type
+        type: (type
+          (primitive_type
             (bool))))))
   (statement
     (variable_definition
@@ -56,9 +56,10 @@ let people: [Person] = [
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
-      type: (type_declaration
-        type: (list_type
-          inner: (identifier)))
+      type: (type
+        (list_type
+          inner: (type
+            (identifier))))
       (assign)
       value: (expression
         expr: (list_value

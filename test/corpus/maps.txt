@@ -11,11 +11,12 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
-      type: (type_declaration
-        type: (map_type
+      type: (type
+        (map_type
           key: (str)
-          value: (primitive_type
-            (num))))
+          value: (type
+            (primitive_type
+              (num)))))
       (assign)
       value: (expression
         expr: (map_value))))
@@ -23,11 +24,12 @@ let initialized: [Str:Bool] = [ "John": true, "Jane": false ]
     (variable_definition
       binding: (variable_binding)
       name: (identifier)
-      type: (type_declaration
-        type: (map_type
+      type: (type
+        (map_type
           key: (str)
-          value: (primitive_type
-            (bool))))
+          value: (type
+            (primitive_type
+              (bool)))))
       (assign)
       value: (expression
         expr: (map_value
