@@ -16,7 +16,7 @@ let booleans: [Bool] = [true, false]
       name: (identifier)
       type: (type
         (list_type
-          inner: (type
+          element_type: (type
             (primitive_type
               (num)))))
       (assign)
@@ -38,7 +38,7 @@ let booleans: [Bool] = [true, false]
       name: (identifier)
       type: (type
         (list_type
-          inner: (type
+          element_type: (type
             (primitive_type
               (str)))))
       (assign)
@@ -56,7 +56,7 @@ let booleans: [Bool] = [true, false]
       name: (identifier)
       type: (type
         (list_type
-          inner: (type
+          element_type: (type
             (primitive_type
               (bool)))))
       (assign)

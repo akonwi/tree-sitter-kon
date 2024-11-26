@@ -1833,7 +1833,7 @@
         },
         {
           "type": "FIELD",
-          "name": "inner",
+          "name": "element_type",
           "content": {
             "type": "SYMBOL",
             "name": "type"

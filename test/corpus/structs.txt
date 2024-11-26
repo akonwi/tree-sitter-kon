@@ -58,7 +58,7 @@ let people: [Person] = [
       name: (identifier)
       type: (type
         (list_type
-          inner: (type
+          element_type: (type
             (identifier))))
       (assign)
       value: (expression

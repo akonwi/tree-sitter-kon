@@ -449,7 +449,7 @@
     "type": "list_type",
     "named": true,
     "fields": {
-      "inner": {
+      "element_type": {
         "multiple": false,
         "required": true,
         "types": [

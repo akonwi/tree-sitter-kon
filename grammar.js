@@ -328,7 +328,7 @@ module.exports = grammar({
     type: ($) =>
       choice($.map_type, $.list_type, $.primitive_type, $.identifier),
 
-    list_type: ($) => seq("[", field("inner", $.type), "]"),
+    list_type: ($) => seq("[", field("element_type", $.type), "]"),
     map_type: ($) =>
       seq("[", field("key", $.str), $._colon, field("value", $.type), "]"),
     primitive_type: ($) => choice($.str, $.num, $.bool, $.void),
