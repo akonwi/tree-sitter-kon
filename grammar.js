@@ -65,11 +65,11 @@ module.exports = grammar({
     //// definitions
     struct_definition: ($) =>
       seq(
-        "struct",
+        $._struct,
         field("name", $.identifier),
-        "{",
-        sepBy(field("field", $.struct_property), ","),
-        "}",
+        $._left_brace,
+        sepBy(field("field", $.struct_property), $._comma),
+        $._right_brace,
       ),
 
     struct_property: ($) =>
@@ -77,18 +77,23 @@ module.exports = grammar({
 
     enum_definition: ($) =>
       seq(
-        "enum",
+        $._enum,
         field("name", $.identifier),
-        "{",
-        sepBy1(field("variant", $.enum_variant), ","),
-        "}",
+        $._left_brace,
+        sepBy1(field("variant", $.enum_variant), $._comma),
+        $._right_brace,
       ),
 
     // todo: struct/tuple variants
     enum_variant: ($) => field("variant", choice($.identifier)),
 
     enum_struct_variant: ($) =>
-      seq(field("name", $.identifier), "{", sepBy($.struct_property, ","), "}"),
+      seq(
+        field("name", $.identifier),
+        $._left_brace,
+        sepBy($.struct_property, $._comma),
+        $._right_brace,
+      ),
 
     variable_definition: ($) =>
       seq(
@@ -103,7 +108,7 @@ module.exports = grammar({
 
     function_definition: ($) =>
       seq(
-        "fn",
+        $._fn,
         field("name", $.identifier),
         field("parameters", $.parameters),
         optional(field("return", $.type)),
@@ -114,7 +119,7 @@ module.exports = grammar({
       seq(
         seq(
           $._left_paren,
-          sepBy(field("parameter", $.anonymous_parameter), ","),
+          sepBy(field("parameter", $.anonymous_parameter), $._comma),
           $._right_paren,
         ),
         field("return", optional($.type)),
@@ -137,15 +142,24 @@ module.exports = grammar({
       ),
 
     paren_arguments: ($) =>
-      seq("(", sepBy(field("argument", $.expression), ","), ")"),
+      seq(
+        $._left_paren,
+        sepBy(field("argument", $.expression), $._comma),
+        $._right_paren,
+      ),
 
     parameters: ($) =>
-      seq("(", sepBy(field("parameter", $.param_def), ","), ")"),
+      seq(
+        $._left_paren,
+        sepBy(field("parameter", $.param_def), $._comma),
+        $._right_paren,
+      ),
 
     param_def: ($) =>
       seq(field("name", $.identifier), $._colon, field("type", $.type)),
 
-    block: ($) => seq("{", optional(repeat($.statement)), "}"),
+    block: ($) =>
+      seq($._left_brace, optional(repeat($.statement)), $._right_brace),
 
     //// Statements
     while_loop: ($) =>
@@ -216,7 +230,7 @@ module.exports = grammar({
 
     match_expression: ($) =>
       seq(
-        "match",
+        $._match,
         field("expr", $.expression),
         $._left_brace,
         sepBy1(field("case", $.match_case), $._comma),
@@ -226,16 +240,16 @@ module.exports = grammar({
     match_case: ($) =>
       seq(
         field("pattern", $.static_member_access),
-        "=>",
+        $._fat_arrow,
         field("body", choice($.block, $.expression)),
       ),
 
     struct_instance: ($) =>
       seq(
         field("name", $.identifier),
-        "{",
-        sepBy(field("field", $.struct_prop_pair), ","),
-        "}",
+        $._left_brace,
+        sepBy(field("field", $.struct_prop_pair), $._comma),
+        $._right_brace,
       ),
 
     member_access: ($) =>
@@ -243,7 +257,7 @@ module.exports = grammar({
         "member",
         seq(
           field("target", $.identifier),
-          ".",
+          $._period,
           field(
             "member",
             choice($.member_access, $.identifier, $.function_call),
@@ -328,15 +342,22 @@ module.exports = grammar({
     type: ($) =>
       choice($.map_type, $.list_type, $.primitive_type, $.identifier),
 
-    list_type: ($) => seq("[", field("element_type", $.type), "]"),
+    list_type: ($) =>
+      seq($._left_bracket, field("element_type", $.type), $._right_bracket),
     map_type: ($) =>
-      seq("[", field("key", $.str), $._colon, field("value", $.type), "]"),
+      seq(
+        $._left_bracket,
+        field("key", $.str),
+        $._colon,
+        field("value", $.type),
+        $._right_bracket,
+      ),
     primitive_type: ($) => choice($.str, $.num, $.bool, $.void),
 
     ///// values
     list_value: ($) =>
       seq(
-        "[",
+        $._left_bracket,
         sepBy(
           field(
             "element",
@@ -348,22 +369,25 @@ module.exports = grammar({
               $.struct_instance,
             ),
           ),
-          ",",
+          $._comma,
         ),
-        "]",
+        $._right_bracket,
       ),
     map_value: ($) =>
-      choice(seq("[", ":", "]"), seq("[", sepBy1($.map_pair, ","), "]")),
+      choice(
+        seq($._left_bracket, $._colon, $._right_bracket),
+        seq($._left_bracket, sepBy1($.map_pair, $._comma), $._right_bracket),
+      ),
     map_pair: ($) =>
       seq(
         field("key", choice($.string)),
-        ":",
+        $._colon,
         field("value", choice($.string, $.number, $.boolean)),
       ),
     struct_prop_pair: ($) =>
       seq(
         field("name", $.identifier),
-        ":",
+        $._colon,
         // todo?: just allow expressions
         field(
           "value",
@@ -385,24 +409,43 @@ module.exports = grammar({
         '"',
       ),
     string_interpolation: ($) =>
-      seq("${", field("expression", $.expression), "}"),
-    number: ($) => /\d+(\.\d+)?/,
-    boolean: ($) => choice("true", "false"),
-    _colon: ($) => ":",
-    double_colon: ($) => "::",
-    assign: ($) => "=",
-    _left_paren: ($) => "(",
-    _right_paren: ($) => ")",
-    _left_brace: ($) => "{",
-    _right_brace: ($) => "}",
-    _comma: ($) => ",",
-    str: ($) => "Str",
-    num: ($) => "Num",
-    bool: ($) => "Bool",
-    void: ($) => "Void",
+      seq(
+        $._dollar,
+        $._left_brace,
+        field("expression", $.expression),
+        $._right_brace,
+      ),
+    /// comments
     comment: ($) =>
       token(
         choice(seq("//", /[^\n]*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*\//)),
       ),
+    number: ($) => /\d+(\.\d+)?/,
+
+    /// keywords
+    boolean: ($) => choice("true", "false"),
+    str: ($) => "Str",
+    num: ($) => "Num",
+    bool: ($) => "Bool",
+    void: ($) => "Void",
+    _enum: ($) => "enum",
+    _struct: ($) => "struct",
+    _match: ($) => "match",
+    _fn: ($) => "fn",
+
+    /// symbols + punctuation
+    _colon: ($) => ":",
+    double_colon: ($) => "::",
+    assign: ($) => "=",
+    _dollar: ($) => "$",
+    _left_paren: ($) => "(",
+    _right_paren: ($) => ")",
+    _left_brace: ($) => "{",
+    _right_brace: ($) => "}",
+    _left_bracket: ($) => "[",
+    _right_bracket: ($) => "]",
+    _comma: ($) => ",",
+    _period: ($) => ".",
+    _fat_arrow: ($) => "=>",
   },
 });
