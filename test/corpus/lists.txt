@@ -29,9 +29,9 @@ let booleans: [Bool] = [true, false]
       (assign)
       value: (expression
         expr: (list_value
-          inner: (number)
-          inner: (number)
-          inner: (number)))))
+          element: (number)
+          element: (number)
+          element: (number)))))
   (statement
     (variable_definition
       binding: (variable_binding)
@@ -44,11 +44,11 @@ let booleans: [Bool] = [true, false]
       (assign)
       value: (expression
         expr: (list_value
-          inner: (string
+          element: (string
             chunk: (string_content))
-          inner: (string
+          element: (string
             chunk: (string_content))
-          inner: (string
+          element: (string
             chunk: (string_content))))))
   (statement
     (variable_definition
@@ -62,5 +62,5 @@ let booleans: [Bool] = [true, false]
       (assign)
       value: (expression
         expr: (list_value
-          inner: (boolean)
-          inner: (boolean))))))
+          element: (boolean)
+          element: (boolean))))))

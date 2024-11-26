@@ -1914,7 +1914,7 @@
               "members": [
                 {
                   "type": "FIELD",
-                  "name": "inner",
+                  "name": "element",
                   "content": {
                     "type": "CHOICE",
                     "members": [
@@ -1952,7 +1952,7 @@
                       },
                       {
                         "type": "FIELD",
-                        "name": "inner",
+                        "name": "element",
                         "content": {
                           "type": "CHOICE",
                           "members": [

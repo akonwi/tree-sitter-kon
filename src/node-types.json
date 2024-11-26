@@ -465,7 +465,7 @@
     "type": "list_value",
     "named": true,
     "fields": {
-      "inner": {
+      "element": {
         "multiple": true,
         "required": false,
         "types": [

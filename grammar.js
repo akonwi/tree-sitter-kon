@@ -339,7 +339,7 @@ module.exports = grammar({
         "[",
         sepBy(
           field(
-            "inner",
+            "element",
             choice(
               $.number,
               $.string,

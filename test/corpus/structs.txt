@@ -63,8 +63,8 @@ let people: [Person] = [
       (assign)
       value: (expression
         expr: (list_value
-          inner: (identifier)
-          inner: (struct_instance
+          element: (identifier)
+          element: (struct_instance
             name: (identifier)
             field: (struct_prop_pair
               name: (identifier)
