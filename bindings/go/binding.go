@@ -12,5 +12,6 @@ func Language() unsafe.Pointer {
 	// bump
 	// bump
 	// bump
+	// bump
 	return unsafe.Pointer(C.tree_sitter_kon())
 }

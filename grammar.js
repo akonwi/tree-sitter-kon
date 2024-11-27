@@ -376,13 +376,17 @@ module.exports = grammar({
     map_value: ($) =>
       choice(
         seq($._left_bracket, $._colon, $._right_bracket),
-        seq($._left_bracket, sepBy1($.map_pair, $._comma), $._right_bracket),
+        seq(
+          $._left_bracket,
+          sepBy1(field("entry", $.map_pair), $._comma),
+          $._right_bracket,
+        ),
       ),
     map_pair: ($) =>
       seq(
         field("key", choice($.string)),
         $._colon,
-        field("value", choice($.string, $.number, $.boolean)),
+        field("value", $.primitive_value),
       ),
     struct_prop_pair: ($) =>
       seq(

@@ -512,15 +512,7 @@
         "required": true,
         "types": [
           {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "string",
+            "type": "primitive_value",
             "named": true
           }
         ]
@@ -556,16 +548,17 @@
   {
     "type": "map_value",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "map_pair",
-          "named": true
-        }
-      ]
+    "fields": {
+      "entry": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "map_pair",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

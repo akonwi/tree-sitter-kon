@@ -2026,8 +2026,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "map_pair"
+                  "type": "FIELD",
+                  "name": "entry",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "map_pair"
+                  }
                 },
                 {
                   "type": "REPEAT",
@@ -2039,8 +2043,12 @@
                         "name": "_comma"
                       },
                       {
-                        "type": "SYMBOL",
-                        "name": "map_pair"
+                        "type": "FIELD",
+                        "name": "entry",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "map_pair"
+                        }
                       }
                     ]
                   }
@@ -2079,21 +2087,8 @@
           "type": "FIELD",
           "name": "value",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "string"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "number"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "boolean"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "primitive_value"
           }
         }
       ]
