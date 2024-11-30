@@ -26,11 +26,13 @@ location.point.x
     (expression
       expr: (member_access
         target: (identifier)
+        operator: (period)
         member: (identifier))))
   (statement
     (expression
       expr: (member_access
         target: (identifier)
+        operator: (period)
         member: (function_call
           target: (identifier)
           arguments: (paren_arguments
@@ -45,6 +47,8 @@ location.point.x
     (expression
       expr: (member_access
         target: (identifier)
+        operator: (period)
         member: (member_access
           target: (identifier)
+          operator: (period)
           member: (identifier))))))

@@ -216,7 +216,6 @@ module.exports = grammar({
             $.unary_expression,
             $.binary_expression,
             $.member_access,
-            $.static_member_access,
             $.function_call,
             $.struct_instance,
             $.paren_expression,
@@ -239,7 +238,7 @@ module.exports = grammar({
 
     match_case: ($) =>
       seq(
-        field("pattern", $.static_member_access),
+        field("pattern", $.member_access),
         $._fat_arrow,
         field("body", choice($.block, $.expression)),
       ),
@@ -257,23 +256,10 @@ module.exports = grammar({
         "member",
         seq(
           field("target", $.identifier),
-          $._period,
+          field("operator", choice($.period, $.double_colon)),
           field(
             "member",
             choice($.member_access, $.identifier, $.function_call),
-          ),
-        ),
-      ),
-
-    static_member_access: ($) =>
-      prec.right(
-        "member",
-        seq(
-          field("target", $.identifier),
-          $.double_colon,
-          field(
-            "member",
-            choice($.static_member_access, $.identifier, $.function_call),
           ),
         ),
       ),
@@ -393,10 +379,7 @@ module.exports = grammar({
         field("name", $.identifier),
         $._colon,
         // todo?: just allow expressions
-        field(
-          "value",
-          choice($.string, $.number, $.boolean, $.static_member_access),
-        ),
+        field("value", choice($.string, $.number, $.boolean)),
       ),
     primitive_value: ($) =>
       field("primitive", choice($.string, $.number, $.boolean)),
@@ -449,7 +432,7 @@ module.exports = grammar({
     _left_bracket: ($) => "[",
     _right_bracket: ($) => "]",
     _comma: ($) => ",",
-    _period: ($) => ".",
+    period: ($) => ".",
     _fat_arrow: ($) => "=>",
   },
 });

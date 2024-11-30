@@ -25,7 +25,7 @@ let data = Payload::Plain
       name: (identifier)
       (assign)
       value: (expression
-        expr: (static_member_access
+        expr: (member_access
           target: (identifier)
-          (double_colon)
+          operator: (double_colon)
           member: (identifier))))))

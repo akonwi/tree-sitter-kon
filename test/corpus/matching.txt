@@ -19,7 +19,7 @@ match payload {
         (expression
           (identifier))
         (match_case
-          (static_member_access
+          (member_access
             (identifier)
             (double_colon)
             (identifier))
@@ -32,7 +32,7 @@ match payload {
                     (string
                       (string_content))))))))
         (match_case
-          (static_member_access
+          (member_access
             (identifier)
             (double_colon)
             (identifier))

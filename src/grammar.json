@@ -931,10 +931,6 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "static_member_access"
-              },
-              {
-                "type": "SYMBOL",
                 "name": "function_call"
               },
               {
@@ -1045,7 +1041,7 @@
           "name": "pattern",
           "content": {
             "type": "SYMBOL",
-            "name": "static_member_access"
+            "name": "member_access"
           }
         },
         {
@@ -1148,8 +1144,21 @@
             }
           },
           {
-            "type": "SYMBOL",
-            "name": "_period"
+            "type": "FIELD",
+            "name": "operator",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "period"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "double_colon"
+                }
+              ]
+            }
           },
           {
             "type": "FIELD",
@@ -1160,48 +1169,6 @@
                 {
                   "type": "SYMBOL",
                   "name": "member_access"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "function_call"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "static_member_access": {
-      "type": "PREC_RIGHT",
-      "value": "member",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "target",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
-          },
-          {
-            "type": "SYMBOL",
-            "name": "double_colon"
-          },
-          {
-            "type": "FIELD",
-            "name": "member",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "static_member_access"
                 },
                 {
                   "type": "SYMBOL",
@@ -2125,10 +2092,6 @@
               {
                 "type": "SYMBOL",
                 "name": "boolean"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "static_member_access"
               }
             ]
           }
@@ -2350,7 +2313,7 @@
       "type": "STRING",
       "value": ","
     },
-    "_period": {
+    "period": {
       "type": "STRING",
       "value": "."
     },

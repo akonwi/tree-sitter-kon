@@ -286,10 +286,6 @@
             "named": true
           },
           {
-            "type": "static_member_access",
-            "named": true
-          },
-          {
             "type": "struct_instance",
             "named": true
           },
@@ -584,7 +580,7 @@
         "required": true,
         "types": [
           {
-            "type": "static_member_access",
+            "type": "member_access",
             "named": true
           }
         ]
@@ -635,6 +631,20 @@
           },
           {
             "type": "member_access",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "double_colon",
+            "named": true
+          },
+          {
+            "type": "period",
             "named": true
           }
         ]
@@ -884,50 +894,6 @@
     }
   },
   {
-    "type": "static_member_access",
-    "named": true,
-    "fields": {
-      "member": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "static_member_access",
-            "named": true
-          }
-        ]
-      },
-      "target": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "double_colon",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "string",
     "named": true,
     "fields": {
@@ -1039,10 +1005,6 @@
           },
           {
             "type": "number",
-            "named": true
-          },
-          {
-            "type": "static_member_access",
             "named": true
           },
           {
@@ -1254,10 +1216,6 @@
     "named": false
   },
   {
-    "type": ".",
-    "named": false
-  },
-  {
     "type": ":",
     "named": false
   },
@@ -1407,6 +1365,10 @@
   },
   {
     "type": "or",
+    "named": true
+  },
+  {
+    "type": "period",
     "named": true
   },
   {
