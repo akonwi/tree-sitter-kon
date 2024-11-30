@@ -379,7 +379,7 @@ module.exports = grammar({
         field("name", $.identifier),
         $._colon,
         // todo?: just allow expressions
-        field("value", choice($.string, $.number, $.boolean)),
+        field("value", $.primitive_value),
       ),
     primitive_value: ($) =>
       field("primitive", choice($.string, $.number, $.boolean)),

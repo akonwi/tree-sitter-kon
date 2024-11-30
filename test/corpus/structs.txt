@@ -44,14 +44,17 @@ let people: [Person] = [
           name: (identifier)
           field: (struct_prop_pair
             name: (identifier)
-            value: (string
-              chunk: (string_content)))
+            value: (primitive_value
+              primitive: (string
+                chunk: (string_content))))
           field: (struct_prop_pair
             name: (identifier)
-            value: (number))
+            value: (primitive_value
+              primitive: (number)))
           field: (struct_prop_pair
             name: (identifier)
-            value: (boolean))))))
+            value: (primitive_value
+              primitive: (boolean)))))))
   (statement
     (variable_definition
       binding: (variable_binding)
@@ -68,11 +71,14 @@ let people: [Person] = [
             name: (identifier)
             field: (struct_prop_pair
               name: (identifier)
-              value: (string
-                chunk: (string_content)))
+              value: (primitive_value
+                primitive: (string
+                  chunk: (string_content))))
             field: (struct_prop_pair
               name: (identifier)
-              value: (number))
+              value: (primitive_value
+                primitive: (number)))
             field: (struct_prop_pair
               name: (identifier)
-              value: (boolean))))))))
+              value: (primitive_value
+                primitive: (boolean)))))))))

@@ -1000,15 +1000,7 @@
         "required": true,
         "types": [
           {
-            "type": "boolean",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "string",
+            "type": "primitive_value",
             "named": true
           }
         ]
