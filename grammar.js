@@ -390,16 +390,17 @@ module.exports = grammar({
         repeat(
           field(
             "chunk",
-            choice(alias(/[^"${}]+/, $.string_content), $.string_interpolation),
+            choice(alias(/[^"{}]+/, $.string_content), $.string_interpolation),
           ),
         ),
         '"',
       ),
     string_interpolation: ($) =>
       seq(
-        $._dollar,
+        $._left_brace,
         $._left_brace,
         field("expression", $.expression),
+        $._right_brace,
         $._right_brace,
       ),
     /// comments

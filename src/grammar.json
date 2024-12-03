@@ -2129,7 +2129,7 @@
                   "type": "ALIAS",
                   "content": {
                     "type": "PATTERN",
-                    "value": "[^\"${}]+"
+                    "value": "[^\"{}]+"
                   },
                   "named": true,
                   "value": "string_content"
@@ -2153,7 +2153,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_dollar"
+          "name": "_left_brace"
         },
         {
           "type": "SYMBOL",
@@ -2166,6 +2166,10 @@
             "type": "SYMBOL",
             "name": "expression"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_right_brace"
         },
         {
           "type": "SYMBOL",

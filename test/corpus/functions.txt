@@ -30,7 +30,7 @@ get_hello()
 one param with return
 ==================
 fn greet(person: Str) Str {
-  "Hello, ${person}!"
+  "Hello, {{person}}!"
 }
 
 greet("Alice")
