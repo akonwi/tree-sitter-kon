@@ -39,7 +39,8 @@ match payload {
             (double_colon)
             (identifier))
           (block
-            (comment)
+            (statement
+              (comment))
             (statement
               (expression
                 (function_call

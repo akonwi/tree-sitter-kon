@@ -12,9 +12,11 @@ too
 ---
 
 (program
-  (comment)
+  (statement
+    (comment))
   (statement
     (expression
       (primitive_value
         (boolean))))
-  (comment))
+  (statement
+    (comment)))

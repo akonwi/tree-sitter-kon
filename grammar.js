@@ -52,6 +52,7 @@ module.exports = grammar({
 
     statement: ($) =>
       choice(
+        $.comment,
         $.while_loop,
         $.if_statement,
         $.for_loop,
