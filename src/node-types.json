@@ -654,11 +654,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "primitive_value",
+            "type": "expression",
             "named": true
           }
         ]

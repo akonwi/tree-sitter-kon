@@ -33,6 +33,7 @@ module.exports = grammar({
       "or",
       "assignment",
     ],
+    [$.member_access, $.expression],
     ["function_call", "expression"],
     [$.expression, $.struct_instance],
   ],
@@ -255,7 +256,7 @@ module.exports = grammar({
       prec.right(
         "member",
         seq(
-          field("target", choice($.identifier, $.primitive_value)),
+          field("target", $.expression),
           field("operator", choice($.period, $.double_colon)),
           field(
             "member",

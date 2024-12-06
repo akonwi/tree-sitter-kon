@@ -7,7 +7,7 @@ import "C"
 
 import "unsafe"
 
-// v0.0.4
+// v0.0.5
 // Get the tree-sitter Language for this grammar.
 func Language() unsafe.Pointer {
 	return unsafe.Pointer(C.tree_sitter_kon())

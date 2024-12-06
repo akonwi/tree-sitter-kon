@@ -181,7 +181,8 @@ list.map((n) { n + 1 })
   (statement
     (expression
       (member_access
-        (identifier)
+        (expression
+          (identifier))
         (period)
         (function_call
           (identifier)

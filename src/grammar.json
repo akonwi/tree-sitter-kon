@@ -1139,17 +1139,8 @@
             "type": "FIELD",
             "name": "target",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "primitive_value"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "expression"
             }
           },
           {
@@ -2403,6 +2394,16 @@
       {
         "type": "STRING",
         "value": "assignment"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "member_access"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "expression"
       }
     ],
     [
