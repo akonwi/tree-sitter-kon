@@ -656,6 +656,10 @@
           {
             "type": "identifier",
             "named": true
+          },
+          {
+            "type": "primitive_value",
+            "named": true
           }
         ]
       }

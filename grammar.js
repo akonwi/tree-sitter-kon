@@ -255,7 +255,7 @@ module.exports = grammar({
       prec.right(
         "member",
         seq(
-          field("target", $.identifier),
+          field("target", choice($.identifier, $.primitive_value)),
           field("operator", choice($.period, $.double_colon)),
           field(
             "member",

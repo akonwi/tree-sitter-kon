@@ -52,3 +52,21 @@ location.point.x
           target: (identifier)
           operator: (period)
           member: (identifier))))))
+
+==================
+Members on string literals
+==================
+
+"fizzbuzz".size
+
+---
+
+(program
+  (statement
+    (expression
+      (member_access
+        (primitive_value
+          (string
+            (string_content)))
+        (period)
+        (identifier)))))
